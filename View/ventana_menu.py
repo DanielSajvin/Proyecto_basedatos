@@ -35,6 +35,18 @@ class Main_window(QMainWindow):
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.ultimo_id = self.registrar_detalle.obtener_ultimo_id()
 
+        # Mostar Usuario en curso
+
+        self.cargo = self.registrar_usuario.obtener_cargo()
+        self.mostrar_cargo.setText(str(self.cargo[0]))
+
+        #self.usuario = self.registrar_usuario.getUsuario('1')
+        #self.mostrar_cargo.setText(str(self.usuario[1]))
+        #self.mostrar_nombre.setText(str(self.usuario[2]))
+        #self.mostrar_apellido.setText(str(self.usuario[3]))
+        #self.mostrar_usuario.setText(str(self.usuario[4]))
+
+
         # Inventario Ventana
         self.tabla_inv = self.tabla_inventario
         self.btn_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_inv))
@@ -78,7 +90,6 @@ class Main_window(QMainWindow):
                                                                                         self.lnc_nit_v.text(),
                                                                                         self.lnx_celular_v.text(),
                                                                                         self.lnx_email_v.text()))
-
 
         self.btn_crear.clicked.connect(self.crear)
         self.btn_listar.clicked.connect(self.tabla_inven)

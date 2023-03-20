@@ -500,7 +500,7 @@ border:1px solid rgb(0,206,151);
            <item>
             <widget class="QStackedWidget" name="stackedWidget">
              <property name="currentIndex">
-              <number>1</number>
+              <number>4</number>
              </property>
              <widget class="QWidget" name="page_inventario">
               <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1659,7 +1659,7 @@ font: 75 12pt&quot;Times New Roman&quot;;
 }</string>
                     </property>
                     <property name="currentIndex">
-                     <number>1</number>
+                     <number>0</number>
                     </property>
                     <widget class="QWidget" name="page_tabla_prov">
                      <layout class="QVBoxLayout" name="verticalLayout_21">
@@ -1926,15 +1926,211 @@ font: 75 12pt&quot;Times New Roman&quot;;
               </layout>
              </widget>
              <widget class="QWidget" name="page_usuario">
-              <layout class="QVBoxLayout" name="verticalLayout_4">
-               <item>
-                <widget class="QPushButton" name="pushButton_2">
-                 <property name="text">
-                  <string>info usuario</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
+              <widget class="QLabel" name="label_33">
+               <property name="geometry">
+                <rect>
+                 <x>430</x>
+                 <y>20</y>
+                 <width>171</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(0, 0, 0);</string>
+               </property>
+               <property name="text">
+                <string>Usuario Actual</string>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="mostrar_cargo">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>160</y>
+                 <width>151</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit{
+border: 2px solid #14c8dc;
+border-radius: 8px;
+color: rgb(0, 0, 0);
+background-color:rgb(225,225,225);
+font: 75 12pt&quot;Times New Roman&quot;;
+}</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_34">
+               <property name="geometry">
+                <rect>
+                 <x>50</x>
+                 <y>110</y>
+                 <width>171</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(0, 0, 0);</string>
+               </property>
+               <property name="text">
+                <string>Cargo</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_35">
+               <property name="geometry">
+                <rect>
+                 <x>250</x>
+                 <y>110</y>
+                 <width>171</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(0, 0, 0);</string>
+               </property>
+               <property name="text">
+                <string>Nombre</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_36">
+               <property name="geometry">
+                <rect>
+                 <x>430</x>
+                 <y>110</y>
+                 <width>171</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(0, 0, 0);</string>
+               </property>
+               <property name="text">
+                <string>Apellido</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_37">
+               <property name="geometry">
+                <rect>
+                 <x>600</x>
+                 <y>110</y>
+                 <width>171</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(0, 0, 0);</string>
+               </property>
+               <property name="text">
+                <string>Usuario</string>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="mostrar_usuario">
+               <property name="geometry">
+                <rect>
+                 <x>590</x>
+                 <y>160</y>
+                 <width>151</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit{
+border: 2px solid #14c8dc;
+border-radius: 8px;
+color: rgb(0, 0, 0);
+background-color:rgb(225,225,225);
+font: 75 12pt&quot;Times New Roman&quot;;
+}</string>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="mostrar_apellido">
+               <property name="geometry">
+                <rect>
+                 <x>400</x>
+                 <y>160</y>
+                 <width>151</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit{
+border: 2px solid #14c8dc;
+border-radius: 8px;
+color: rgb(0, 0, 0);
+background-color:rgb(225,225,225);
+font: 75 12pt&quot;Times New Roman&quot;;
+}</string>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="mostrar_nombre">
+               <property name="geometry">
+                <rect>
+                 <x>210</x>
+                 <y>160</y>
+                 <width>151</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit{
+border: 2px solid #14c8dc;
+border-radius: 8px;
+color: rgb(0, 0, 0);
+background-color:rgb(225,225,225);
+font: 75 12pt&quot;Times New Roman&quot;;
+}</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="btn_cambiar_usuario">
+               <property name="geometry">
+                <rect>
+                 <x>260</x>
+                 <y>230</y>
+                 <width>250</width>
+                 <height>30</height>
+                </rect>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>250</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Cambiar Usuario</string>
+               </property>
+              </widget>
              </widget>
              <widget class="QWidget" name="page_clientes">
               <layout class="QVBoxLayout" name="verticalLayout_12">

@@ -6,6 +6,25 @@ class RegistrarInventario:
     def __int__(self):
         self.conn = conecciones()
 
+    def obtener_cargo(self):
+        self.conn = conecciones()
+        cursor = self.conn.cursor()
+        sql = "SELECT cargo FROM usuario"
+        cursor.execute(sql)
+        resultados = []
+        for cargo in cursor:
+            resultados.append(cargo[0])
+        return resultados
+
+    def getUsuario(self, cod):
+        self.conn = conecciones()
+        with self.conn.cursor() as cursor:
+            sql = "SELECT * FROM usuario WHERE id_usuario = '"+cod+"'"
+            cursor.execute(sql)
+            result = cursor.fetchone()
+            if result:
+                return result
+
     def obtener_key(self):
         self.conn = conecciones()
         cursor = self.conn.cursor()
