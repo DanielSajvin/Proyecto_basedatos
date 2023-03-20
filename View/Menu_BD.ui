@@ -531,7 +531,7 @@ font: 75 12pt&quot;Times New Roman&quot;;
 }</string>
                     </property>
                     <property name="currentIndex">
-                     <number>0</number>
+                     <number>1</number>
                     </property>
                     <widget class="QWidget" name="page_tb_inv">
                      <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -852,53 +852,15 @@ font: 75 12pt&quot;Times New Roman&quot;;
 }</string>
                     </property>
                     <property name="currentIndex">
-                     <number>0</number>
+                     <number>1</number>
                     </property>
                     <widget class="QWidget" name="page_tabla_venta">
                      <layout class="QVBoxLayout" name="verticalLayout_7">
                       <item>
                        <widget class="QTableWidget" name="table_form_venta">
-                        <property name="styleSheet">
-                         <string notr="true">color: rgb(0, 0, 0);</string>
-                        </property>
                         <column>
                          <property name="text">
                           <string>Id</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>producto</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>cantidad</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>precio</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>sub total</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>anticipo</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>total</string>
-                         </property>
-                        </column>
-                        <column>
-                         <property name="text">
-                          <string>detalle id</string>
                          </property>
                         </column>
                        </widget>

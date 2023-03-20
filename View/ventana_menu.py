@@ -46,7 +46,6 @@ class Main_window(QMainWindow):
         #self.mostrar_apellido.setText(str(self.usuario[3]))
         #self.mostrar_usuario.setText(str(self.usuario[4]))
 
-
         # Inventario Ventana
         self.tabla_inv = self.tabla_inventario
         self.btn_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_inv))
@@ -196,6 +195,9 @@ class Main_window(QMainWindow):
 
     def usuario(self):
         self.stackedWidget.setCurrentWidget(self.page_usuario)
+        self.label_35.setText()
+        self.label_36.setText()
+        self.label_37.setText()
 
     def crear_proveedor(self):
         self.stackedWidget_4.setCurrentWidget(self.page_form_prov)
