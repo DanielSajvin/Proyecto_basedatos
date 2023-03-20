@@ -46,7 +46,6 @@ class Main_window(QMainWindow):
         #self.mostrar_apellido.setText(str(self.usuario[3]))
         #self.mostrar_usuario.setText(str(self.usuario[4]))
 
-
         # Inventario Ventana
         self.tabla_inv = self.tabla_inventario
         self.btn_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_inv))
