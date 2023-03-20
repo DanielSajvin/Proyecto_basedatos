@@ -38,7 +38,7 @@ class Main_window(QMainWindow):
         # Mostar Usuario en curso
 
         self.cargo = self.registrar_usuario.obtener_cargo()
-        self.mostrar_cargo.setText(str(self.cargo[0]))
+        #self.mostrar_cargo.setText(str(self.cargo[0]))
 
         #self.usuario = self.registrar_usuario.getUsuario('1')
         #self.mostrar_cargo.setText(str(self.usuario[1]))
