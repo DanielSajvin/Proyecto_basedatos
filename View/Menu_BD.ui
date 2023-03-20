@@ -858,9 +858,47 @@ font: 75 12pt&quot;Times New Roman&quot;;
                      <layout class="QVBoxLayout" name="verticalLayout_7">
                       <item>
                        <widget class="QTableWidget" name="table_form_venta">
+                        <property name="styleSheet">
+                         <string notr="true">color: rgb(0, 0, 0);</string>
+                        </property>
                         <column>
                          <property name="text">
                           <string>Id</string>
+                         </property>
+                        </column>
+                        <column>
+                         <property name="text">
+                          <string>Producto</string>
+                         </property>
+                        </column>
+                        <column>
+                         <property name="text">
+                          <string>Cantidad</string>
+                         </property>
+                        </column>
+                        <column>
+                         <property name="text">
+                          <string>Precio Unitario</string>
+                         </property>
+                        </column>
+                        <column>
+                         <property name="text">
+                          <string>Sub Total</string>
+                         </property>
+                        </column>
+                        <column>
+                         <property name="text">
+                          <string>Anticipo</string>
+                         </property>
+                        </column>
+                        <column>
+                         <property name="text">
+                          <string>Total</string>
+                         </property>
+                        </column>
+                        <column>
+                         <property name="text">
+                          <string>Id Detalle</string>
                          </property>
                         </column>
                        </widget>

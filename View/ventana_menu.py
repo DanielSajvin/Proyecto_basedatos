@@ -12,6 +12,7 @@ from modelos.tabla_detalle import ModeloDetalle
 from controladores.Register import RegistrarInventario
 from controladores.cliente_register import RegistarCliente
 from controladores.detalle_register import RegistarDetalle
+from modelos.tabla_venta import ModeloVenta
 
 
 
@@ -24,6 +25,7 @@ class Main_window(QMainWindow):
         self.registrar_usuario = RegistrarInventario()
         self.registrar_cliente = RegistarCliente()
         self.registrar_detalle = RegistarDetalle()
+        self.listar_venta_tabla = ModeloVenta()
         self.cliente_id = self.registrar_cliente.obtener_ultimo_id_cliente()
         self.fecha_actual = datetime.now()
 
@@ -56,7 +58,19 @@ class Main_window(QMainWindow):
         self.tabla_cliente_c = self.tabla_cliente
         self.btn_venta_v.clicked.connect(self.venta_tabla)
         self.btn_detalle_v.clicked.connect(self.venta_form)
-        self.btn_venta_v.clicked.connect(lambda: self.modelo_cliente.listar_cliente(self.tabla_cliente_c))
+
+        # Listar Venta
+        self.tabla_venta_listar = self.table_form_venta
+        self.btn_venta_v.clicked.connect(lambda: self.listar_venta_tabla.listar_venta(self.tabla_venta_listar))
+
+        # Agregar datos a venta
+        self.btn_agregar_venta.clicked.connect(lambda: self.listar_venta_tabla.crearventa(self.label_nombre.text(),
+                                                                                          self.label_cantidad.text(),
+                                                                                          self.label_costo.text(),
+                                                                                          self.label_sub_total.text(),
+                                                                                          self.lnx_anticipo.text(),
+                                                                                          self.label_total.text(),
+                                                                                          self.ultimo_id))
 
         # Cliente que existen en formulario de ventas
         self.btn_eliminar_cliente.clicked.connect(lambda: self.modelo_cliente.eliminar_produc(self.tabla_cliente_c))
