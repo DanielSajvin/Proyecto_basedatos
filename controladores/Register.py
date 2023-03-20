@@ -16,6 +16,36 @@ class RegistrarInventario:
             resultados.append(cargo[0])
         return resultados
 
+    def obtener_nombre(self):
+        self.conn = conecciones()
+        cursor = self.conn.cursor()
+        sql = "SELECT nombre FROM usuario"
+        cursor.execute(sql)
+        resultados = []
+        for cargo in cursor:
+            resultados.append(cargo[0])
+        return resultados
+
+    def obtener_apellido(self):
+        self.conn = conecciones()
+        cursor = self.conn.cursor()
+        sql = "SELECT apellido FROM usuario"
+        cursor.execute(sql)
+        resultados = []
+        for cargo in cursor:
+            resultados.append(cargo[0])
+        return resultados
+
+    def obtener_usuario(self):
+        self.conn = conecciones()
+        cursor = self.conn.cursor()
+        sql = "SELECT usuario FROM usuario"
+        cursor.execute(sql)
+        resultados = []
+        for cargo in cursor:
+            resultados.append(cargo[0])
+        return resultados
+
     def getUsuario(self, cod):
         self.conn = conecciones()
         with self.conn.cursor() as cursor:

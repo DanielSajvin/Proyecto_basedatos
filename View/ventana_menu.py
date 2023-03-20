@@ -38,7 +38,16 @@ class Main_window(QMainWindow):
         # Mostar Usuario en curso
 
         self.cargo = self.registrar_usuario.obtener_cargo()
-        #self.mostrar_cargo.setText(str(self.cargo[0]))
+        self.mostrar_cargo.setText(str(self.cargo[0]))
+
+        self.nombre = self.registrar_usuario.obtener_nombre()
+        self.mostrar_nombre.setText(str(self.nombre[0]))
+
+        self.apellido = self.registrar_usuario.obtener_apellido()
+        self.mostrar_apellido.setText(str(self.apellido[0]))
+
+        self.usuario_actual = self.registrar_usuario.obtener_usuario()
+        self.mostrar_usuario.setText(str(self.usuario_actual[0]))
 
         #self.usuario = self.registrar_usuario.getUsuario('1')
         #self.mostrar_cargo.setText(str(self.usuario[1]))
@@ -195,9 +204,6 @@ class Main_window(QMainWindow):
 
     def usuario(self):
         self.stackedWidget.setCurrentWidget(self.page_usuario)
-        self.label_35.setText()
-        self.label_36.setText()
-        self.label_37.setText()
 
     def crear_proveedor(self):
         self.stackedWidget_4.setCurrentWidget(self.page_form_prov)
