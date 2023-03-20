@@ -48,6 +48,7 @@ class Main_window(QMainWindow):
 
         self.usuario_actual = self.registrar_usuario.obtener_usuario()
         self.mostrar_usuario.setText(str(self.usuario_actual[0]))
+        #comentario 2 xd
 
         #self.usuario = self.registrar_usuario.getUsuario('1')
         #self.mostrar_cargo.setText(str(self.usuario[1]))
