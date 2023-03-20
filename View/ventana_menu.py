@@ -12,6 +12,7 @@ from modelos.tabla_detalle import ModeloDetalle
 from controladores.Register import RegistrarInventario
 from controladores.cliente_register import RegistarCliente
 from controladores.detalle_register import RegistarDetalle
+from modelos.tabla_venta import ModeloVenta
 
 
 
@@ -23,6 +24,8 @@ class Main_window(QMainWindow):
         self.modelo_detalle = ModeloDetalle()
         self.registrar_usuario = RegistrarInventario()
         self.registrar_cliente = RegistarCliente()
+        self.registrar_detalle = RegistarDetalle()
+        self.listar_venta_tabla = ModeloVenta()
         self.cliente_id = self.registrar_cliente.obtener_ultimo_id_cliente()
         self.fecha_actual = datetime.now()
 
@@ -30,7 +33,18 @@ class Main_window(QMainWindow):
         uic.loadUi("View/Menu_BD.ui", self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.ultimo_id = self.registrar_detalle.obtener_ultimo_id()
 
+        # Mostar Usuario en curso
+
+        self.cargo = self.registrar_usuario.obtener_cargo()
+        self.mostrar_cargo.setText(str(self.cargo[0]))
+
+        #self.usuario = self.registrar_usuario.getUsuario('1')
+        #self.mostrar_cargo.setText(str(self.usuario[1]))
+        #self.mostrar_nombre.setText(str(self.usuario[2]))
+        #self.mostrar_apellido.setText(str(self.usuario[3]))
+        #self.mostrar_usuario.setText(str(self.usuario[4]))
 
         # Inventario Ventana
         self.tabla_inv = self.tabla_inventario
@@ -55,7 +69,19 @@ class Main_window(QMainWindow):
         self.tabla_cliente_c = self.tabla_cliente
         self.btn_venta_v.clicked.connect(self.venta_tabla)
         self.btn_detalle_v.clicked.connect(self.venta_form)
-        self.btn_venta_v.clicked.connect(lambda: self.modelo_cliente.listar_cliente(self.tabla_cliente_c))
+
+        # Listar Venta
+        self.tabla_venta_listar = self.table_form_venta
+        self.btn_venta_v.clicked.connect(lambda: self.listar_venta_tabla.listar_venta(self.tabla_venta_listar))
+
+        # Agregar datos a venta
+        self.btn_agregar_venta.clicked.connect(lambda: self.listar_venta_tabla.crearventa(self.label_nombre.text(),
+                                                                                          self.label_cantidad.text(),
+                                                                                          self.label_costo.text(),
+                                                                                          self.label_sub_total.text(),
+                                                                                          self.lnx_anticipo.text(),
+                                                                                          self.label_total.text(),
+                                                                                          self.ultimo_id))
 
         # Cliente que existen en formulario de ventas
         self.btn_eliminar_cliente.clicked.connect(lambda: self.modelo_cliente.eliminar_produc(self.tabla_cliente_c))
@@ -63,7 +89,6 @@ class Main_window(QMainWindow):
                                                                                         self.lnc_nit_v.text(),
                                                                                         self.lnx_celular_v.text(),
                                                                                         self.lnx_email_v.text()))
-
 
         self.btn_crear.clicked.connect(self.crear)
         self.btn_listar.clicked.connect(self.tabla_inven)
@@ -123,6 +148,9 @@ class Main_window(QMainWindow):
                                                                                         self.cliente_id))
 
         self.btn_agregar_venta.clicked.connect(self.prueba_boton)
+
+        # Ventas
+        self.btn_agregar_venta.clicked.connect(self.restar_inventario)
 
 
         self.producto = self.label_nombre.text()
@@ -248,3 +276,20 @@ class Main_window(QMainWindow):
         self.lnx_anticipo.clear()
         self.label_sub_total.setText("")
         self.label_total.setText("")
+
+
+
+
+
+
+
+
+
+    def restar_inventario(self):
+        cod = self.lnx_op_codigo.text()
+        cantidad = self.label_cantidad.text()
+        cantidad = int(cantidad)
+        print("mandando datos de cantidad")
+        self.modelo_principal.modificar_existencias(cod, cantidad)
+
+
