@@ -140,7 +140,7 @@ class Main_window(QMainWindow):
         self.btn_agregar_venta.clicked.connect(self.prueba_boton)
 
         # Ventas
-        #self.btn_agregar_venta.clicked.connect()
+        self.btn_agregar_venta.clicked.connect(self.restar_inventario)
 
 
         self.producto = self.label_nombre.text()
@@ -263,3 +263,20 @@ class Main_window(QMainWindow):
         self.lnx_anticipo.clear()
         self.label_sub_total.setText("")
         self.label_total.setText("")
+
+
+
+
+
+
+
+
+
+    def restar_inventario(self):
+        cod = self.lnx_op_codigo.text()
+        cantidad = self.label_cantidad.text()
+        cantidad = int(cantidad)
+        print("mandando datos de cantidad")
+        self.modelo_principal.modificar_existencias(cod, cantidad)
+
+

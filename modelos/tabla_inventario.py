@@ -9,6 +9,16 @@ class ModeloPrincipal():
         self.producto = RegistrarInventario()
         self.principal = principal
 
+    def modificar_existencias(self, codigo, modificar: int):
+        print("datos de cambios de inventario recibidos")
+        self.producto = RegistrarInventario()
+        product = self.producto.get_codigo(codigo)
+        producto_acutal: int = product[3]
+
+        nuevo_producto: int = producto_acutal - modificar
+        print(f"este es el nuevo valor del producot *----------{nuevo_producto}--------------*")
+        self.producto.modificar_inventario(codigo, nuevo_producto)
+
     def listar_productos(self, tabla):
         self.producto = RegistrarInventario()
         table = tabla

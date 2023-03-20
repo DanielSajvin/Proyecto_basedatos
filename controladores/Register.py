@@ -43,6 +43,15 @@ class RegistrarInventario:
             result = cursor.fetchall()
             return result
 
+    def get_codigo(self, cod):
+        self.conn = conecciones()
+        with self.conn.cursor() as cursor:
+            sql = "SELECT * FROM inventario WHERE codigo_producto = '"+cod+"'"
+            cursor.execute(sql)
+            result = cursor.fetchone()
+            if result:
+                return result
+
     def getProduct(self, cod):
         self.conn = conecciones()
         with self.conn.cursor() as cursor:
@@ -85,4 +94,10 @@ class RegistrarInventario:
         with self.conn.cursor() as cursor:
             sql = """INSERT INTO inventario (Id_inventario,codigo_producto,producto,existencia,precio_minorista,precio_mayorista) VALUES (%s,%s,%s,%s,%s,%s)"""
             cursor.execute(sql, (id, codigo, producto, existencia, precio_min, precio_may))
+            self.conn.commit()
+
+    def modificar_inventario(self, codigo, numero):
+        with self.conn.cursor() as cursor:
+            sql = """UPDATE inventario SET existencia = %s WHERE codigo_producto = %s """
+            cursor.execute(sql, (numero, codigo))
             self.conn.commit()
