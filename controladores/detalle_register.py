@@ -10,6 +10,7 @@ class RegistarDetalle:
         cursor.execute("SELECT MAX(id_detalle) FROM detalle")
 
         count = cursor.fetchone()[0]
+        count = count + 1
         return count
 
     def obtener_id(self):

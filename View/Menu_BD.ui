@@ -500,7 +500,7 @@ border:1px solid rgb(0,206,151);
            <item>
             <widget class="QStackedWidget" name="stackedWidget">
              <property name="currentIndex">
-              <number>4</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="page_inventario">
               <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -531,7 +531,7 @@ font: 75 12pt&quot;Times New Roman&quot;;
 }</string>
                     </property>
                     <property name="currentIndex">
-                     <number>1</number>
+                     <number>0</number>
                     </property>
                     <widget class="QWidget" name="page_tb_inv">
                      <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -540,6 +540,9 @@ font: 75 12pt&quot;Times New Roman&quot;;
                         <property name="styleSheet">
                          <string notr="true">color: rgb(0, 0, 0);</string>
                         </property>
+                        <attribute name="horizontalHeaderDefaultSectionSize">
+                         <number>198</number>
+                        </attribute>
                         <column>
                          <property name="text">
                           <string>Id</string>
@@ -852,7 +855,7 @@ font: 75 12pt&quot;Times New Roman&quot;;
 }</string>
                     </property>
                     <property name="currentIndex">
-                     <number>1</number>
+                     <number>0</number>
                     </property>
                     <widget class="QWidget" name="page_tabla_venta">
                      <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1662,7 +1665,7 @@ font: 75 12pt&quot;Times New Roman&quot;;
 }</string>
                     </property>
                     <property name="currentIndex">
-                     <number>1</number>
+                     <number>0</number>
                     </property>
                     <widget class="QWidget" name="page_tabla_prov">
                      <layout class="QVBoxLayout" name="verticalLayout_21">
@@ -1671,6 +1674,9 @@ font: 75 12pt&quot;Times New Roman&quot;;
                         <property name="styleSheet">
                          <string notr="true">color: rgb(0, 0, 0);</string>
                         </property>
+                        <attribute name="horizontalHeaderDefaultSectionSize">
+                         <number>238</number>
+                        </attribute>
                         <column>
                          <property name="text">
                           <string>Id</string>
@@ -2119,7 +2125,7 @@ font: 75 12pt&quot;Times New Roman&quot;;
                   <item>
                    <widget class="QStackedWidget" name="stackedWidget_5">
                     <property name="currentIndex">
-                     <number>1</number>
+                     <number>0</number>
                     </property>
                     <widget class="QWidget" name="page_tabla_cliente">
                      <layout class="QHBoxLayout" name="horizontalLayout_15">
@@ -2128,6 +2134,9 @@ font: 75 12pt&quot;Times New Roman&quot;;
                         <property name="styleSheet">
                          <string notr="true">color: rgb(0, 0, 0);</string>
                         </property>
+                        <attribute name="horizontalHeaderDefaultSectionSize">
+                         <number>238</number>
+                        </attribute>
                         <column>
                          <property name="text">
                           <string>id</string>
