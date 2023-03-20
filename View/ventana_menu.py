@@ -23,6 +23,7 @@ class Main_window(QMainWindow):
         self.modelo_detalle = ModeloDetalle()
         self.registrar_usuario = RegistrarInventario()
         self.registrar_cliente = RegistarCliente()
+        self.registrar_detalle = RegistarDetalle()
         self.cliente_id = self.registrar_cliente.obtener_ultimo_id_cliente()
         self.fecha_actual = datetime.now()
 
@@ -30,7 +31,7 @@ class Main_window(QMainWindow):
         uic.loadUi("View/Menu_BD.ui", self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-
+        self.ultimo_id = self.registrar_detalle.obtener_ultimo_id()
 
         # Inventario Ventana
         self.tabla_inv = self.tabla_inventario
@@ -125,7 +126,7 @@ class Main_window(QMainWindow):
         self.btn_agregar_venta.clicked.connect(self.prueba_boton)
 
         # Ventas
-        self.btn_agregar_venta.clicked.connect()
+        #self.btn_agregar_venta.clicked.connect()
 
 
         self.producto = self.label_nombre.text()
