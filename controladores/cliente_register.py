@@ -31,7 +31,6 @@ class RegistarCliente:
             return result
 
     def insertarCliente(self, nombre, nit, celular, email):
-        print("datos recibidos")
         self.conn = conecciones()
         id = self.obtener_id()
 

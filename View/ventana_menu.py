@@ -124,6 +124,9 @@ class Main_window(QMainWindow):
 
         self.btn_agregar_venta.clicked.connect(self.prueba_boton)
 
+        # Ventas
+        self.btn_agregar_venta.clicked.connect()
+
 
         self.producto = self.label_nombre.text()
         self.fecha = self.fecha_actual.date()

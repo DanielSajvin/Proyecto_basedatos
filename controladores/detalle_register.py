@@ -4,6 +4,14 @@ class RegistarDetalle:
     def __int__(self):
         self.conn = conecciones()
 
+    def obtener_ultimo_id(self):
+        self.conn = conecciones()
+        cursor = self.conn.cursor()
+        cursor.execute("SELECT MAX(id_detalle) FROM detalle")
+
+        count = cursor.fetchone()[0]
+        return count
+
     def obtener_id(self):
         self.conn = conecciones()
         cursor = self.conn.cursor()
