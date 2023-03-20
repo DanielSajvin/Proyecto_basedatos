@@ -167,6 +167,9 @@ class Main_window(QMainWindow):
 
     def usuario(self):
         self.stackedWidget.setCurrentWidget(self.page_usuario)
+        self.label_35.setText()
+        self.label_36.setText()
+        self.label_37.setText()
 
     def crear_proveedor(self):
         self.stackedWidget_4.setCurrentWidget(self.page_form_prov)

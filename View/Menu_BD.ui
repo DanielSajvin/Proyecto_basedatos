@@ -500,7 +500,7 @@ border:1px solid rgb(0,206,151);
            <item>
             <widget class="QStackedWidget" name="stackedWidget">
              <property name="currentIndex">
-              <number>1</number>
+              <number>3</number>
              </property>
              <widget class="QWidget" name="page_inventario">
               <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -531,7 +531,7 @@ font: 75 12pt&quot;Times New Roman&quot;;
 }</string>
                     </property>
                     <property name="currentIndex">
-                     <number>1</number>
+                     <number>0</number>
                     </property>
                     <widget class="QWidget" name="page_tb_inv">
                      <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -540,14 +540,37 @@ font: 75 12pt&quot;Times New Roman&quot;;
                         <property name="styleSheet">
                          <string notr="true">color: rgb(0, 0, 0);</string>
                         </property>
+                        <attribute name="horizontalHeaderCascadingSectionResizes">
+                         <bool>false</bool>
+                        </attribute>
+                        <attribute name="horizontalHeaderDefaultSectionSize">
+                         <number>197</number>
+                        </attribute>
                         <column>
                          <property name="text">
                           <string>Id</string>
+                         </property>
+                         <property name="textAlignment">
+                          <set>AlignCenter</set>
+                         </property>
+                         <property name="background">
+                          <color>
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
+                          </color>
                          </property>
                         </column>
                         <column>
                          <property name="text">
                           <string>Codigo</string>
+                         </property>
+                         <property name="background">
+                          <color>
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
+                          </color>
                          </property>
                         </column>
                         <column>
@@ -565,7 +588,7 @@ font: 75 12pt&quot;Times New Roman&quot;;
                           <string>Precio Minorista</string>
                          </property>
                          <property name="textAlignment">
-                          <set>AlignLeading|AlignVCenter</set>
+                          <set>AlignCenter</set>
                          </property>
                         </column>
                         <column>
@@ -852,7 +875,7 @@ font: 75 12pt&quot;Times New Roman&quot;;
 }</string>
                     </property>
                     <property name="currentIndex">
-                     <number>1</number>
+                     <number>2</number>
                     </property>
                     <widget class="QWidget" name="page_tabla_venta">
                      <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1630,6 +1653,9 @@ font: 75 12pt&quot;Times New Roman&quot;;
                         <property name="styleSheet">
                          <string notr="true">color: rgb(0, 0, 0);</string>
                         </property>
+                        <attribute name="horizontalHeaderDefaultSectionSize">
+                         <number>237</number>
+                        </attribute>
                         <column>
                          <property name="text">
                           <string>Id</string>
@@ -1888,11 +1914,174 @@ font: 75 12pt&quot;Times New Roman&quot;;
               </layout>
              </widget>
              <widget class="QWidget" name="page_usuario">
+              <property name="styleSheet">
+               <string notr="true">QLabel#label_16{
+color: rgb(0, 0, 0);}
+
+QLabel#label_33{
+color: rgb(0, 0, 0);}
+
+QLabel#label_34{
+color: rgb(0, 0, 0);}
+
+QLabel#label_35{
+color: rgb(0, 0, 0);}
+QLabel#label_36{
+color: rgb(0, 0, 0);}
+QLabel#label_37{
+color: rgb(0, 0, 0);}</string>
+              </property>
               <layout class="QVBoxLayout" name="verticalLayout_4">
                <item>
                 <widget class="QPushButton" name="pushButton_2">
                  <property name="text">
                   <string>info usuario</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_12">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_34">
+                 <property name="text">
+                  <string>Usuario:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_35">
+                 <property name="text">
+                  <string>.....</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_16">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_13">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_16">
+                 <property name="styleSheet">
+                  <string notr="true">color:{RGB(255,255,255)}</string>
+                 </property>
+                 <property name="text">
+                  <string>Nombre:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_36">
+                 <property name="text">
+                  <string>.....</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_17">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_15">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_33">
+                 <property name="styleSheet">
+                  <string notr="true">color:{RGB(255,255,255)}</string>
+                 </property>
+                 <property name="text">
+                  <string>Puesto:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_37">
+                 <property name="text">
+                  <string>.....</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_14">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <spacer name="verticalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton">
+                 <property name="text">
+                  <string>Cerrar Sesión</string>
                  </property>
                 </widget>
                </item>
