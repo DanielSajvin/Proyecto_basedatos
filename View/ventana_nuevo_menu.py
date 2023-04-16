@@ -12,6 +12,7 @@ from modelos.tabla_detalle import ModeloDetalle
 from controladores.Register import RegistrarInventario
 from controladores.cliente_register import RegistarCliente
 from controladores.detalle_register import RegistarDetalle
+from modelos.tabla_venta import ModeloVenta
 from PyQt5.uic import loadUiType
 
 # QComboBox
@@ -25,6 +26,7 @@ class Main_window(QMainWindow, Ui_MainWindow):
         self.modelo_cliente = ModeloCliente()
         self.modelo_detalle = ModeloDetalle()
         self.registrar_usuario = RegistrarInventario()
+        self.listar_venta_tabla = ModeloVenta()
         self.registrar_cliente = RegistarCliente()
         self.cliente_id = self.registrar_cliente.obtener_ultimo_id_cliente()
         self.fecha_actual = datetime.now()
@@ -53,6 +55,31 @@ class Main_window(QMainWindow, Ui_MainWindow):
                                                                                         self.lnx_existencias.text(),
                                                                                         self.lnx_precio_min.text(),
                                                                                         self.lnx_precio_may.text()))
+
+
+        # Ventas
+        # form ventas
+        self.btn_buscar.clicked.connect(self.obetener_dados_codigo)
+        self.btn_visualizar_venta.clicked.connect(self.guardar_datos_venta)
+        # self.btn_guardar_venta.clicked.connect(self.mandar_datos_tabla_venta)
+
+        # tabla ventas
+        # self.tabla_cliente_c = self.tabla_cliente
+        #self.btn_venta_v.clicked.connect(self.venta_tabla)
+        #self.btn_detalle_v.clicked.connect(self.venta_form)
+
+        # Listar Venta
+        self.tabla_venta_listar = self.table_form_venta
+        # self.btn_venta_v.clicked.connect(lambda: self.listar_venta_tabla.listar_venta(self.tabla_venta_listar))
+
+        # Agregar datos a venta
+        #self.btn_agregar_venta.clicked.connect(lambda: self.listar_venta_tabla.crearventa(self.label_nombre.text(),
+        #                                                                                  self.label_cantidad.text(),
+        #                                                                                  self.label_costo.text(),
+        #                                                                                  self.label_sub_total.text(),
+        #                                                                                  self.lnx_anticipo.text(),
+        #                                                                                  self.label_total.text(),
+        #                                                                                  self.ultimo_id))
 
         # Conectando los botones de la barra superior
         self.btn_restaurar.hide()
@@ -93,6 +120,62 @@ class Main_window(QMainWindow, Ui_MainWindow):
 
     def pagina_usuario(self):
         self.stackedWidget.setCurrentWidget(self.page_usuario)
+
+    def obetener_dados_codigo(self):
+        # id_detalle - producto - fecha - entregado - sub_total - total - id_tipo - usuario_id - cliete_id
+        precio_uni = ""
+        cod = self.lnx_op_codigo.text()
+
+        product = self.registrar_usuario.obtener_por_codigo(cod)
+        print(product)
+        if self.cb_min.currentText() == 'Minorista':
+            precio_uni = product[4]
+        elif self.cb_min.currentText() == 'Mayorista':
+            precio_uni = product[5]
+
+        costo = str(precio_uni)
+        nombre = product[2]
+        self.label_nombre.setText(str(nombre))
+        self.label_costo.setText(str(costo))
+        return precio_uni
+
+    def guardar_datos_venta(self):
+        # id_detalle - producto - fecha - entregado - sub_total - total - id_tipo - usuario_id - cliete_id
+        print("Visualisando datos")
+        cantidad = self.label_cantidad.text()
+        anticipo = self.lnx_anticipo.text()
+        anticipo = float(anticipo)
+        print(f"anticipo:{anticipo}")
+
+        precio_uni = self.obetener_dados_codigo()
+        precio = precio_uni
+        new_cantidad = float(cantidad)
+        sub_total = new_cantidad * precio
+
+        total = sub_total - anticipo
+
+        self.label_sub_total.setText(str(sub_total))
+        self.label_total.setText(str(total))
+
+    def mandar_datos_tabla_venta(self):
+        # id_detalle - producto - fecha - entregado - sub_total - total - id_tipo - usuario_id - cliete_id
+        nombre = self.lnx_nombre_v.text()
+        nit = self.lnc_nit_v.text()
+        celular = self.lnc_nit_v.text()
+        email = self.lnx_email_v.text()
+
+    def borrar_line_edit_venta(self):
+        self.lnx_nombre_v.clear()
+        self.lnc_nit_v.clear()
+        self.lnx_celular_v.clear()
+        self.lnx_email_v.clear()
+        self.lnx_op_codigo.clear()
+        self.label_nombre.setText("")
+        self.label_cantidad.clear()
+        self.label_costo.setText("")
+        self.lnx_anticipo.clear()
+        self.label_sub_total.setText("")
+        self.label_total.setText("")
 
 
 if __name__ == '__main__':

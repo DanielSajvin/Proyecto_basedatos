@@ -664,7 +664,7 @@ color: rgb(0,126,249);
 </string>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>5</number>
             </property>
             <widget class="QWidget" name="page_inventario">
              <layout class="QGridLayout" name="gridLayout">
@@ -1454,18 +1454,24 @@ color: rgb(0,126,249);
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QLabel" name="label_4">
+                  <widget class="QLabel" name="label_nombre">
                    <property name="font">
                     <font>
                      <family>Microsoft Sans Serif</family>
                      <pointsize>16</pointsize>
                     </font>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
                    <property name="text">
-                    <string>Nombre del producto</string>
+                    <string/>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="buddy">
+                    <cstring></cstring>
                    </property>
                   </widget>
                  </item>
@@ -1621,7 +1627,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477,
                            <number>0</number>
                           </property>
                           <item>
-                           <widget class="QLineEdit" name="lineEdit">
+                           <widget class="QLineEdit" name="lnx_op_codigo">
                             <property name="maximumSize">
                              <size>
                               <width>16777215</width>
@@ -1640,7 +1646,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477,
                            </widget>
                           </item>
                           <item>
-                           <widget class="QPushButton" name="pushButton_2">
+                           <widget class="QPushButton" name="btn_buscar">
                             <property name="minimumSize">
                              <size>
                               <width>200</width>
@@ -1648,7 +1654,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477,
                              </size>
                             </property>
                             <property name="text">
-                             <string>  Visualizar  </string>
+                             <string>Buscar</string>
                             </property>
                            </widget>
                           </item>
@@ -1689,7 +1695,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477,
                            <number>0</number>
                           </property>
                           <item>
-                           <widget class="QLineEdit" name="lineEdit_2">
+                           <widget class="QLineEdit" name="label_cantidad">
                             <property name="maximumSize">
                              <size>
                               <width>16777215</width>
@@ -1702,7 +1708,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477,
                            </widget>
                           </item>
                           <item>
-                           <widget class="QLineEdit" name="lineEdit_3">
+                           <widget class="QLineEdit" name="label_costo">
                             <property name="maximumSize">
                              <size>
                               <width>16777215</width>
@@ -1715,7 +1721,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477,
                            </widget>
                           </item>
                           <item>
-                           <widget class="QComboBox" name="comboBox">
+                           <widget class="QComboBox" name="cb_min">
                             <property name="minimumSize">
                              <size>
                               <width>125</width>
@@ -1757,14 +1763,91 @@ font: 75 12pt&quot;Times New Roman&quot;;</string>
                          </property>
                          <layout class="QVBoxLayout" name="verticalLayout_13">
                           <item>
-                           <widget class="QLabel" name="label_12">
-                            <property name="text">
-                             <string>Colocar imagen </string>
+                           <widget class="QFrame" name="frame_19">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>20</height>
+                             </size>
                             </property>
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_10">
+                             <property name="spacing">
+                              <number>0</number>
+                             </property>
+                             <property name="leftMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>0</number>
+                             </property>
+                             <item>
+                              <widget class="QPushButton" name="btn_visualizar_venta">
+                               <property name="text">
+                                <string>Visualizar</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
                            </widget>
                           </item>
                           <item>
-                           <widget class="QPushButton" name="pushButton_3">
+                           <widget class="QFrame" name="frame_18">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>330</height>
+                             </size>
+                            </property>
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_9">
+                             <property name="leftMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>0</number>
+                             </property>
+                             <item>
+                              <widget class="QLineEdit" name="label_sub_total">
+                               <property name="placeholderText">
+                                <string>Sub Total</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QLineEdit" name="label_total">
+                               <property name="placeholderText">
+                                <string>Total</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="btn_agregar_venta">
                             <property name="minimumSize">
                              <size>
                               <width>0</width>
@@ -1882,6 +1965,16 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477,
                            </widget>
                           </item>
                           <item>
+                           <widget class="QLineEdit" name="lnx_anticipo">
+                            <property name="text">
+                             <string>0</string>
+                            </property>
+                            <property name="placeholderText">
+                             <string>Anticipo</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
                            <widget class="QPushButton" name="pushButton_6">
                             <property name="minimumSize">
                              <size>
@@ -1925,7 +2018,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477,
                            <number>0</number>
                           </property>
                           <item>
-                           <widget class="QTableWidget" name="tableWidget">
+                           <widget class="QTableWidget" name="table_form_venta">
                             <property name="styleSheet">
                              <string notr="true">QHeaderView
 {
@@ -1969,7 +2062,7 @@ border: 1px solid rgb(0,126,249);
                             </column>
                             <column>
                              <property name="text">
-                              <string>Producto</string>
+                              <string>producto</string>
                              </property>
                             </column>
                             <column>
@@ -1995,7 +2088,7 @@ border: 1px solid rgb(0,126,249);
                            </widget>
                           </item>
                           <item>
-                           <widget class="QPushButton" name="pushButton_4">
+                           <widget class="QPushButton" name="btn_finaliza_compra">
                             <property name="minimumSize">
                              <size>
                               <width>0</width>
