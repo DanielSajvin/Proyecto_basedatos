@@ -58,51 +58,17 @@ class Main_login(QMainWindow):
 
     def registrar(self):
         print("intentando registrar")
-        n_1 = self.lnx_1nombre.text()
-        n_2 = self.lnx_2nombre.text()
+        nombre = self.lnx_1nombre.text()
+        apellido = self.lnx_2nombre.text()
         user = self.lnx_usuario.text()
+        cargo = self.cb_min.currentText()
         pw = self.lnx_password_2.text()
         pw_confirm = self.lnx_confirm_password.text()
-        print("a")
 
-        """
-        abc = Symbol()
-        lts = abc.vals()
-
-        def cifrar(cadena, clave):
-            text_cifrado = " "
-
-            for letra in cadena:
-                suma = lts.find(letra) + clave
-                modulo = int(suma) % len(lts)
-                text_cifrado = text_cifrado + str(lts[modulo])
-            return text_cifrado
-
-        #message = ""
-
-        #message = input("Ingrese una frase: ")
-        n = 7
-
-        # new = message.replace('a', 'ñ')
-
-        # print("PRUEBA" + new)
-
-        resultado = cifrar(pw, n)
-        #print("¡CLAVE!: " + resultado)
-        # print("cifrar" + cifrar(message, n))
-        # print("desifrado" + decifrar(resultado, n))
-
-        key = Fernet.generate_key()
-        objeto_cifrado = Fernet(key)
-        texto_encriptado = objeto_cifrado.encrypt(str.encode(resultado))
-        #print("Texto encriptado")
-        #print(texto_encriptado)
-        password = texto_encriptado.decode()
-        """
 
         if pw == pw_confirm:
             print("mandando datos")
-            self.reg.Insertar(n_1, n_2, user, pw)
+            self.reg.Insertar(cargo, nombre, apellido, user, pw)
 
         else:
             print("las contraseñas no coninciden")

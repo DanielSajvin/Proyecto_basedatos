@@ -121,7 +121,7 @@ border-bottom-right-radius: 50px;</string>
       <rect>
        <x>50</x>
        <y>10</y>
-       <width>121</width>
+       <width>171</width>
        <height>40</height>
       </rect>
      </property>
@@ -189,7 +189,7 @@ color:rgba(0, 0, 0, 240);
 padding-bottom:7px;</string>
      </property>
      <property name="placeholderText">
-      <string>  First Name</string>
+      <string>  Nombre</string>
      </property>
     </widget>
     <widget class="QPushButton" name="btn_register">
@@ -246,7 +246,7 @@ color:rgba(0, 0, 0, 240);
 padding-bottom:7px;</string>
      </property>
      <property name="placeholderText">
-      <string>  Last Name</string>
+      <string>  Apellido</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lnx_password_2">
@@ -274,7 +274,7 @@ padding-bottom:7px;</string>
       <enum>QLineEdit::Password</enum>
      </property>
      <property name="placeholderText">
-      <string>  Password</string>
+      <string>  Contraseña</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="lnx_confirm_password">
@@ -302,7 +302,7 @@ padding-bottom:7px;</string>
       <enum>QLineEdit::Password</enum>
      </property>
      <property name="placeholderText">
-      <string>  Confirm Password</string>
+      <string>  Confirmar Contraseña</string>
      </property>
     </widget>
     <widget class="QComboBox" name="cb_min">
@@ -323,9 +323,11 @@ padding-bottom:7px;</string>
      <property name="styleSheet">
       <string notr="true">border: 2px solid #14c8dc;
 border-radius: 8px;
-color: rgb(0, 0, 0);
-background-color:rgb(225,225,225);
-font: 75 12pt&quot;Times New Roman&quot;;</string>
+color: rgb(255, 255, 255);
+background-color:qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(20, 47, 78, 219), stop:1 rgba(85, 98, 112, 226));
+font: 75 12pt&quot;Times New Roman&quot;;
+
+</string>
      </property>
      <item>
       <property name="text">
@@ -370,7 +372,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477,
       <rect>
        <x>60</x>
        <y>10</y>
-       <width>121</width>
+       <width>141</width>
        <height>41</height>
       </rect>
      </property>

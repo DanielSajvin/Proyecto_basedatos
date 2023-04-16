@@ -67,21 +67,20 @@ class RegistrarInventario:
     def obtener_id(self):
         self.conn = conecciones()
         cursor = self.conn.cursor()
-        cursor.execute("SELECT MAX(Id_inventario) FROM inventario")
+        cursor.execute("SELECT MAX(id_usuario) FROM usuario")
 
         count = cursor.fetchone()[0]
         count = count + 1
         return count
 
-    def Insertar(self, n_1, n_2, us, pw):
+    def Insertar(self, cargo, n_1, n_2, us, pw):
         self.conn = conecciones()
-        id = self.obtener_key()
-        id = id + 1
+        id = self.obtener_id()
 
         with self.conn.cursor() as cursor:
-            sql = """INSERT INTO usuario (id_usuario,cargo,nombre,apellido,usuario,password) VALUES (%s,%s,%s,%s,%s)"""
+            sql = """INSERT INTO usuario (id_usuario,cargo,nombre,apellido,usuario,password) VALUES (%s,%s,%s,%s,%s,%s)"""
 
-            cursor.execute(sql, (id, n_1, n_2, us, pw))
+            cursor.execute(sql, (id, cargo, n_1, n_2, us, pw))
             self.conn.commit()
 
     def obtener_producto(self):
