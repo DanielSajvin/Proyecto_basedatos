@@ -1133,19 +1133,6 @@ border-radius: 5px;
                    </property>
                   </widget>
                  </item>
-                 <item>
-                  <widget class="QPushButton" name="btn_eliminar_cliente">
-                   <property name="minimumSize">
-                    <size>
-                     <width>120</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string>Eliminar</string>
-                   </property>
-                  </widget>
-                 </item>
                 </layout>
                </widget>
               </item>
