@@ -13,15 +13,13 @@ class ModeloVenta():
         venta = self.venta.\
             obtener_venta()
         table.setRowCount(0)
-        print(venta)
-        print(type(venta))
         for row_number, row_data in enumerate(venta):
             table.insertRow(row_number)
             for column_number, data in enumerate(row_data):
                 table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
     def crearventa(self, producto, cantidad, precio_unitario, sub_total, anticipo, total, detalle_id):
-        print("primeros datos resividos")
+
         self.venta = RegistrarVenta()
         if producto and cantidad and precio_unitario and sub_total and anticipo and total and detalle_id:
             self.venta.insertarVenta(producto, cantidad, precio_unitario, sub_total, anticipo, total, detalle_id)

@@ -19,7 +19,7 @@ from PyQt5.uic import loadUiType
 
 Ui_MainWindow, QMainWindow = loadUiType('nuevo_menu.ui')
 
-class Main_window(QMainWindow, Ui_MainWindow):
+class Main_window_nuevo(QMainWindow, Ui_MainWindow):
     def __init__(self) -> None:
         self.modelo_principal = ModeloPrincipal()
         self.modelo_proveedor = ModeloProveedor()
@@ -27,6 +27,7 @@ class Main_window(QMainWindow, Ui_MainWindow):
         self.modelo_detalle = ModeloDetalle()
         self.registrar_usuario = RegistrarInventario()
         self.listar_venta_tabla = ModeloVenta()
+        self.registrar_detalle = RegistarDetalle()
         self.registrar_cliente = RegistarCliente()
         self.cliente_id = self.registrar_cliente.obtener_ultimo_id_cliente()
         self.fecha_actual = datetime.now()
@@ -35,6 +36,7 @@ class Main_window(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.ultimo_id = self.registrar_detalle.obtener_ultimo_id()
 
         # Conectar Botones con las paginas correspondientes
         self.btn_inventario.clicked.connect(self.pagina_inventario)
@@ -73,13 +75,20 @@ class Main_window(QMainWindow, Ui_MainWindow):
         # self.btn_venta_v.clicked.connect(lambda: self.listar_venta_tabla.listar_venta(self.tabla_venta_listar))
 
         # Agregar datos a venta
-        #self.btn_agregar_venta.clicked.connect(lambda: self.listar_venta_tabla.crearventa(self.label_nombre.text(),
-        #                                                                                  self.label_cantidad.text(),
-        #                                                                                  self.label_costo.text(),
-        #                                                                                  self.label_sub_total.text(),
-        #                                                                                  self.lnx_anticipo.text(),
-        #                                                                                  self.label_total.text(),
-        #                                                                                  self.ultimo_id))
+        self.btn_agregar_venta.clicked.connect(lambda: self.listar_venta_tabla.crearventa(self.label_nombre.text(),
+                                                                                          self.label_cantidad.text(),
+                                                                                          self.label_costo.text(),
+                                                                                          self.label_sub_total.text(),
+                                                                                          self.lnx_anticipo.text(),
+                                                                                          self.label_total.text(),
+                                                                                          self.ultimo_id))
+        self.tabla_cliente_c = self.tabla_cliente
+        self.tabla_cliente = self.tabla_cliente
+        self.btn_listar_4.clicked.connect(lambda: self.modelo_cliente.listar_cliente(self.tabla_cliente_c))
+        self.registrar_cliente.clicked.connect(lambda: self.modelo_cliente.crearcliente(self.nombre_cliente.text(),
+                                                                                        self.nit_cliente.text(),
+                                                                                        self.celular_cliente.text(),
+                                                                                        self.email_cliente.text()))
 
         # Conectando los botones de la barra superior
         self.btn_restaurar.hide()
@@ -177,11 +186,8 @@ class Main_window(QMainWindow, Ui_MainWindow):
         self.label_sub_total.setText("")
         self.label_total.setText("")
 
-
 if __name__ == '__main__':
-    # Crear la aplicación y la ventana principal
     app = QApplication(sys.argv)
-    window = Main_window()
-    window.show()
-
+    ventana = Main_window_nuevo()
+    ventana.show()
     sys.exit(app.exec_())

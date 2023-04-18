@@ -24,9 +24,12 @@ class RegistrarVenta:
     def insertarVenta(self, producto, cantidad, precio_unitario, sub_total, anticipo, total, detalle_id):
         self.conn = conecciones()
         id = self.obtener_id()
-
         with self.conn.cursor() as cursor:
-            sql = """INSERT INTO venta (id_venta,producto,cantidad,precio_unitario,sub_total, anticipo, total, detalle_id_detalle)
+            sql = """INSERT INTO `proyecto`.`venta` (`id_venta`, `producto`, `cantidad`, `precio_unitario`, `sub_total`, `anticipo`, `total`, `detalle_id_detalle`)
              VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
-            cursor.execute(sql, (id, producto, cantidad, precio_unitario, sub_total, anticipo, total, detalle_id))
-            self.conn.commit()
+
+            try:
+                cursor.execute(sql, (id, producto, cantidad, precio_unitario, sub_total, anticipo, total, detalle_id))
+                self.conn.commit()
+            except Exception as e:
+                print(f"Error al insertar venta: {e}")
