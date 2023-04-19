@@ -2171,11 +2171,14 @@ font: 75 12pt&quot;Times New Roman&quot;;</string>
                            </widget>
                           </item>
                           <item>
+                           <widget class="QCalendarWidget" name="calendarWidget"/>
+                          </item>
+                          <item>
                            <widget class="QFrame" name="frame_18">
                             <property name="minimumSize">
                              <size>
                               <width>0</width>
-                              <height>330</height>
+                              <height>75</height>
                              </size>
                             </property>
                             <property name="frameShape">
