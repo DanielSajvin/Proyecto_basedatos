@@ -1,0 +1,1405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VENTANA</class>
+ <widget class="QMainWindow" name="VENTANA">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>859</width>
+    <height>728</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>9</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>10</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>EXISTENCIAS</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>45</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Codigo</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>40</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Nombre Producto</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>40</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Presentación</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>40</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Cantidad</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>50</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>P.Unitario</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>50</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Monto Total</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="nom_pro">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>70</y>
+      <width>151</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="Lab">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>70</y>
+      <width>113</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="p_unit">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>70</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="monto_t">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>70</y>
+      <width>113</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tabla_int">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>100</y>
+      <width>801</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>651</width>
+      <height>192</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="autoScroll">
+     <bool>true</bool>
+    </property>
+    <property name="autoScrollMargin">
+     <number>16</number>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="dragEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="showGrid">
+     <bool>true</bool>
+    </property>
+    <property name="sortingEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+    <property name="cornerButtonEnabled">
+     <bool>true</bool>
+    </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderCascadingSectionResizes">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>124</number>
+    </attribute>
+    <attribute name="horizontalHeaderHighlightSections">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="horizontalHeaderMinimumSectionSize">
+     <number>20</number>
+    </attribute>
+    <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderCascadingSectionResizes">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderDefaultSectionSize">
+     <number>25</number>
+    </attribute>
+    <attribute name="verticalHeaderHighlightSections">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderMinimumSectionSize">
+     <number>100</number>
+    </attribute>
+    <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+     <bool>false</bool>
+    </attribute>
+    <row>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>2</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>3</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>4</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>5</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>6</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>7</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>8</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>9</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>10</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Codigo</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Nombre Producto                        </string>
+     </property>
+     <property name="textAlignment">
+      <set>AlignLeading|AlignVCenter</set>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Laboratorio</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Cantidad</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>P.Unitario</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Monto Total</string>
+     </property>
+    </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+     <property name="flags">
+      <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsEnabled</set>
+     </property>
+    </item>
+    <item row="0" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="0" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="0" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="0" column="4">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="0" column="5">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="1" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="1" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="1" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="1" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="1" column="4">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="1" column="5">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="2" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="2" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="2" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="2" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="2" column="4">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="2" column="5">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="3" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="3" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="3" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="3" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="3" column="4">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="3" column="5">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="4" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="4" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="4" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="4" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="4" column="4">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="4" column="5">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="5" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="5" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="5" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="5" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="5" column="4">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="5" column="5">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="6" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="6" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="6" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="6" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="6" column="4">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="6" column="5">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="7" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="7" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="7" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="7" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="7" column="4">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="7" column="5">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="8" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="8" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="8" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="8" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="8" column="4">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="8" column="5">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="9" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="9" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="9" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="9" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="9" column="4">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="9" column="5">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QTableWidget" name="boleta">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>400</y>
+      <width>511</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>100</number>
+    </attribute>
+    <attribute name="horizontalHeaderMinimumSectionSize">
+     <number>50</number>
+    </attribute>
+    <attribute name="verticalHeaderDefaultSectionSize">
+     <number>25</number>
+    </attribute>
+    <row>
+     <property name="text">
+      <string notr="true">1</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>2</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>3</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>4</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>5</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>6</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>7</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>8</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Producto</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Cantidad</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>P.Unit</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Deposito</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Pendiente</string>
+     </property>
+    </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="0" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="0" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="0" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="1" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="1" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="1" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="1" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="2" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="2" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="2" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="2" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="3" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="3" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="3" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="3" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="4" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="4" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="4" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="4" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="5" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="5" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="5" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="5" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="6" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="6" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="6" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="6" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="7" column="0">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="7" column="1">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="7" column="2">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item row="7" column="3">
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>360</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Detalle de Venta</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>20</y>
+      <width>671</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>30</y>
+      <width>20</width>
+      <height>641</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>410</y>
+      <width>101</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Fecha</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>440</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Pago</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bot_agregar">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>60</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cotizar</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="cod_bus">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>70</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="placeholderText">
+     <string>ffff</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>470</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Vendedor</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>500</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Cliente</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>530</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Turno</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="fecha">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>410</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBox">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>70</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="vendedor">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>470</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="cliente">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>500</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="turno">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>530</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Mañana</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Tarde</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="tipo_pago">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>440</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Efectivo</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Tarjeta</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="generar_venta">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>590</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Generar VENTA</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="terminar">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>630</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Guardar</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_21">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>560</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Total</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="total_general">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>560</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="Line" name="line_4">
+    <property name="geometry">
+     <rect>
+      <x>1030</x>
+      <y>40</y>
+      <width>21</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_7">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>400</y>
+      <width>41</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_8">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>710</y>
+      <width>841</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_10">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>640</y>
+      <width>501</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_5">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>370</y>
+      <width>641</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_9">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>30</y>
+      <width>20</width>
+      <height>691</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>670</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Codigo</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="cod_bus_2">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>690</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="placeholderText">
+     <string>ffff</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bot_agregar_2">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>680</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Eliminar</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
