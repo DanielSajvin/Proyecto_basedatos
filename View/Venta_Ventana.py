@@ -1,6 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from datetime import date
 
+import controladores.Register
+from controladores.Register import *
 from modelos.tabla_inventario import *
 
 
@@ -9,6 +11,7 @@ from modelos.tabla_inventario import *
 class Ui_VENTANA(object):
     def setupUi(self, VENTANA):
         self.modelo_principal = ModeloPrincipal()
+        self.registar = RegistrarInventario()
         VENTANA.setObjectName("VENTANA")
         VENTANA.setEnabled(True)
         VENTANA.resize(859, 728)
@@ -534,9 +537,44 @@ class Ui_VENTANA(object):
         self.bot_agregar_2.setGeometry(QtCore.QRect(660, 680, 71, 31))
         self.bot_agregar_2.setObjectName("bot_agregar_2")
         VENTANA.setCentralWidget(self.centralwidget)
+        self.bot_agregar_2.clicked.connect(self.accion)
 
         self.retranslateUi(VENTANA)
         QtCore.QMetaObject.connectSlotsByName(VENTANA)
+
+    def accion(self):
+        for valor in range(0, 10):
+            if self.registar.get_codigo(valor) == self.cod_bus.text():
+                product = self.registrar_usuario.obtener_por_codigo(valor)
+                self.nom_pro.setText(product[2])
+                self.p_unit.setText(base_datos(product[4]))
+                cant = self.spinBox.text()
+                monto_und = int(product[4]) * int(cant)
+                if (int(cant) > 0):
+                    self.monto_t.setText(str(monto_und) + ".00")
+                else:
+                    self.monto_t.setText(".00")
+
+    def generar_venta(self):
+        _translate = QtCore.QCoreApplication.translate
+        producto = self.nom_pro.text()
+        cantidad = self.spinBox.text()
+        unidades = "und"
+        precio_und = self.p_unit.text()
+        importe = int(cantidad) * int(precio_und)
+        escribir_base_datos(producto, cantidad, unidades, precio_und, str(importe))
+        cnd_elem = elemtos_ventas()
+        item = self.boleta.item(cnd_elem - 1, 0)
+        item.setText(_translate("VENTANA", producto))
+        item = self.boleta.item(cnd_elem - 1, 1)
+        item.setText(_translate("VENTANA", cantidad))
+        item = self.boleta.item(cnd_elem - 1, 2)
+        item.setText(_translate("VENTANA", unidades))
+        item = self.boleta.item(cnd_elem - 1, 3)
+        item.setText(_translate("VENTANA", precio_und))
+        item = self.boleta.item(cnd_elem - 1, 4)
+        item.setText(_translate("VENTANA", str(importe) + '.00'))
+        self.total_general.setText(str(monto_total(cnd_elem)) + '.00')
 
     def retranslateUi(self, VENTANA):
         _translate = QtCore.QCoreApplication.translate
