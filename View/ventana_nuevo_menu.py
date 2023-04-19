@@ -202,12 +202,61 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         # self.btn_finaliza_compra.clicked.connect(self.borrar_line_edit_venta)
 
         # ------------------------------------------------------------------------------
-        #self.btn_guardar_venta.clicked.connect(lambda: self.modelo_detalle.creardetalle(
-        #                                                                                self.fecha_actual.date(),
-        #                                                                                "si",
-        #                                                                                1,
-        #                                                                                1,
-        #                                                                                self.cliente_id))
+        #self.calendar = self.calendario_pedido
+        #self.calendar.selectionChanged.connect(self.fecha_seleccionada)
+
+        #def fecha_seleccionada(self):
+        #    fecha = self.calendar.selectedDate()
+        #    print("Fecha seleccionada:", fecha.toString())
+
+        calendar = self.calendario_pedido
+
+        def date_selected():
+            # Obtiene la fecha seleccionada
+            selected_date = calendar.selectedDate()
+            #day = selected_date.day()
+            #month = selected_date.month()
+            #year = selected_date.year()
+            fecha_final = selected_date.strftime('%Y-%m-%d')
+            #fecha_final = f"{year}-{month}-{day}"
+            fecha_date = datetime.strptime(fecha_final, '%Y-%m-%d').date()
+            return fecha_date
+            #print(fecha_date)
+
+        # Conecta la señal clicked() del calendario a la función date_selected
+        calendar.clicked.connect(date_selected)
+
+
+
+        # Obtiene la fecha seleccionada
+        #selected_date = calendar.selectedDate()
+
+        # Obtiene el día, mes y año de la fecha seleccionada
+        #day = selected_date.day()
+        #month = selected_date.month()
+        #year = selected_date.year()
+        #fecha_final = f"{year}-{month}-{day}"
+        # print(type(fecha_final))
+
+
+
+        # print("Fecha seleccionada:", fecha_final)
+        # print(self.fecha_actual.date())
+        #fecha_date = datetime.strptime(fecha_final, '%Y-%m-%d').date()
+        # print(fecha_date)
+
+
+        #fecha_str = '2022-04-18'
+        #fecha_obj = datetime.strptime(fecha_str, '%Y-%m-%d')
+        #print(type(fecha_obj))  # <class 'datetime.datetime'>
+        #print(fecha_obj)  # 2022-04-18 00:00:00
+
+        self.btn_pedido.clicked.connect(lambda: self.modelo_detalle.creardetalle(
+                                                                                        self.date_selected,
+                                                                                        "no",
+                                                                                        1,
+                                                                                        1,
+                                                                                        self.cliente_id))
 
         self.btn_agregar_venta.clicked.connect(lambda: self.modelo_detalle.creardetalle(
                                                                                         self.fecha_actual.date(),
