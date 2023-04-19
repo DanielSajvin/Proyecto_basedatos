@@ -32,6 +32,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.registrar_detalle = RegistarDetalle()
         self.registrar_cliente = RegistarCliente()
         self.cliente_id = self.registrar_cliente.obtener_ultimo_id_cliente()
+
         self.fecha_actual = datetime.now()
         super().__init__()
         # Conectar interfaz grafica
@@ -39,6 +40,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.ultimo_id = self.registrar_detalle.obtener_ultimo_id()
+        print(self.cliente_id)
 
         # Conectar Botones con las paginas correspondientes
         self.btn_inventario.clicked.connect(self.pagina_inventario)
@@ -172,7 +174,9 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
         # Listar Venta
         self.tabla_venta_listar = self.table_form_venta
-        # self.btn_venta_v.clicked.connect(lambda: self.listar_venta_tabla.listar_venta(self.tabla_venta_listar))
+        self.btn_agregar_venta.clicked.connect(lambda: self.listar_venta_tabla.listar_venta(self.tabla_venta_listar))
+        self.btn_listar_ventas.clicked.connect(lambda: self.listar_venta_tabla.listar_venta(self.tabla_venta_listar))
+
 
         # Agregar datos a venta
         self.btn_agregar_venta.clicked.connect(lambda: self.listar_venta_tabla.crearventa(self.label_nombre.text(),
@@ -192,6 +196,26 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
         # clientes deudas
         self.btn_deudas.clicked.connect(self.page_deudas)
+
+        # Tabla de detalles
+        # id_detalle - producto - fecha - entregado - sub_total - total - id_tipo - usuario_id - cliete_id
+        # self.btn_finaliza_compra.clicked.connect(self.borrar_line_edit_venta)
+
+        # ------------------------------------------------------------------------------
+        #self.btn_guardar_venta.clicked.connect(lambda: self.modelo_detalle.creardetalle(
+        #                                                                                self.fecha_actual.date(),
+        #                                                                                "si",
+        #                                                                                1,
+        #                                                                                1,
+        #                                                                                self.cliente_id))
+
+        self.btn_agregar_venta.clicked.connect(lambda: self.modelo_detalle.creardetalle(
+                                                                                        self.fecha_actual.date(),
+                                                                                        "si",
+                                                                                        1,
+                                                                                        1,
+                                                                                        self.cliente_id))
+
 
         # Conectando los botones de la barra superior
         self.btn_restaurar.hide()

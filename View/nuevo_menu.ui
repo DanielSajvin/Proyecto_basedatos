@@ -2171,9 +2171,6 @@ font: 75 12pt&quot;Times New Roman&quot;;</string>
                            </widget>
                           </item>
                           <item>
-                           <widget class="QCalendarWidget" name="calendario_pedido"/>
-                          </item>
-                          <item>
                            <widget class="QFrame" name="frame_18">
                             <property name="minimumSize">
                              <size>
@@ -2323,9 +2320,15 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477,
                            </spacer>
                           </item>
                           <item>
-                           <widget class="QPushButton" name="pushButton_3">
+                           <widget class="QPushButton" name="btn_listar_ventas">
+                            <property name="minimumSize">
+                             <size>
+                              <width>110</width>
+                              <height>35</height>
+                             </size>
+                            </property>
                             <property name="text">
-                             <string>Pedido</string>
+                             <string>Listar</string>
                             </property>
                            </widget>
                           </item>
@@ -2435,7 +2438,7 @@ border: 1px solid rgb(0,126,249);
                             </property>
                             <column>
                              <property name="text">
-                              <string>Codigo</string>
+                              <string>Id</string>
                              </property>
                             </column>
                             <column>
@@ -2455,12 +2458,22 @@ border: 1px solid rgb(0,126,249);
                             </column>
                             <column>
                              <property name="text">
+                              <string>Sub total</string>
+                             </property>
+                            </column>
+                            <column>
+                             <property name="text">
                               <string>Anticipo</string>
                              </property>
                             </column>
                             <column>
                              <property name="text">
                               <string>Total</string>
+                             </property>
+                            </column>
+                            <column>
+                             <property name="text">
+                              <string>Detalle_id</string>
                              </property>
                             </column>
                            </widget>

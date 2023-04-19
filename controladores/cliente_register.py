@@ -19,7 +19,7 @@ class RegistarCliente:
         cursor.execute("SELECT MAX(id_cliente) FROM cliente")
 
         count = cursor.fetchone()[0]
-        count = count + 1
+
         return count
 
     def obtener_cliente(self):
