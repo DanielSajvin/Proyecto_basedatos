@@ -1,6 +1,7 @@
 import sys
 import os
-from datetime import datetime, date
+import datetime
+from datetime import datetime
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -209,25 +210,28 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         #    fecha = self.calendar.selectedDate()
         #    print("Fecha seleccionada:", fecha.toString())
 
-        self.calendar = self.calendario_pedido
-        self.fecha_date = ""
+        calendar = self.calendario_pedido
 
-        def date_selected():
+        #def date_selected():
             # Obtiene la fecha seleccionada
-            selected_date = self.calendar.selectedDate()
-            #day = selected_date.day()
+        #    selected_date = calendar.selectedDate()
+        #    #day = selected_date.day()
             #month = selected_date.month()
             #year = selected_date.year()
-            fecha_final = selected_date.strftime('%Y-%m-%d')
+        #    fecha_final = selected_date.strftime('%Y-%m-%d')
             #fecha_final = f"{year}-{month}-{day}"
-            self.fecha_date = datetime.strptime(fecha_final, '%Y-%m-%d').date()
-
+        #    fecha_date = datetime.strptime(fecha_final, '%Y-%m-%d').date()
+        #    return fecha_date
             #print(fecha_date)
 
         # Conecta la señal clicked() del calendario a la función date_selected
-        self.calendar.clicked.connect(date_selected)
+        #calendar.clicked.connect(date_selected)
+        self.calendario_pedido = self.calendario_pedido
+
+        self.calendario_pedido.clicked.connect(self.obtener_fecha_seleccionada)
 
 
+        #print(type(self.fecha_seleccionada))
 
         # Obtiene la fecha seleccionada
         #selected_date = calendar.selectedDate()
@@ -253,7 +257,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         #print(fecha_obj)  # 2022-04-18 00:00:00
 
         self.btn_pedido.clicked.connect(lambda: self.modelo_detalle.creardetalle(
-                                                                                        self.fecha_date,
+                                                                                        self.fecha_seleccionada,
                                                                                         "no",
                                                                                         1,
                                                                                         1,
@@ -313,6 +317,19 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
     def page_deudas(self):
         self.stackedWidget.setCurrentWidget(self.page_cliente_deben)
+
+    def obtener_fecha_seleccionada(self, fecha_seleccionada):
+        # Convertir la fecha seleccionada en un objeto QDate
+        fecha = QDate(fecha_seleccionada)
+
+        # Imprimir la fecha seleccionada en consola
+        print(fecha.toString("yyyy-MM-dd"))
+
+        # Convertir la fecha de QDate a date de datetime
+        fecha_datetime = datetime(fecha.year(), fecha.month(), fecha.day()).date()
+
+        # Almacenar la fecha seleccionada en una variable como date de datetime
+        self.fecha_seleccionada = fecha_datetime
 
     def obetener_dados_codigo(self):
         # id_detalle - producto - fecha - entregado - sub_total - total - id_tipo - usuario_id - cliete_id
