@@ -20,7 +20,7 @@ from PyQt5.uic import loadUiType
 
 # QComboBox
 
-Ui_MainWindow, QMainWindow = loadUiType('nuevo_menu.ui')
+Ui_MainWindow, QMainWindow = loadUiType('View/nuevo_menu.ui')
 
 class Main_window_nuevo(QMainWindow, Ui_MainWindow):
     def __init__(self) -> None:

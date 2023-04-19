@@ -5,6 +5,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5 import uic, QtCore, QtWidgets
 from View import Main_window
+from View.ventana_nuevo_menu import Main_window_nuevo
 from server.conexion_sqlserver import conecciones
 from controladores.Register import RegistrarInventario
 
@@ -19,7 +20,7 @@ class Main_login(QMainWindow):
         self.reg = RegistrarInventario()
 
         #Creando conexion con ventana principal
-        self.ventana_principal = Main_window()
+        self.ventana_principal = Main_window_nuevo()
 
 
         self.label.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=0, yOffset=0))
