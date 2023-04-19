@@ -90,6 +90,9 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
                                                                                         self.celular_cliente.text(),
                                                                                         self.email_cliente.text()))
 
+        # clientes deudas
+        self.btn_deudas.clicked.connect(self.page_deudas)
+
         # Conectando los botones de la barra superior
         self.btn_restaurar.hide()
         self.btn_cerrar.clicked.connect(lambda: self.close())
@@ -129,6 +132,9 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
     def pagina_usuario(self):
         self.stackedWidget.setCurrentWidget(self.page_usuario)
+
+    def page_deudas(self):
+        self.stackedWidget.setCurrentWidget(self.page_cliente_deben)
 
     def obetener_dados_codigo(self):
         # id_detalle - producto - fecha - entregado - sub_total - total - id_tipo - usuario_id - cliete_id

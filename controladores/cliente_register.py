@@ -54,3 +54,10 @@ class RegistarCliente:
             sql = "DELETE FROM `proyecto`.`cliente` WHERE id_cliente = '"+id+"'"
             cursor.execute(sql)
             self.conn.commit()
+
+    def obtener_clientes_deben(self):
+        self.conn = conecciones()
+        with self.conn.cursor() as cursor:
+            sql = "SELECT c.id_cliente, c.nombre, d.fecha FROM proyecto.cliente c " \
+                  "inner join proyecto.detalle d on c.id_cliente = d.Cliente_id_cliente;"
+

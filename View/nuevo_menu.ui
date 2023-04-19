@@ -664,7 +664,7 @@ color: rgb(0,126,249);
 </string>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="page_inventario">
              <layout class="QGridLayout" name="gridLayout">
@@ -1044,7 +1044,24 @@ background-color: rgb(46, 51, 84);</string>
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="page_venta"/>
+            <widget class="QWidget" name="page_venta">
+             <widget class="QFrame" name="frame_22">
+              <property name="geometry">
+               <rect>
+                <x>300</x>
+                <y>400</y>
+                <width>120</width>
+                <height>80</height>
+               </rect>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+             </widget>
+            </widget>
             <widget class="QWidget" name="page_cliente">
              <layout class="QGridLayout" name="gridLayout_2">
               <property name="leftMargin">
@@ -1062,182 +1079,6 @@ background-color: rgb(46, 51, 84);</string>
               <property name="horizontalSpacing">
                <number>11</number>
               </property>
-              <item row="1" column="0" rowspan="2">
-               <widget class="QFrame" name="frame_16">
-                <property name="minimumSize">
-                 <size>
-                  <width>150</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-border-top-left-radius:20p;
-color: rgb(0,126,249);
-font: 77 10pt &quot;Gadugi&quot;;
-
-border-radius: 5px;
-
-
-}
-
-QPushButton:hover{
-
-background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
-
-
-}
-QFrame{
-background-color: rgb(24, 30, 50);
-}
-QLabel{
-color: rgb(0,126,249);
-}
-QLineEdit{
-font: 77 10pt &quot;Gadugi&quot;;
-color: rgb(158, 161, 178);
-border-radius: 5px;
-}
-</string>
-                </property>
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_15">
-                 <item>
-                  <widget class="QPushButton" name="btn_listar_4">
-                   <property name="minimumSize">
-                    <size>
-                     <width>120</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string>Listar</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="registrar_cliente">
-                   <property name="minimumSize">
-                    <size>
-                     <width>120</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string>Registrar</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item row="1" column="1" rowspan="2">
-               <widget class="QFrame" name="frame_12">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>450</height>
-                 </size>
-                </property>
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_14">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="QTableWidget" name="tabla_cliente">
-                   <property name="styleSheet">
-                    <string notr="true">QHeaderView
-{
-Fondo: transparente; 
-background-color: rgb(24, 30, 50);
-border-top-left-radius:20p;
-color: rgb(0,126,249);
-font: 77 10pt &quot;Gadugi&quot;;
-}
-
-QHeaderView:hover
-{
-background-color: rgb(46, 51, 84);
-border-top-left-radius:20p;
-}
-QHeaderView:section
-{
-background-color: rgb(46, 51, 84);
-border-top-left-radius:20p;
-padding: 2px;
-font-size:11 pt;
-
-}
-QTableWidget{
-background-color: rgb(24, 30, 50);
-gridline-color: rgb(24, 30, 50);
-font-size: 11pt;
-border-top-left-radius:20p;
-color: rgb(0,126,249);
-font: 77 10pt &quot;Gadugi&quot;;
-}
-QTableWidgetQTableCornerButton::section{
-background-color: rgb(46, 51, 84);
-border: 1px solid rgb(0,126,249);
-}
-background-color: rgb(46, 51, 84);</string>
-                   </property>
-                   <attribute name="horizontalHeaderDefaultSectionSize">
-                    <number>180</number>
-                   </attribute>
-                   <column>
-                    <property name="text">
-                     <string>id</string>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>email</string>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>nit</string>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>celular</string>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>Nueva columna</string>
-                    </property>
-                   </column>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
               <item row="0" column="0" colspan="2">
                <widget class="QFrame" name="frame_17">
                 <property name="minimumSize">
@@ -1423,6 +1264,481 @@ border-radius: 5px;
                   <string notr="true"/>
                  </property>
                 </widget>
+               </widget>
+              </item>
+              <item row="1" column="1" rowspan="2">
+               <widget class="QFrame" name="frame_12">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>450</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_14">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QTableWidget" name="tabla_cliente">
+                   <property name="styleSheet">
+                    <string notr="true">QHeaderView
+{
+Fondo: transparente; 
+background-color: rgb(24, 30, 50);
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+}
+
+QHeaderView:hover
+{
+background-color: rgb(46, 51, 84);
+border-top-left-radius:20p;
+}
+QHeaderView:section
+{
+background-color: rgb(46, 51, 84);
+border-top-left-radius:20p;
+padding: 2px;
+font-size:11 pt;
+
+}
+QTableWidget{
+background-color: rgb(24, 30, 50);
+gridline-color: rgb(24, 30, 50);
+font-size: 11pt;
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+}
+QTableWidgetQTableCornerButton::section{
+background-color: rgb(46, 51, 84);
+border: 1px solid rgb(0,126,249);
+}
+background-color: rgb(46, 51, 84);</string>
+                   </property>
+                   <attribute name="horizontalHeaderDefaultSectionSize">
+                    <number>180</number>
+                   </attribute>
+                   <column>
+                    <property name="text">
+                     <string>id</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>email</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>nit</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>celular</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Nueva columna</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="1" column="0" rowspan="2">
+               <widget class="QFrame" name="frame_16">
+                <property name="minimumSize">
+                 <size>
+                  <width>150</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+
+border-radius: 5px;
+
+
+}
+
+QPushButton:hover{
+
+background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+
+
+}
+QFrame{
+background-color: rgb(24, 30, 50);
+}
+QLabel{
+color: rgb(0,126,249);
+}
+QLineEdit{
+font: 77 10pt &quot;Gadugi&quot;;
+color: rgb(158, 161, 178);
+border-radius: 5px;
+}
+</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_15">
+                 <item>
+                  <widget class="QPushButton" name="btn_listar_4">
+                   <property name="minimumSize">
+                    <size>
+                     <width>120</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Listar</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="registrar_cliente">
+                   <property name="minimumSize">
+                    <size>
+                     <width>120</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Registrar</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_deudas">
+                   <property name="minimumSize">
+                    <size>
+                     <width>120</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Deudas</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="page_cliente_deben">
+             <layout class="QVBoxLayout" name="verticalLayout_16" stretch="0,0">
+              <property name="spacing">
+               <number>11</number>
+              </property>
+              <property name="topMargin">
+               <number>11</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="frame_21">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>125</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+
+border-radius: 5px;
+
+
+}
+
+QPushButton:hover{
+
+background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+
+
+}
+QFrame{
+
+background-color: rgb(24, 30, 50);
+
+}
+QLabel{
+color: rgb(0,126,249);
+}
+QLineEdit{
+font: 77 10pt &quot;Gadugi&quot;;
+color: rgb(158, 161, 178);
+border-radius: 5px;
+}
+
+</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <widget class="QLabel" name="label_14">
+                 <property name="geometry">
+                  <rect>
+                   <x>40</x>
+                   <y>20</y>
+                   <width>121</width>
+                   <height>31</height>
+                  </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>Id</string>
+                 </property>
+                </widget>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="frame_20">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_8">
+                 <property name="spacing">
+                  <number>11</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QFrame" name="frame_23">
+                   <property name="minimumSize">
+                    <size>
+                     <width>125</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton{
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+
+border-radius: 5px;
+
+
+}
+
+QPushButton:hover{
+
+background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+
+
+}
+QFrame{
+
+background-color: rgb(24, 30, 50);
+
+}
+QLabel{
+color: rgb(0,126,249);
+}
+QLineEdit{
+font: 77 10pt &quot;Gadugi&quot;;
+color: rgb(158, 161, 178);
+border-radius: 5px;
+}
+
+
+</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_18">
+                    <item>
+                     <spacer name="verticalSpacer_2">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>180</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="pushButton_2">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>Listar</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="verticalSpacer_3">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>180</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_24">
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_17">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QTableWidget" name="tabla_clientes_d">
+                      <property name="styleSheet">
+                       <string notr="true">QHeaderView
+{
+Fondo: transparente; 
+background-color: rgb(24, 30, 50);
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+}
+
+QHeaderView:hover
+{
+background-color: rgb(46, 51, 84);
+border-top-left-radius:20p;
+}
+QHeaderView:section
+{
+background-color: rgb(46, 51, 84);
+border-top-left-radius:20p;
+padding: 2px;
+font-size:11 pt;
+
+}
+QTableWidget{
+background-color: rgb(24, 30, 50);
+gridline-color: rgb(24, 30, 50);
+font-size: 11pt;
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+}
+QTableWidgetQTableCornerButton::section{
+background-color: rgb(46, 51, 84);
+border: 1px solid rgb(0,126,249);
+}</string>
+                      </property>
+                      <attribute name="horizontalHeaderDefaultSectionSize">
+                       <number>200</number>
+                      </attribute>
+                      <column>
+                       <property name="text">
+                        <string>id</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Nombre</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Fecha</string>
+                       </property>
+                      </column>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
              </layout>
@@ -2169,6 +2485,8 @@ border: 1px solid rgb(0,126,249);
            </widget>
           </item>
          </layout>
+         <zorder>stackedWidget</zorder>
+         <zorder>frame_7</zorder>
         </widget>
        </item>
       </layout>
