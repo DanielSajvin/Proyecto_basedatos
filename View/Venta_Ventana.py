@@ -1,9 +1,14 @@
-
 from PyQt5 import QtCore, QtGui, QtWidgets
+from datetime import date
+
+from modelos.tabla_inventario import *
+
+
 
 
 class Ui_VENTANA(object):
     def setupUi(self, VENTANA):
+        self.modelo_principal = ModeloPrincipal()
         VENTANA.setObjectName("VENTANA")
         VENTANA.setEnabled(True)
         VENTANA.resize(859, 728)
@@ -252,6 +257,8 @@ class Ui_VENTANA(object):
         self.tabla_int.setItem(9, 4, item)
         item = QtWidgets.QTableWidgetItem()
         self.tabla_int.setItem(9, 5, item)
+
+
         self.tabla_int.horizontalHeader().setVisible(False)
         self.tabla_int.horizontalHeader().setCascadingSectionResizes(True)
         self.tabla_int.horizontalHeader().setDefaultSectionSize(124)
@@ -405,6 +412,7 @@ class Ui_VENTANA(object):
         self.bot_agregar = QtWidgets.QPushButton(self.centralwidget)
         self.bot_agregar.setGeometry(QtCore.QRect(100, 60, 71, 31))
         self.bot_agregar.setObjectName("bot_agregar")
+        self.bot_agregar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_int))
         self.cod_bus = QtWidgets.QLineEdit(self.centralwidget)
         self.cod_bus.setGeometry(QtCore.QRect(20, 70, 71, 21))
         self.cod_bus.setText("")
@@ -439,6 +447,8 @@ class Ui_VENTANA(object):
         self.fecha.setAcceptDrops(False)
         self.fecha.setReadOnly(True)
         self.fecha.setObjectName("fecha")
+        today = date.today()
+        self.fecha.setText(str(today))
         self.spinBox = QtWidgets.QSpinBox(self.centralwidget)
         self.spinBox.setGeometry(QtCore.QRect(460, 70, 81, 21))
         self.spinBox.setObjectName("spinBox")
