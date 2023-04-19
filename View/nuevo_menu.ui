@@ -664,7 +664,7 @@ color: rgb(0,126,249);
 </string>
             </property>
             <property name="currentIndex">
-             <number>3</number>
+             <number>6</number>
             </property>
             <widget class="QWidget" name="page_inventario">
              <layout class="QGridLayout" name="gridLayout">
@@ -2171,6 +2171,9 @@ font: 75 12pt&quot;Times New Roman&quot;;</string>
                            </widget>
                           </item>
                           <item>
+                           <widget class="QCalendarWidget" name="calendario_pedido"/>
+                          </item>
+                          <item>
                            <widget class="QFrame" name="frame_18">
                             <property name="minimumSize">
                              <size>
@@ -2318,6 +2321,13 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477,
                              </size>
                             </property>
                            </spacer>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="pushButton_3">
+                            <property name="text">
+                             <string>Pedido</string>
+                            </property>
+                           </widget>
                           </item>
                           <item>
                            <widget class="QPushButton" name="pushButton_5">
