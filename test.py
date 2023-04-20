@@ -12,7 +12,6 @@ import sys
 
 from PyQt5.QtWidgets import QApplication
 from PyQt5.uic import loadUiType
-from PyQt5 import uic, QtCore, QtWidgets
 
 Ui_MainWindow, QMainWindow = loadUiType('View/prueba.ui')
 
@@ -20,9 +19,10 @@ Ui_MainWindow, QMainWindow = loadUiType('View/prueba.ui')
 
 class Test(QMainWindow, Ui_MainWindow):
     def __init__(self) -> None:
-        pass
+
 
         super().__init__()
+        self.setupUi(self)
 
 
     def write_pdf(self, template, output, data_dict):
