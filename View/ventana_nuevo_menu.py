@@ -45,7 +45,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        self.ultimo_id = self.registrar_detalle.obtener_ultimo_id()
+
         # bloqueando botones segun el cargo del usuario que ingrese al menu
 
         # el usuario que ingreso al menu
@@ -56,6 +56,8 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.desabilitar()
         self.usuario_mostrar()
 
+        self.id_ultimo = self.registrar_detalle.obtener_ultimo_id()
+        print(f"este es el id asignado a detalle {self.id_ultimo}")
 
         # Conectar Botones con las paginas correspondientes
         self.btn_inventario.clicked.connect(self.pagina_inventario)
@@ -64,6 +66,8 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.btn_proveedor.clicked.connect(self.pagina_proveedor)
         self.btn_usuario.clicked.connect(self.pagina_usuario)
         self.btn_venta_nuevo.clicked.connect(self.pagina_venta_nuevo)
+        self.btn_cotizacion.clicked.connect(self.pagina_cotizacion)
+
 
         # Inventario Ventana
         self.tabla_inv = self.tabla_inventario
@@ -105,7 +109,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
                                                                                           self.label_sub_total.text(),
                                                                                           self.lnx_anticipo.text(),
                                                                                           self.label_total.text(),
-                                                                                          self.ultimo_id))
+                                                                                          self.id_ultimo))
         self.tabla_cliente_c = self.tabla_cliente
         self.tabla_cliente = self.tabla_cliente
         self.btn_listar_4.clicked.connect(lambda: self.modelo_cliente.listar_cliente(self.tabla_cliente_c))
@@ -160,6 +164,11 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         #login_window = Main_login()
         #login_window.show()
 
+    def ulitmo_id(self):
+        self.id_ultimo = self.registrar_detalle.obtener_ultimo_id()
+        print(self.id_ultimo)
+        return self.id_ultimo
+
     # metodo para dessabilitar segun el cargo
     def desabilitar(self):
         if self.tipo_usuario == "Empleado":
@@ -197,6 +206,9 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.btn_maximizar.hide()
 
     # Metodos pra conectar un boton con su pagina correspondiente
+    def pagina_cotizacion(self):
+        self.stackedWidget.setCurrentWidget(self.page_cotizacion)
+
     def pagina_inventario(self):
         self.stackedWidget.setCurrentWidget(self.page_inventario)
 

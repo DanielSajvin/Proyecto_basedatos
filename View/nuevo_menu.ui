@@ -424,6 +424,19 @@ color: rgb(0,126,249);
               </widget>
              </item>
              <item>
+              <widget class="QPushButton" name="btn_cotizacion">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>70</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Cotizacion</string>
+               </property>
+              </widget>
+             </item>
+             <item>
               <widget class="QLineEdit" name="lineEdit">
                <property name="styleSheet">
                 <string notr="true">QLineEdit{
@@ -671,7 +684,7 @@ color: rgb(0,126,249);
 </string>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>6</number>
             </property>
             <widget class="QWidget" name="page_inventario">
              <layout class="QGridLayout" name="gridLayout">
@@ -2393,6 +2406,7 @@ background-color: rgb(46, 51, 84);
 color: rgb(24, 30, 50);
 }
 
+
 QCalendarWidget QToolButton{
 background-color: rgb(46, 51, 84);
 color: rgb(0,126,249);
@@ -2408,8 +2422,10 @@ icon-size: 30px;
   }
 
 QCalendarWidget QAbstractItemView:enabled{
-background-color: rgb(46, 51, 84);
-color: rgb(0,126,249);
+	background-color: rgb(46, 51, 84);
+	color: rgb(0,126,249);
+  	selection-background-color: rgb(158, 161, 178); 
+  	selection-color: rgb(24, 30, 50); 
 }
 
 QCalendarWidget QAbstractItemView:disabled{
@@ -3683,6 +3699,21 @@ border-radius: 5px;
                </widget>
               </item>
              </layout>
+            </widget>
+            <widget class="QWidget" name="page_cotizacion">
+             <widget class="QPushButton" name="pushButton">
+              <property name="geometry">
+               <rect>
+                <x>160</x>
+                <y>190</y>
+                <width>241</width>
+                <height>171</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Cotizacion</string>
+              </property>
+             </widget>
             </widget>
             <widget class="QWidget" name="page_venta_nuevo">
              <layout class="QVBoxLayout" name="verticalLayout_8">

@@ -33,7 +33,6 @@ class Main_window(QMainWindow):
         uic.loadUi("View/Menu_BD.ui", self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        self.ultimo_id = self.registrar_detalle.obtener_ultimo_id()
 
         # Mostar Usuario en curso
 
@@ -190,6 +189,11 @@ class Main_window(QMainWindow):
         self.showMaximized()
         self.bt_restaurar.show()
         self.bt_maximizar.hide()
+
+    def ultimo_id(self):
+        self.id_ultimo = self.registrar_detalle.obtener_ultimo_id()
+        return self.id_ultimo
+
 
     def inventario(self):
         self.stackedWidget.setCurrentWidget(self.page_inventario)
