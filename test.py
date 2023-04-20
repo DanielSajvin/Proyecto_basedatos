@@ -9,21 +9,27 @@ for fila in mi_matriz:
     print(fila)
 """
 import sys
+import webbrowser
+from datetime import date
 
+import pdfrw
 from PyQt5.QtWidgets import QApplication
 from PyQt5.uic import loadUiType
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5 import QtCore, QtWidgets
 
 Ui_MainWindow, QMainWindow = loadUiType('View/prueba.ui')
 
-#uic.loadUi("View/prueba.ui")
+
+# uic.loadUi("View/prueba.ui")
 
 class Test(QMainWindow, Ui_MainWindow):
     def __init__(self) -> None:
 
-
         super().__init__()
         self.setupUi(self)
-
+        self.btn_cotizar.clicked.connect(self.realizarCotizacion)
 
     def write_pdf(self, template, output, data_dict):
         ANNOT_KEY = '/Annots'
@@ -61,10 +67,11 @@ class Test(QMainWindow, Ui_MainWindow):
 
     def realizarCotizacion(self):
         try:
-            region = self.region_box.currentText()
-            finca = self.finca_box.currentText()
-            estado = self.estado_box.currentText()
-            tipo = self.tipo_box.currentText()
+            region = self.pedir2.text()
+            print(region)
+            finca = self.pedir3.text()
+            estado = self.pedir4.text()
+            tipo = self.pedir1.currentText()
 
             if region != '--Seleccionar--' and finca != '--Seleccionar--' and estado != '--Seleccionar--' and tipo != '--Seleccionar--':
 
@@ -109,7 +116,7 @@ class Test(QMainWindow, Ui_MainWindow):
                         'Total': ''
                     }
 
-                    self.write_pdf('cotizacion.pdf', 'cotizacion_final.pdf', data_dict)
+                    self.write_pdf('cotizacion2.pdf', 'cotizacion_final.pdf', data_dict)
 
                     self.cantidad_line.clear()
 
