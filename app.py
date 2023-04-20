@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication
-from View import Main_login
+from View.ventana_login import Main_login
 
 
 app = QApplication(sys.argv)

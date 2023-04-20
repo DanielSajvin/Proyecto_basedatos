@@ -4,10 +4,9 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5 import uic, QtCore, QtWidgets
-from View import Main_window
-from View.ventana_nuevo_menu import Main_window_nuevo
+#from ventana_nuevo_menu import Main_window_nuevo
 from server.conexion_sqlserver import conecciones
-from controladores.Register import RegistrarInventario
+from View.ventana_nuevo_menu import Main_window_nuevo
 
 
 class Main_login(QMainWindow):
@@ -17,10 +16,10 @@ class Main_login(QMainWindow):
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.conn = conecciones()
-        self.reg = RegistrarInventario()
+        self.user = ""
+
 
         #Creando conexion con ventana principal
-        self.ventana_principal = Main_window_nuevo()
 
 
         self.label.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=0, yOffset=0))
@@ -33,6 +32,22 @@ class Main_login(QMainWindow):
         self.btn_cambio.clicked.connect(self.changeForm) #button_7
         self.btn_register.clicked.connect(self.registrar)
 
+
+
+    def abrir(self):
+        self.user = self.lnx_user.text()
+        pw = self.lnx_password.text()
+
+        cursor = self.conn.cursor()
+        cursor.execute("select * from usuario where usuario='"+self.user+"' and password ='"+pw+"'")
+        result = cursor.fetchone()
+        if result:
+            ventana_principal = Main_window_nuevo(self.user, Main_login())
+            ventana_principal.show()
+            self.hide()
+        else:
+            print("Contraseña incorrecta")
+
     def changeForm(self):
         if self.btn_cambio.isChecked():
             self.widget_2.hide()
@@ -42,21 +57,6 @@ class Main_login(QMainWindow):
             self.widget_2.show()
             self.widget_3.hide()
             self.btn_cambio.setText(">")
-
-    def abrir(self):
-        user = self.lnx_user.text()
-        pw = self.lnx_password.text()
-
-
-        cursor = self.conn.cursor()
-        cursor.execute("select * from usuario where usuario='"+user+"' and password ='"+pw+"'")
-        result = cursor.fetchone()
-        if result:
-            self.ventana_principal.show()
-            self.hide()
-
-        else:
-            print("Contrseña incorrecta")
 
     def registrar(self):
         print("intentando registrar")

@@ -545,7 +545,7 @@ class Ui_VENTANA(object):
     def accion(self):
         for valor in range(0, 10):
             if self.registar.get_codigo(valor) == self.cod_bus.text():
-                product = self.registrar_usuario.obtener_por_codigo(valor)
+                product = self.registrar_usuario.ge(valor)
                 self.nom_pro.setText(product[2])
                 self.p_unit.setText(base_datos(product[4]))
                 cant = self.spinBox.text()

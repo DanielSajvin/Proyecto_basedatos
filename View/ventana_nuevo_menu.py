@@ -22,8 +22,10 @@ from PyQt5.uic import loadUiType
 
 Ui_MainWindow, QMainWindow = loadUiType('View/nuevo_menu.ui')
 
+
+
 class Main_window_nuevo(QMainWindow, Ui_MainWindow):
-    def __init__(self) -> None:
+    def __init__(self, user, main_login) -> None:
         self.modelo_principal = ModeloPrincipal()
         self.modelo_proveedor = ModeloProveedor()
         self.modelo_cliente = ModeloCliente()
@@ -32,16 +34,28 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.listar_venta_tabla = ModeloVenta()
         self.registrar_detalle = RegistarDetalle()
         self.registrar_cliente = RegistarCliente()
+        self.reg = RegistrarInventario()
         self.cliente_id = self.registrar_cliente.obtener_ultimo_id_cliente()
+        self.login = main_login
 
         self.fecha_actual = datetime.now()
         super().__init__()
+        self.user = user
         # Conectar interfaz grafica
         self.setupUi(self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.ultimo_id = self.registrar_detalle.obtener_ultimo_id()
-        print(self.cliente_id)
+        # bloqueando botones segun el cargo del usuario que ingrese al menu
+
+        # el usuario que ingreso al menu
+        self.usuario = self.reg.getUsusario_user(user)
+        self.tipo_usuario = self.usuario[1]
+        self.id_usuario = self.usuario[0]
+        print(self.tipo_usuario)
+        self.desabilitar()
+        self.usuario_mostrar()
+
 
         # Conectar Botones con las paginas correspondientes
         self.btn_inventario.clicked.connect(self.pagina_inventario)
@@ -76,102 +90,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         #self.btn_detalle_v.clicked.connect(self.venta_form)
 
         # Cotizacion
-        def write_pdf(self, template, output, data_dict):
-            ANNOT_KEY = '/Annots'
-            ANNOT_FIELD_KEY = '/T'
-            ANNOT_VAL_KEY = '/V'
-            ANNOT_RECT_KEY = '/Rect'
-            SUBTYPE_KEY = '/Subtype'
-            WIDGET_SUBTYPE_KEY = '/Widget'
 
-            def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
-                template_pdf = pdfrw.PdfReader(input_pdf_path)
-
-                for page in template_pdf.pages:
-                    annotations = page[ANNOT_KEY]
-
-                    for annotation in annotations:
-                        if annotation[SUBTYPE_KEY] == WIDGET_SUBTYPE_KEY:
-                            if annotation[ANNOT_FIELD_KEY]:
-                                key = annotation[ANNOT_FIELD_KEY][1:-1]
-
-                                if key in data_dict.keys():
-                                    if type(data_dict[key]) == bool:
-                                        if data_dict[key] == True:
-                                            annotation.update(pdfrw.PdfDict(AS=pdfrw.PdfName('Yes')))
-
-                                    else:
-                                        annotation.update(pdfrw.PdfDict(V='{}'.format(data_dict[key])))
-                                        annotation.update(pdfrw.PdfDict(AP=''))
-
-                template_pdf.Root.AcroForm.update(pdfrw.PdfDict(NeedAppearances=pdfrw.PdfObject('true')))
-                pdfrw.PdfWriter().write(output_pdf_path, template_pdf)
-
-            fill_pdf(template, output, data_dict)
-            webbrowser.open_new(output)
-
-        def realizarCotizacion(self):
-            try:
-                region = self.region_box.currentText()
-                finca = self.finca_box.currentText()
-                estado = self.estado_box.currentText()
-                tipo = self.tipo_box.currentText()
-
-                if region != '--Seleccionar--' and finca != '--Seleccionar--' and estado != '--Seleccionar--' and tipo != '--Seleccionar--':
-
-                    cantidad = int(self.cantidad_line.text())
-
-                    if cantidad > 0:
-                        QMessageBox.about(self, 'Aviso', 'Se ha generado la cotización!')
-
-                        data_dict = {
-                            'Fecha': date.today(),
-                            'Numero': '0',
-                            'Cliente': '',
-                            'Nit': 'C/F',
-                            'Direccion': 'Ciudad',
-                            'Telefono': '',
-                            'Correo': '',
-                            'Producto': f"Café de {region}, finca {finca}, {estado}, {tipo}",
-                            'Producto1': '',
-                            'Producto3': '',
-                            'Producto4': '',
-                            'Producto5': '',
-                            'Producto2': '',
-                            'Precio1': '',
-                            'Precio2': '',
-                            'Precio3': '',
-                            'Precio4': '',
-                            'Precio5': '',
-                            'Unidades': cantidad,
-                            'Unidades1': '',
-                            'Unidades2': '',
-                            'Unidades3': '',
-                            'Unidades4': '',
-                            'Unidades5': '',
-                            'Precio': '',
-                            'Preciot': '',
-                            'Preciot1': '',
-                            'Preciot2': '',
-                            'Preciot3': '',
-                            'Preciot4': '',
-                            'Totalp': '',
-                            'Descuento': '',
-                            'Total': ''
-                        }
-
-                        self.write_pdf('cotizacion.pdf', 'cotizacion_final.pdf', data_dict)
-
-                        self.cantidad_line.clear()
-
-                    else:
-                        raise Exception('Debe ser un valor mayor a 0')
-
-                else:
-                    raise Exception('No se ha seleccionado uno de los parametros para la cotización.')
-
-            except Exception as e:
-                QMessageBox.critical(self, 'Error', str(e))
 
         # Listar Venta
         self.tabla_venta_listar = self.table_form_venta
@@ -198,76 +117,23 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         # clientes deudas
         self.btn_deudas.clicked.connect(self.page_deudas)
 
-        # Tabla de detalles
-        # id_detalle - producto - fecha - entregado - sub_total - total - id_tipo - usuario_id - cliete_id
-        # self.btn_finaliza_compra.clicked.connect(self.borrar_line_edit_venta)
-
-        # ------------------------------------------------------------------------------
-        #self.calendar = self.calendario_pedido
-        #self.calendar.selectionChanged.connect(self.fecha_seleccionada)
-
-        #def fecha_seleccionada(self):
-        #    fecha = self.calendar.selectedDate()
-        #    print("Fecha seleccionada:", fecha.toString())
-
-        calendar = self.calendario_pedido
-
-        #def date_selected():
-            # Obtiene la fecha seleccionada
-        #    selected_date = calendar.selectedDate()
-        #    #day = selected_date.day()
-            #month = selected_date.month()
-            #year = selected_date.year()
-        #    fecha_final = selected_date.strftime('%Y-%m-%d')
-            #fecha_final = f"{year}-{month}-{day}"
-        #    fecha_date = datetime.strptime(fecha_final, '%Y-%m-%d').date()
-        #    return fecha_date
-            #print(fecha_date)
-
         # Conecta la señal clicked() del calendario a la función date_selected
-        #calendar.clicked.connect(date_selected)
         self.calendario_pedido = self.calendario_pedido
 
         self.calendario_pedido.clicked.connect(self.obtener_fecha_seleccionada)
-
-
-        #print(type(self.fecha_seleccionada))
-
-        # Obtiene la fecha seleccionada
-        #selected_date = calendar.selectedDate()
-
-        # Obtiene el día, mes y año de la fecha seleccionada
-        #day = selected_date.day()
-        #month = selected_date.month()
-        #year = selected_date.year()
-        #fecha_final = f"{year}-{month}-{day}"
-        # print(type(fecha_final))
-
-
-
-        # print("Fecha seleccionada:", fecha_final)
-        # print(self.fecha_actual.date())
-        #fecha_date = datetime.strptime(fecha_final, '%Y-%m-%d').date()
-        # print(fecha_date)
-
-
-        #fecha_str = '2022-04-18'
-        #fecha_obj = datetime.strptime(fecha_str, '%Y-%m-%d')
-        #print(type(fecha_obj))  # <class 'datetime.datetime'>
-        #print(fecha_obj)  # 2022-04-18 00:00:00
 
         self.btn_pedido.clicked.connect(lambda: self.modelo_detalle.creardetalle(
                                                                                         self.fecha_seleccionada,
                                                                                         "no",
                                                                                         1,
-                                                                                        1,
+                                                                                        self.id_usuario,
                                                                                         self.cliente_id))
 
         self.btn_agregar_venta.clicked.connect(lambda: self.modelo_detalle.creardetalle(
                                                                                         self.fecha_actual.date(),
                                                                                         "si",
                                                                                         1,
-                                                                                        1,
+                                                                                        self.id_usuario,
                                                                                         self.cliente_id))
 
 
@@ -282,10 +148,44 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.lnx_op_codigo.text()
         self.label_nombre.text()
         self.cb_min.currentText()  #para el que despliega dos opciones
-    # Metodos de la barra de arriba
+
+        # cerrar sesion en usuario
+        self.btn_cerrar_sesion.clicked.connect(self.back_to_login)
+
+    def back_to_login(self):
+        # Cerrar la ventana actual
+        self.close()
+        self.login.show()
+        # Mostrar la ventana de login nuevamente
+        #login_window = Main_login()
+        #login_window.show()
+
+    # metodo para dessabilitar segun el cargo
+    def desabilitar(self):
+        if self.tipo_usuario == "Empleado":
+
+            self.btn_inventario.setVisible(False)
+            self.btn_proveedor.setVisible(False)
+
+    def usuario_mostrar(self):
+        self.lnx_cargo_u.setEnabled(False)
+        self.lnx_nombre_u.setEnabled(False)
+        self.lnx_apellido_u.setEnabled(False)
+        self.lnl_usuario_u.setEnabled(False)
+
+        cargo = self.usuario[1]
+        nombre = self.usuario[2]
+        apellido = self.usuario[3]
+        usuario = self.usuario[4]
+
+        self.lnx_cargo_u.setText(str(cargo))
+        self.lnx_nombre_u.setText(str(nombre))
+        self.lnx_apellido_u.setText(str(apellido))
+        self.lnl_usuario_u.setText(str(usuario))
+
     def minimizar(self):
         self.showMinimized()
-
+    # Metodos de la barra de arriba
     def restaurar(self):
         self.showNormal()
         self.btn_restaurar.hide()
@@ -386,6 +286,103 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.lnx_anticipo.clear()
         self.label_sub_total.setText("")
         self.label_total.setText("")
+
+    def write_pdf(self, template, output, data_dict):
+        ANNOT_KEY = '/Annots'
+        ANNOT_FIELD_KEY = '/T'
+        ANNOT_VAL_KEY = '/V'
+        ANNOT_RECT_KEY = '/Rect'
+        SUBTYPE_KEY = '/Subtype'
+        WIDGET_SUBTYPE_KEY = '/Widget'
+
+        def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
+            template_pdf = pdfrw.PdfReader(input_pdf_path)
+
+            for page in template_pdf.pages:
+                annotations = page[ANNOT_KEY]
+
+                for annotation in annotations:
+                    if annotation[SUBTYPE_KEY] == WIDGET_SUBTYPE_KEY:
+                        if annotation[ANNOT_FIELD_KEY]:
+                            key = annotation[ANNOT_FIELD_KEY][1:-1]
+
+                            if key in data_dict.keys():
+                                if type(data_dict[key]) == bool:
+                                    if data_dict[key] == True:
+                                        annotation.update(pdfrw.PdfDict(AS=pdfrw.PdfName('Yes')))
+
+                                else:
+                                    annotation.update(pdfrw.PdfDict(V='{}'.format(data_dict[key])))
+                                    annotation.update(pdfrw.PdfDict(AP=''))
+
+            template_pdf.Root.AcroForm.update(pdfrw.PdfDict(NeedAppearances=pdfrw.PdfObject('true')))
+            pdfrw.PdfWriter().write(output_pdf_path, template_pdf)
+
+        fill_pdf(template, output, data_dict)
+        webbrowser.open_new(output)
+
+    def realizarCotizacion(self):
+        try:
+            region = self.region_box.currentText()
+            finca = self.finca_box.currentText()
+            estado = self.estado_box.currentText()
+            tipo = self.tipo_box.currentText()
+
+            if region != '--Seleccionar--' and finca != '--Seleccionar--' and estado != '--Seleccionar--' and tipo != '--Seleccionar--':
+
+                cantidad = int(self.cantidad_line.text())
+
+                if cantidad > 0:
+                    QMessageBox.about(self, 'Aviso', 'Se ha generado la cotización!')
+
+                    data_dict = {
+                        'Fecha': date.today(),
+                        'Numero': '0',
+                        'Cliente': '',
+                        'Nit': 'C/F',
+                        'Direccion': 'Ciudad',
+                        'Telefono': '',
+                        'Correo': '',
+                        'Producto': f"Café de {region}, finca {finca}, {estado}, {tipo}",
+                        'Producto1': '',
+                        'Producto3': '',
+                        'Producto4': '',
+                        'Producto5': '',
+                        'Producto2': '',
+                        'Precio1': '',
+                        'Precio2': '',
+                        'Precio3': '',
+                        'Precio4': '',
+                        'Precio5': '',
+                        'Unidades': cantidad,
+                        'Unidades1': '',
+                        'Unidades2': '',
+                        'Unidades3': '',
+                        'Unidades4': '',
+                        'Unidades5': '',
+                        'Precio': '',
+                        'Preciot': '',
+                        'Preciot1': '',
+                        'Preciot2': '',
+                        'Preciot3': '',
+                        'Preciot4': '',
+                        'Totalp': '',
+                        'Descuento': '',
+                        'Total': ''
+                    }
+
+                    self.write_pdf('cotizacion.pdf', 'cotizacion_final.pdf', data_dict)
+
+                    self.cantidad_line.clear()
+
+                else:
+                    raise Exception('Debe ser un valor mayor a 0')
+
+            else:
+                raise Exception('No se ha seleccionado uno de los parametros para la cotización.')
+
+        except Exception as e:
+            QMessageBox.critical(self, 'Error', str(e))
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

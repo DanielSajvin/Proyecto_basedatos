@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1426</width>
-    <height>640</height>
+    <width>1447</width>
+    <height>677</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -424,9 +424,16 @@ color: rgb(0,126,249);
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton">
+              <widget class="QLineEdit" name="lineEdit">
+               <property name="styleSheet">
+                <string notr="true">QLineEdit{
+font: 77 12pt &quot;Ink Free&quot;;
+color: rgb(158, 161, 178);
+border-radius: 5px;
+}</string>
+               </property>
                <property name="text">
-                <string/>
+                <string>Angel,Abdo,Daniel</string>
                </property>
               </widget>
              </item>
@@ -474,7 +481,7 @@ color: rgb(0,126,249);
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>30</height>
+              <height>45</height>
              </size>
             </property>
             <property name="styleSheet">
@@ -664,7 +671,7 @@ color: rgb(0,126,249);
 </string>
             </property>
             <property name="currentIndex">
-             <number>6</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="page_inventario">
              <layout class="QGridLayout" name="gridLayout">
@@ -1002,7 +1009,10 @@ QTableWidgetQTableCornerButton::section{
 background-color: rgb(46, 51, 84);
 border: 1px solid rgb(0,126,249);
 }
-background-color: rgb(46, 51, 84);</string>
+QTableView QTableCornerButton::section {
+background-color: rgb(46, 51, 84);
+border: 1px solid rgb(0, 126, 249);
+}</string>
                    </property>
                    <attribute name="horizontalHeaderDefaultSectionSize">
                     <number>144</number>
@@ -1045,22 +1055,1722 @@ background-color: rgb(46, 51, 84);</string>
              </layout>
             </widget>
             <widget class="QWidget" name="page_venta">
-             <widget class="QFrame" name="frame_22">
-              <property name="geometry">
-               <rect>
-                <x>300</x>
-                <y>400</y>
-                <width>120</width>
-                <height>80</height>
-               </rect>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-             </widget>
+             <layout class="QVBoxLayout" name="verticalLayout_20">
+              <item>
+               <widget class="QFrame" name="frame_22">
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+background-color: rgb(24, 30, 50);
+border-top-left-radius:20p;
+color: rgb(255,255,255);
+font: 77 10pt &quot;Arial Black&quot;;
+
+}
+
+QPushButton:hover{
+background-color: rgb(24, 30, 50);
+border-top-left-radius:20p;
+color: rgb(0,0,0);
+font: 77 10pt &quot;Arial Black&quot;;
+}
+QFrame{
+background-color: rgb(24, 30, 50);
+}
+QLabel{
+color: rgb(0,126,249);
+}
+QLineEdit{
+font: 77 10pt &quot;Gadugi&quot;;
+color: rgb(158, 161, 178);
+border-radius: 5px;
+
+}</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_21">
+                 <item>
+                  <widget class="QFrame" name="frame_26">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>57</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>70</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton{
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+
+border-radius: 5px;
+
+
+}
+
+QPushButton:hover{
+
+background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+
+
+}
+QFrame{
+background-color: rgb(24, 30, 50);
+}
+QLabel{
+color: rgb(0,126,249);
+}
+QLineEdit{
+font: 77 10pt &quot;Gadugi&quot;;
+color: rgb(158, 161, 178);
+border-radius: 5px;
+
+}</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <widget class="QLabel" name="label_16">
+                    <property name="geometry">
+                     <rect>
+                      <x>30</x>
+                      <y>0</y>
+                      <width>71</width>
+                      <height>21</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>9</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Codigo</string>
+                    </property>
+                   </widget>
+                   <widget class="QLineEdit" name="cod_bus">
+                    <property name="geometry">
+                     <rect>
+                      <x>30</x>
+                      <y>30</y>
+                      <width>71</width>
+                      <height>21</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="placeholderText">
+                     <string>ffff</string>
+                    </property>
+                   </widget>
+                   <widget class="QLineEdit" name="nom_pro">
+                    <property name="geometry">
+                     <rect>
+                      <x>220</x>
+                      <y>30</y>
+                      <width>151</width>
+                      <height>21</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_17">
+                    <property name="geometry">
+                     <rect>
+                      <x>220</x>
+                      <y>0</y>
+                      <width>141</width>
+                      <height>21</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>9</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Nombre Producto</string>
+                    </property>
+                   </widget>
+                   <widget class="QLineEdit" name="Lab">
+                    <property name="geometry">
+                     <rect>
+                      <x>390</x>
+                      <y>30</y>
+                      <width>113</width>
+                      <height>21</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_18">
+                    <property name="geometry">
+                     <rect>
+                      <x>390</x>
+                      <y>0</y>
+                      <width>101</width>
+                      <height>21</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>9</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Presentación</string>
+                    </property>
+                   </widget>
+                   <widget class="QSpinBox" name="spinBox">
+                    <property name="geometry">
+                     <rect>
+                      <x>520</x>
+                      <y>30</y>
+                      <width>81</width>
+                      <height>21</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">font: 77 10pt &quot;Gadugi&quot;;
+color: rgb(158, 161, 178);
+border-radius: 5px;</string>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_19">
+                    <property name="geometry">
+                     <rect>
+                      <x>520</x>
+                      <y>0</y>
+                      <width>71</width>
+                      <height>21</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>9</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Cantidad</string>
+                    </property>
+                   </widget>
+                   <widget class="QLineEdit" name="p_unit">
+                    <property name="geometry">
+                     <rect>
+                      <x>620</x>
+                      <y>30</y>
+                      <width>91</width>
+                      <height>21</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_20">
+                    <property name="geometry">
+                     <rect>
+                      <x>620</x>
+                      <y>0</y>
+                      <width>81</width>
+                      <height>21</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>9</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>P.Unitario</string>
+                    </property>
+                   </widget>
+                   <widget class="QLineEdit" name="monto_t">
+                    <property name="geometry">
+                     <rect>
+                      <x>730</x>
+                      <y>30</y>
+                      <width>113</width>
+                      <height>21</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_21">
+                    <property name="geometry">
+                     <rect>
+                      <x>730</x>
+                      <y>0</y>
+                      <width>111</width>
+                      <height>21</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>9</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Monto Total</string>
+                    </property>
+                   </widget>
+                   <widget class="QPushButton" name="bot_agregar">
+                    <property name="geometry">
+                     <rect>
+                      <x>110</x>
+                      <y>30</y>
+                      <width>101</width>
+                      <height>21</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string>Cotizar</string>
+                    </property>
+                   </widget>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_27">
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_22">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QTableWidget" name="tabla_int">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>651</width>
+                        <height>192</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Gadugi</family>
+                        <pointsize>10</pointsize>
+                        <weight>9</weight>
+                        <italic>false</italic>
+                        <bold>false</bold>
+                        <strikeout>false</strikeout>
+                       </font>
+                      </property>
+                      <property name="layoutDirection">
+                       <enum>Qt::LeftToRight</enum>
+                      </property>
+                      <property name="autoFillBackground">
+                       <bool>false</bool>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QHeaderView
+{
+Fondo: transparente; 
+background-color: rgb(24, 30, 50);
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+}
+
+QHeaderView:hover
+{
+background-color: rgb(46, 51, 84);
+border-top-left-radius:20p;
+}
+QHeaderView:section
+{
+background-color: rgb(46, 51, 84);
+border-top-left-radius:20p;
+padding: 2px;
+font-size:11 pt;
+
+}
+QTableWidget{
+background-color: rgb(24, 30, 50);
+gridline-color: rgb(24, 30, 50);
+font-size: 11pt;
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+}
+QTableWidgetQTableCornerButton::section{
+background-color: rgb(46, 51, 84);
+border: 1px solid rgb(0,126,249);
+}
+QTableView QTableCornerButton::section {
+background-color: rgb(46, 51, 84);
+border: 1px solid rgb(0, 126, 249);
+}</string>
+                      </property>
+                      <property name="autoScroll">
+                       <bool>true</bool>
+                      </property>
+                      <property name="autoScrollMargin">
+                       <number>16</number>
+                      </property>
+                      <property name="editTriggers">
+                       <set>QAbstractItemView::NoEditTriggers</set>
+                      </property>
+                      <property name="dragEnabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="showGrid">
+                       <bool>true</bool>
+                      </property>
+                      <property name="sortingEnabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                      <property name="cornerButtonEnabled">
+                       <bool>true</bool>
+                      </property>
+                      <attribute name="horizontalHeaderVisible">
+                       <bool>false</bool>
+                      </attribute>
+                      <attribute name="horizontalHeaderCascadingSectionResizes">
+                       <bool>true</bool>
+                      </attribute>
+                      <attribute name="horizontalHeaderMinimumSectionSize">
+                       <number>20</number>
+                      </attribute>
+                      <attribute name="horizontalHeaderDefaultSectionSize">
+                       <number>124</number>
+                      </attribute>
+                      <attribute name="horizontalHeaderHighlightSections">
+                       <bool>true</bool>
+                      </attribute>
+                      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                       <bool>false</bool>
+                      </attribute>
+                      <attribute name="horizontalHeaderStretchLastSection">
+                       <bool>false</bool>
+                      </attribute>
+                      <attribute name="verticalHeaderCascadingSectionResizes">
+                       <bool>false</bool>
+                      </attribute>
+                      <attribute name="verticalHeaderMinimumSectionSize">
+                       <number>100</number>
+                      </attribute>
+                      <attribute name="verticalHeaderDefaultSectionSize">
+                       <number>100</number>
+                      </attribute>
+                      <attribute name="verticalHeaderHighlightSections">
+                       <bool>true</bool>
+                      </attribute>
+                      <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                       <bool>false</bool>
+                      </attribute>
+                      <row>
+                       <property name="text">
+                        <string>1</string>
+                       </property>
+                      </row>
+                      <row>
+                       <property name="text">
+                        <string>2</string>
+                       </property>
+                      </row>
+                      <row>
+                       <property name="text">
+                        <string>3</string>
+                       </property>
+                      </row>
+                      <row>
+                       <property name="text">
+                        <string>4</string>
+                       </property>
+                      </row>
+                      <row>
+                       <property name="text">
+                        <string>5</string>
+                       </property>
+                      </row>
+                      <row>
+                       <property name="text">
+                        <string>6</string>
+                       </property>
+                      </row>
+                      <row>
+                       <property name="text">
+                        <string>7</string>
+                       </property>
+                      </row>
+                      <row>
+                       <property name="text">
+                        <string>8</string>
+                       </property>
+                      </row>
+                      <row>
+                       <property name="text">
+                        <string>9</string>
+                       </property>
+                      </row>
+                      <row>
+                       <property name="text">
+                        <string>10</string>
+                       </property>
+                      </row>
+                      <column>
+                       <property name="text">
+                        <string>Codigo</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Nombre Producto                        </string>
+                       </property>
+                       <property name="textAlignment">
+                        <set>AlignLeading|AlignVCenter</set>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Laboratorio</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Cantidad</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>P.Unitario</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Monto Total</string>
+                       </property>
+                      </column>
+                      <item row="0" column="0">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                       <property name="flags">
+                        <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsEnabled</set>
+                       </property>
+                      </item>
+                      <item row="0" column="1">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="0" column="2">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="0" column="3">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="0" column="4">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="0" column="5">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="1" column="0">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="1" column="1">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="1" column="2">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="1" column="3">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="1" column="4">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="1" column="5">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="2" column="0">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="2" column="1">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="2" column="2">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="2" column="3">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="2" column="4">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="2" column="5">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="3" column="0">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="3" column="1">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="3" column="2">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="3" column="3">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="3" column="4">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="3" column="5">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="4" column="0">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="4" column="1">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="4" column="2">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="4" column="3">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="4" column="4">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="4" column="5">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="5" column="0">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="5" column="1">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="5" column="2">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="5" column="3">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="5" column="4">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="5" column="5">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="6" column="0">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="6" column="1">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="6" column="2">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="6" column="3">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="6" column="4">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="6" column="5">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="7" column="0">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="7" column="1">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="7" column="2">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="7" column="3">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="7" column="4">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="7" column="5">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="8" column="0">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="8" column="1">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="8" column="2">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="8" column="3">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="8" column="4">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="8" column="5">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="9" column="0">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="9" column="1">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="9" column="2">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="9" column="3">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="9" column="4">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                      <item row="9" column="5">
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </item>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_28">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>300</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_11">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QFrame" name="frame_29">
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_23">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QTableWidget" name="boleta">
+                         <property name="styleSheet">
+                          <string notr="true">QHeaderView
+{
+Fondo: transparente; 
+background-color: rgb(24, 30, 50);
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+}
+
+QHeaderView:hover
+{
+background-color: rgb(46, 51, 84);
+border-top-left-radius:20p;
+}
+QHeaderView:section
+{
+background-color: rgb(46, 51, 84);
+border-top-left-radius:20p;
+padding: 2px;
+font-size:11 pt;
+
+}
+QTableWidget{
+background-color: rgb(24, 30, 50);
+gridline-color: rgb(24, 30, 50);
+font-size: 11pt;
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+}
+QTableWidgetQTableCornerButton::section{
+background-color: rgb(46, 51, 84);
+border: 1px solid rgb(0,126,249);
+}
+QTableView QTableCornerButton::section {
+background-color: rgb(46, 51, 84);
+border: 1px solid rgb(0, 126, 249);
+}
+</string>
+                         </property>
+                         <attribute name="horizontalHeaderMinimumSectionSize">
+                          <number>50</number>
+                         </attribute>
+                         <attribute name="horizontalHeaderDefaultSectionSize">
+                          <number>100</number>
+                         </attribute>
+                         <attribute name="verticalHeaderDefaultSectionSize">
+                          <number>28</number>
+                         </attribute>
+                         <row>
+                          <property name="text">
+                           <string notr="true">1</string>
+                          </property>
+                         </row>
+                         <row>
+                          <property name="text">
+                           <string>2</string>
+                          </property>
+                         </row>
+                         <row>
+                          <property name="text">
+                           <string>3</string>
+                          </property>
+                         </row>
+                         <row>
+                          <property name="text">
+                           <string>4</string>
+                          </property>
+                         </row>
+                         <row>
+                          <property name="text">
+                           <string>5</string>
+                          </property>
+                         </row>
+                         <row>
+                          <property name="text">
+                           <string>6</string>
+                          </property>
+                         </row>
+                         <row>
+                          <property name="text">
+                           <string>7</string>
+                          </property>
+                         </row>
+                         <row>
+                          <property name="text">
+                           <string>8</string>
+                          </property>
+                         </row>
+                         <row>
+                          <property name="text">
+                           <string>9</string>
+                          </property>
+                         </row>
+                         <column>
+                          <property name="text">
+                           <string>Producto</string>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>Cantidad</string>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>P.Unit</string>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>Deposito</string>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>Pendiente</string>
+                          </property>
+                         </column>
+                         <item row="0" column="0">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="0" column="1">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="0" column="2">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="0" column="3">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="0" column="4">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="1" column="0">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="1" column="1">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="1" column="2">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="1" column="3">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="1" column="4">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="2" column="0">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="2" column="1">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="2" column="2">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="2" column="3">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="2" column="4">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="3" column="0">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="3" column="1">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="3" column="2">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="3" column="3">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="3" column="4">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="4" column="0">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="4" column="1">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="4" column="2">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="4" column="3">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="4" column="4">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="5" column="0">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="5" column="1">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="5" column="2">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="5" column="3">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="5" column="4">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="6" column="0">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="6" column="1">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="6" column="2">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="6" column="3">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="6" column="4">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="7" column="0">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="7" column="1">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="7" column="2">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="7" column="3">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="7" column="4">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="8" column="0">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="8" column="1">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="8" column="2">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="8" column="3">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                         <item row="8" column="4">
+                          <property name="text">
+                           <string>-</string>
+                          </property>
+                         </item>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="frame_30">
+                      <property name="minimumSize">
+                       <size>
+                        <width>675</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton{
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+
+border-radius: 5px;
+
+
+}
+
+QPushButton:hover{
+
+background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+
+
+}
+QFrame{
+background-color: rgb(24, 30, 50);
+}
+QLabel{
+color: rgb(0,126,249);
+}
+QLineEdit{
+font: 77 10pt &quot;Gadugi&quot;;
+color: rgb(158, 161, 178);
+border-radius: 5px;
+
+}</string>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <widget class="QCalendarWidget" name="calendarWidget">
+                       <property name="geometry">
+                        <rect>
+                         <x>0</x>
+                         <y>20</y>
+                         <width>401</width>
+                         <height>251</height>
+                        </rect>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">
+QCalendarWidget QWidget{
+background-color: rgb(46, 51, 84);
+color: rgb(24, 30, 50);
+}
+
+QCalendarWidget QToolButton{
+background-color: rgb(46, 51, 84);
+color: rgb(0,126,249);
+icon-size: 30px;
+}
+
+ QCalendarWidget QMenu {
+  	width: 150px;
+  	left: 20px;
+  	color: rgb(0,126,249);
+  	font-size: 18px;
+  	background-color: rgb(100, 100, 100);
+  }
+
+QCalendarWidget QAbstractItemView:enabled{
+background-color: rgb(46, 51, 84);
+color: rgb(0,126,249);
+}
+
+QCalendarWidget QAbstractItemView:disabled{
+background-color:rgb(46, 51, 84);
+color: rgb(158, 161, 178); 
+}
+
+QCalendarWidget QMenu{
+    background-color: rgb(46, 51, 84);
+}
+
+QCalendarWidget QSpinBox{
+    background-color: rgb(46, 51, 84);
+}
+
+#qt_calendar_prevmonth {
+    background-color: rgb(46, 51, 84);
+    icon-size: 30px;
+    qproperty-icon: url(prevmonth.svg);
+}
+#qt_calendar_nextmonth {
+    background-color: rgb(46, 51, 84);
+    icon-size: 30px;
+    qproperty-icon: url(nextmonth.svg);
+}
+
+  QCalendarWidget QSpinBox::up-button { subcontrol-origin: border;  subcontrol-position: top right;  width:25px; }
+  QCalendarWidget QSpinBox::down-button {subcontrol-origin: border; subcontrol-position: bottom right;  width:25px;}
+  QCalendarWidget QSpinBox::up-arrow { width:16px;  height:16px; }
+  QCalendarWidget QSpinBox::down-arrow { width:16px;  height:16px; }
+
+  QCalendarWidget QWidget { alternate-background-color: rgb(24, 30, 50);  }
+
+</string>
+                       </property>
+                      </widget>
+                      <widget class="QLabel" name="label_22">
+                       <property name="geometry">
+                        <rect>
+                         <x>410</x>
+                         <y>40</y>
+                         <width>91</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>10</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Pago</string>
+                       </property>
+                      </widget>
+                      <widget class="QComboBox" name="tipo_pago">
+                       <property name="geometry">
+                        <rect>
+                         <x>520</x>
+                         <y>40</y>
+                         <width>141</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">
+border-radius: 8px;
+color:rgb(255, 255, 255);
+background-color:rgb(24, 30, 50);
+font: 75 12pt&quot;Times New Roman&quot;;</string>
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>Efectivo</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Tarjeta</string>
+                        </property>
+                       </item>
+                      </widget>
+                      <widget class="QLabel" name="label_23">
+                       <property name="geometry">
+                        <rect>
+                         <x>410</x>
+                         <y>70</y>
+                         <width>91</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>10</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Vendedor</string>
+                       </property>
+                      </widget>
+                      <widget class="QLineEdit" name="vendedor">
+                       <property name="geometry">
+                        <rect>
+                         <x>520</x>
+                         <y>70</y>
+                         <width>141</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                      <widget class="QLabel" name="label_24">
+                       <property name="geometry">
+                        <rect>
+                         <x>410</x>
+                         <y>100</y>
+                         <width>71</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>10</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Cliente</string>
+                       </property>
+                      </widget>
+                      <widget class="QLineEdit" name="cliente">
+                       <property name="geometry">
+                        <rect>
+                         <x>520</x>
+                         <y>100</y>
+                         <width>141</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="readOnly">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                      <widget class="QLabel" name="label_25">
+                       <property name="geometry">
+                        <rect>
+                         <x>410</x>
+                         <y>130</y>
+                         <width>81</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>10</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Turno</string>
+                       </property>
+                      </widget>
+                      <widget class="QComboBox" name="turno">
+                       <property name="geometry">
+                        <rect>
+                         <x>520</x>
+                         <y>130</y>
+                         <width>141</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">
+border-radius: 8px;
+color:rgb(255, 255, 255);
+background-color:rgb(24, 30, 50);
+font: 75 12pt&quot;Times New Roman&quot;;</string>
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>Mañana</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Tarde</string>
+                        </property>
+                       </item>
+                      </widget>
+                      <widget class="QLabel" name="label_26">
+                       <property name="geometry">
+                        <rect>
+                         <x>410</x>
+                         <y>160</y>
+                         <width>91</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>10</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Total</string>
+                       </property>
+                      </widget>
+                      <widget class="QLineEdit" name="total_general">
+                       <property name="geometry">
+                        <rect>
+                         <x>520</x>
+                         <y>160</y>
+                         <width>91</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="readOnly">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                      <widget class="QLabel" name="label_27">
+                       <property name="geometry">
+                        <rect>
+                         <x>410</x>
+                         <y>10</y>
+                         <width>101</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>10</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Fecha</string>
+                       </property>
+                      </widget>
+                      <widget class="QLineEdit" name="fecha">
+                       <property name="geometry">
+                        <rect>
+                         <x>520</x>
+                         <y>10</y>
+                         <width>141</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="acceptDrops">
+                        <bool>false</bool>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="readOnly">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="generar_venta">
+                       <property name="geometry">
+                        <rect>
+                         <x>410</x>
+                         <y>180</y>
+                         <width>241</width>
+                         <height>31</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>Generar VENTA</string>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="terminar">
+                       <property name="geometry">
+                        <rect>
+                         <x>410</x>
+                         <y>220</y>
+                         <width>241</width>
+                         <height>31</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>Guardar</string>
+                       </property>
+                      </widget>
+                      <widget class="QLabel" name="label_28">
+                       <property name="geometry">
+                        <rect>
+                         <x>410</x>
+                         <y>250</y>
+                         <width>71</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>9</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Codigo</string>
+                       </property>
+                      </widget>
+                      <widget class="QLineEdit" name="cod_bus_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>410</x>
+                         <y>270</y>
+                         <width>71</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                       <property name="placeholderText">
+                        <string>ffff</string>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="bot_agregar_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>510</x>
+                         <y>260</y>
+                         <width>71</width>
+                         <height>31</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>Eliminar</string>
+                       </property>
+                      </widget>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
             </widget>
             <widget class="QWidget" name="page_cliente">
              <layout class="QGridLayout" name="gridLayout_2">
@@ -1333,7 +3043,10 @@ QTableWidgetQTableCornerButton::section{
 background-color: rgb(46, 51, 84);
 border: 1px solid rgb(0,126,249);
 }
-background-color: rgb(46, 51, 84);</string>
+QTableView QTableCornerButton::section {
+background-color: rgb(46, 51, 84);
+border: 1px solid rgb(0, 126, 249);
+}</string>
                    </property>
                    <attribute name="horizontalHeaderDefaultSectionSize">
                     <number>180</number>
@@ -1713,6 +3426,10 @@ font: 77 10pt &quot;Gadugi&quot;;
 QTableWidgetQTableCornerButton::section{
 background-color: rgb(46, 51, 84);
 border: 1px solid rgb(0,126,249);
+}
+QTableView QTableCornerButton::section {
+background-color: rgb(46, 51, 84);
+border: 1px solid rgb(0, 126, 249);
 }</string>
                       </property>
                       <attribute name="horizontalHeaderDefaultSectionSize">
@@ -1764,24 +3481,208 @@ border: 1px solid rgb(0,126,249);
              </widget>
             </widget>
             <widget class="QWidget" name="page_usuario">
-             <widget class="QLabel" name="label_7">
-              <property name="geometry">
-               <rect>
-                <x>320</x>
-                <y>160</y>
-                <width>141</width>
-                <height>61</height>
-               </rect>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>18</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Usuario</string>
-              </property>
-             </widget>
+             <layout class="QVBoxLayout" name="verticalLayout_19">
+              <item>
+               <widget class="QFrame" name="frame_25">
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+
+border-radius: 5px;
+
+
+}
+
+QPushButton:hover{
+
+background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+
+}
+QFrame{
+background-color: rgb(24, 30, 50);
+}
+QLabel{
+color: rgb(0,126,249);
+}
+QLineEdit{
+font: 77 14pt &quot;Microsoft YaHei&quot;;
+color: rgb(158, 161, 178);
+border-radius: 5px;
+}
+</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <widget class="QLabel" name="label_4">
+                 <property name="geometry">
+                  <rect>
+                   <x>340</x>
+                   <y>120</y>
+                   <width>121</width>
+                   <height>41</height>
+                  </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>14</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Cargo</string>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="lnx_cargo_u">
+                 <property name="geometry">
+                  <rect>
+                   <x>500</x>
+                   <y>120</y>
+                   <width>141</width>
+                   <height>41</height>
+                  </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Microsoft YaHei</family>
+                   <pointsize>14</pointsize>
+                   <weight>9</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_5">
+                 <property name="geometry">
+                  <rect>
+                   <x>340</x>
+                   <y>180</y>
+                   <width>121</width>
+                   <height>41</height>
+                  </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>14</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Nombre</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_7">
+                 <property name="geometry">
+                  <rect>
+                   <x>340</x>
+                   <y>240</y>
+                   <width>111</width>
+                   <height>41</height>
+                  </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>14</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Apellido</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_12">
+                 <property name="geometry">
+                  <rect>
+                   <x>330</x>
+                   <y>30</y>
+                   <width>321</width>
+                   <height>71</height>
+                  </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>14</pointsize>
+                  </font>
+                 </property>
+                 <property name="layoutDirection">
+                  <enum>Qt::LeftToRight</enum>
+                 </property>
+                 <property name="text">
+                  <string>Usuario Actual</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_15">
+                 <property name="geometry">
+                  <rect>
+                   <x>340</x>
+                   <y>300</y>
+                   <width>151</width>
+                   <height>41</height>
+                  </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>14</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Usuario</string>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="lnx_nombre_u">
+                 <property name="geometry">
+                  <rect>
+                   <x>500</x>
+                   <y>180</y>
+                   <width>141</width>
+                   <height>41</height>
+                  </rect>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="lnx_apellido_u">
+                 <property name="geometry">
+                  <rect>
+                   <x>500</x>
+                   <y>240</y>
+                   <width>141</width>
+                   <height>41</height>
+                  </rect>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="lnl_usuario_u">
+                 <property name="geometry">
+                  <rect>
+                   <x>500</x>
+                   <y>300</y>
+                   <width>141</width>
+                   <height>41</height>
+                  </rect>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="btn_cerrar_sesion">
+                 <property name="geometry">
+                  <rect>
+                   <x>350</x>
+                   <y>380</y>
+                   <width>281</width>
+                   <height>61</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>Cerrar sesión</string>
+                 </property>
+                </widget>
+               </widget>
+              </item>
+             </layout>
             </widget>
             <widget class="QWidget" name="page_venta_nuevo">
              <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -2171,7 +4072,62 @@ font: 75 12pt&quot;Times New Roman&quot;;</string>
                            </widget>
                           </item>
                           <item>
-                           <widget class="QCalendarWidget" name="calendario_pedido"/>
+                           <widget class="QCalendarWidget" name="calendario_pedido">
+                            <property name="styleSheet">
+                             <string notr="true">QCalendarWidget QToolButton {
+  	height: 60px;
+  	width: 150px;
+  	color: white;
+  	font-size: 24px;
+  	icon-size: 56px, 56px;
+  	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 #cccccc, stop: 1 #333333);
+  }
+  QCalendarWidget QMenu {
+  	width: 150px;
+  	left: 20px;
+  	color: white;
+  	font-size: 18px;
+  	background-color: rgb(100, 100, 100);
+  }
+  QCalendarWidget QSpinBox { 
+  	width: 150px; 
+  	font-size:24px; 
+  	color: white; 
+  	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 #cccccc, stop: 1 #333333); 
+  	selection-background-color: rgb(136, 136, 136);
+  	selection-color: rgb(255, 255, 255);
+  }
+  QCalendarWidget QSpinBox::up-button { subcontrol-origin: border;  subcontrol-position: top right;  width:65px; }
+  QCalendarWidget QSpinBox::down-button {subcontrol-origin: border; subcontrol-position: bottom right;  width:65px;}
+  QCalendarWidget QSpinBox::up-arrow { width:56px;  height:56px; }
+  QCalendarWidget QSpinBox::down-arrow { width:56px;  height:56px; }
+   
+  /* header row */
+  QCalendarWidget QWidget { alternate-background-color: rgb(128, 128, 128); }
+   
+  /* normal days */
+  QCalendarWidget QAbstractItemView:enabled 
+  {
+  	font-size:24px;  
+  	color: rgb(180, 180, 180);  
+  	background-color: black;  
+  	selection-background-color: rgb(64, 64, 64); 
+  	selection-color: rgb(0, 255, 0); 
+  }
+   
+  /* days in other months */
+  /* navigation bar */
+QCalendarWidget QWidget#qt_calendar_navigationbar
+{ 
+  background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 #cccccc, stop: 1 #333333); 
+}
+
+QCalendarWidget QAbstractItemView:disabled 
+{ 
+color: rgb(64, 64, 64); 
+}</string>
+                            </property>
+                           </widget>
                           </item>
                           <item>
                            <widget class="QFrame" name="frame_18">
@@ -2444,6 +4400,10 @@ font: 77 10pt &quot;Gadugi&quot;;
 QTableWidgetQTableCornerButton::section{
 background-color: rgb(46, 51, 84);
 border: 1px solid rgb(0,126,249);
+}
+QTableView QTableCornerButton::section {
+background-color: rgb(46, 51, 84);
+border: 1px solid rgb(0, 126, 249);
 }</string>
                             </property>
                             <column>

@@ -55,6 +55,15 @@ class RegistrarInventario:
             if result:
                 return result
 
+    def getUsusario_user(self, usario): #obtener los datos de ususario por su nombre de usuario
+        self.conn = conecciones()
+        with self.conn.cursor() as cursor:
+            sql = "SELECT * FROM usuario WHERE usuario = '"+usario+"'"
+            cursor.execute(sql)
+            result = cursor.fetchone()
+            if result:
+                return result
+
     def obtener_key(self):
         self.conn = conecciones()
         cursor = self.conn.cursor()
