@@ -144,14 +144,14 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.tabla_clientes_deben = self.tabla_clientes_d
 
         # print(f"estos son los clientes que deben: {self.clientes_deben}")
-        self.btn_listar_cd.clicked.connect(lambda: self.modelo_cliente.obtener_deben(self.tabla_clientes_deben))
-        self.btn_deudas.clicked.connect(lambda: self.modelo_cliente.obtener_deben(self.tabla_clientes_deben))
-        self.btn_actualizar_cd.clicked.connect(self.actulizar_deudas)
-        self.btn_listar_4.clicked.connect(lambda: self.modelo_cliente.listar_cliente(self.tabla_cliente_c))
-        self.registrar_cliente.clicked.connect(lambda: self.modelo_cliente.crearcliente(self.nombre_cliente.text(),
-                                                                                        self.nit_cliente.text(),
-                                                                                        self.celular_cliente.text(),
-                                                                                        self.email_cliente.text()))
+        # self.btn_listar_cd.clicked.connect(lambda: self.modelo_cliente.obtener_deben(self.tabla_clientes_deben))
+        # self.btn_deudas.clicked.connect(lambda: self.modelo_cliente.obtener_deben(self.tabla_clientes_deben))
+        # self.btn_actualizar_cd.clicked.connect(self.actulizar_deudas)
+        # self.btn_listar_4.clicked.connect(lambda: self.modelo_cliente.listar_cliente(self.tabla_cliente_c))
+        # self.registrar_cliente.clicked.connect(lambda: self.modelo_cliente.crearcliente(self.nombre_cliente.text(),
+        #                                                                                 self.nit_cliente.text(),
+        #                                                                                 self.celular_cliente.text(),
+        #                                                                                 self.email_cliente.text()))
 
         # clientes deudas
         self.btn_deudas.clicked.connect(self.page_deudas)
@@ -176,16 +176,16 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
                                                                                         self.cliente_id))
         # Tabla y datos proveedor
         # listar datos de proveedor
-        self.tabla_proveedor = self.tabla_listar_proveedor
-        self.btn_listar_3.clicked.connect(lambda: self.modelo_proveedor.listar_proveedor(self.tabla_proveedor))
-        self.registrar_proveedor.clicked.connect(lambda: self.modelo_proveedor.crearProovedor(
-                                                 self.nombre_proveedor.text(),
-                                                 self.producto_proveedor.text(),
-                                                 self.cantidad_proveedor.text(),
-                                                 self.total_proveedor.text()))
-        self.registrar_proveedor.clicked.connect(self.limpiar_provedor)
-
-        self.btn_eliminar_3.clicked.connect(lambda: self.modelo_proveedor.eliminar_prov(self.tabla_proveedor))
+        # self.tabla_proveedor = self.tabla_listar_proveedor
+        # self.btn_listar_3.clicked.connect(lambda: self.modelo_proveedor.listar_proveedor(self.tabla_proveedor))
+        # self.registrar_proveedor.clicked.connect(lambda: self.modelo_proveedor.crearProovedor(
+        #                                          self.nombre_proveedor.text(),
+        #                                          self.producto_proveedor.text(),
+        #                                          self.cantidad_proveedor.text(),
+        #                                          self.total_proveedor.text()))
+        # self.registrar_proveedor.clicked.connect(self.limpiar_provedor)
+        #
+        # self.btn_eliminar_3.clicked.connect(lambda: self.modelo_proveedor.eliminar_prov(self.tabla_proveedor))
 
 
         # Conectando los botones de la barra superior
@@ -207,9 +207,13 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
         #Ventas (Abdo)
         self.fecha.setText(str(self.fecha_actual.date()))
-        #self.bot_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_int))
+        self.bot_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_int))
         self.bot_agregar.clicked.connect(self.cotizar_venta_producto)
         self.generar_venta.clicked.connect(self.generar_tabla_venta)
+
+        self.fechapedido = str(self.calendarWidget.clicked.connect(self.obtener_fecha_seleccionada))
+        self.fecha_pedido.setText(str(self.fechapedido))
+
 
 
 
@@ -234,7 +238,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         producto = self.nom_pro.text()
         cantidad = self.spinBox.text()
         precio_und = self.p_unit.text()
-        anticipo = str(0)
+        anticipo = self.vendedor.text()
         subtotal = int(cantidad) * float(precio_und)
         # self.info.insertarVentaTransitoria(producto, cantidad, precio_und, anticipo, subtotal)
         self.registrar_venta.escribir_base_datos_transitoria(codigo, producto, cantidad, precio_und, anticipo, subtotal)
@@ -253,11 +257,12 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
         item = self.boleta.item(cnd_elem - 1, 3)
         print(item)
-        item.setText(_translate("MainWindow", anticipo))
+        item.setText(_translate("MainWindow", str(anticipo)))
 
         item = self.boleta.item(cnd_elem - 1, 4)
-        item.setText(_translate("MainWindow", str(subtotal) + '.00'))
-        self.total_general.setText(str(self.info.monto_total(cnd_elem)))
+        item.setText(_translate("MainWindow", str(subtotal - int(anticipo))))
+
+        self.total_general.setText(str(self.info.monto_total(cnd_elem) - int(anticipo)))
 
     def back_to_login(self):
         # Cerrar la ventana actual
@@ -353,13 +358,16 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         fecha = QDate(fecha_seleccionada)
 
         # Imprimir la fecha seleccionada en consola
-        print(fecha.toString("yyyy-MM-dd"))
+        fecha_pedido = fecha.toString("yyyy-MM-dd")
+        self.fecha_pedido.setText(fecha_pedido)
 
         # Convertir la fecha de QDate a date de datetime
         fecha_datetime = datetime(fecha.year(), fecha.month(), fecha.day()).date()
 
         # Almacenar la fecha seleccionada en una variable como date de datetime
         self.fecha_seleccionada = fecha_datetime
+
+
 
     def obetener_dados_codigo(self):
         # id_detalle - producto - fecha - entregado - sub_total - total - id_tipo - usuario_id - cliete_id
