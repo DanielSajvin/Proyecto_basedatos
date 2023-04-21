@@ -94,7 +94,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.btn_cliente.clicked.connect(self.pagina_cliente)
         self.btn_proveedor.clicked.connect(self.pagina_proveedor)
         self.btn_usuario.clicked.connect(self.pagina_usuario)
-        # self.btn_venta_nuevo.clicked.connect(self.pagina_venta_nuevo)
+        self.btn_venta_nuevo.clicked.connect(self.pagina_venta_nuevo)
         self.btn_cotizacion.clicked.connect(self.pagina_cotizacion)
 
 
@@ -138,7 +138,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
                                                                                           self.label_sub_total.text(),
                                                                                           self.lnx_anticipo.text(),
                                                                                           self.label_total.text(),
-                                                                                          self.id_ultimo))
+                                                                                          self.registrar_detalle.obtener_ultimo_id()))
         self.tabla_cliente_c = self.tabla_cliente
         self.tabla_cliente = self.tabla_cliente
         self.tabla_clientes_deben = self.tabla_clientes_d
@@ -280,7 +280,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
     # metodo para dessabilitar segun el cargo
     def desabilitar(self):
-        self.btn_venta_nuevo.setVisible(False)
+        self.btn_venta_nuevo.setVisible(True)
         if self.tipo_usuario == "Empleado":
             self.btn_inventario.setVisible(False)
             self.btn_proveedor.setVisible(False)

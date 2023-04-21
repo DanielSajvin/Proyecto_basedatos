@@ -41,8 +41,12 @@ class ModeloCliente():
         clientes = self.cliente.\
             clientes_deben()
         table.setRowCount(0)
-        for row_number, row_data in enumerate(clientes):
-            table.insertRow(row_number)
-            for column_number, data in enumerate(row_data):
-                table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+        print(f"esto hay en cliente: {clientes}")
+        if clientes == None:
+            print("no existen deudores")
+        else:
+            for row_number, row_data in enumerate(clientes):
+                table.insertRow(row_number)
+                for column_number, data in enumerate(row_data):
+                    table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
