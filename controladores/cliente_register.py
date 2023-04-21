@@ -55,9 +55,17 @@ class RegistarCliente:
             cursor.execute(sql)
             self.conn.commit()
 
-    def obtener_clientes_deben(self):
+    def clientes_deben(self):
         self.conn = conecciones()
+        self.no = "no"
         with self.conn.cursor() as cursor:
-            sql = "SELECT c.id_cliente, c.nombre, d.fecha FROM proyecto.cliente c " \
-                  "inner join proyecto.detalle d on c.id_cliente = d.Cliente_id_cliente;"
+            sql = "SELECT v.id_venta, c.nombre, c.email, c.celular, d.fecha, v.sub_total, (v.sub_total - v.anticipo) AS diferencia" \
+                  " FROM proyecto.cliente c left join detalle d on c.id_cliente = d.Cliente_id_cliente " \
+                  "left join venta v on d.id_detalle = v.detalle_id_detalle where d.entregado = '"+self.no+"' and v.anticipo != v.total "
+
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            if result:
+                return result
+
 

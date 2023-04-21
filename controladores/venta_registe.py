@@ -13,6 +13,15 @@ class RegistrarVenta:
         count = count + 1
         return count
 
+    def get_codigo(self, cod):
+        self.conn = conecciones()
+        with self.conn.cursor() as cursor:
+            sql = "SELECT * FROM venta WHERE id_venta = '"+cod+"'"
+            cursor.execute(sql)
+            result = cursor.fetchone()
+            if result:
+                return result
+
     def obtener_venta(self):
         self.conn = conecciones()
         with self.conn.cursor() as cursor:
@@ -57,4 +66,10 @@ class RegistrarVenta:
                 self.conn.commit()
             except Exception as e:
                 print(f"Error al insertar venta: {e}")
+
+    def modificar_venta(self, codigo, anticipo):
+        with self.conn.cursor() as cursor:
+            sql = """UPDATE venta SET anticipo = %s WHERE id_venta = %s """
+            cursor.execute(sql, (anticipo, codigo))
+            self.conn.commit()
 

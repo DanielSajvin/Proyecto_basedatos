@@ -37,6 +37,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.listar_venta_tabla = ModeloVenta()
         self.registrar_detalle = RegistarDetalle()
         self.registrar_cliente = RegistarCliente()
+        self.clietes_deben = self.registrar_cliente.clientes_deben()
 
         self.registrar_venta = RegistrarVenta()
 
@@ -45,10 +46,13 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.info = BaseDatosInfo()
 
         self.cliente_id = self.registrar_cliente.obtener_ultimo_id_cliente()
+        #self.registrar_cliente.clientes_deben()
         self.login = main_login
 
         self.fecha_actual = datetime.now()
+
         super().__init__()
+
         self.user = user
         # Conectar interfaz grafica
         self.setupUi(self)
@@ -78,12 +82,11 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.usuario = self.reg.getUsusario_user(user)
         self.tipo_usuario = self.usuario[1]
         self.id_usuario = self.usuario[0]
-        print(self.tipo_usuario)
         self.desabilitar()
         self.usuario_mostrar()
 
         self.id_ultimo = self.registrar_detalle.obtener_ultimo_id()
-        print(f"este es el id asignado a detalle {self.id_ultimo}")
+
 
         # Conectar Botones con las paginas correspondientes
         self.btn_inventario.clicked.connect(self.pagina_inventario)
@@ -91,7 +94,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.btn_cliente.clicked.connect(self.pagina_cliente)
         self.btn_proveedor.clicked.connect(self.pagina_proveedor)
         self.btn_usuario.clicked.connect(self.pagina_usuario)
-        self.btn_venta_nuevo.clicked.connect(self.pagina_venta_nuevo)
+        # self.btn_venta_nuevo.clicked.connect(self.pagina_venta_nuevo)
         self.btn_cotizacion.clicked.connect(self.pagina_cotizacion)
 
 
@@ -138,6 +141,12 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
                                                                                           self.id_ultimo))
         self.tabla_cliente_c = self.tabla_cliente
         self.tabla_cliente = self.tabla_cliente
+        self.tabla_clientes_deben = self.tabla_clientes_d
+
+        # print(f"estos son los clientes que deben: {self.clientes_deben}")
+        self.btn_listar_cd.clicked.connect(lambda: self.modelo_cliente.obtener_deben(self.tabla_clientes_deben))
+        self.btn_deudas.clicked.connect(lambda: self.modelo_cliente.obtener_deben(self.tabla_clientes_deben))
+        self.btn_actualizar_cd.clicked.connect(self.actulizar_deudas)
         self.btn_listar_4.clicked.connect(lambda: self.modelo_cliente.listar_cliente(self.tabla_cliente_c))
         self.registrar_cliente.clicked.connect(lambda: self.modelo_cliente.crearcliente(self.nombre_cliente.text(),
                                                                                         self.nit_cliente.text(),
@@ -165,6 +174,18 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
                                                                                         1,
                                                                                         self.id_usuario,
                                                                                         self.cliente_id))
+        # Tabla y datos proveedor
+        # listar datos de proveedor
+        self.tabla_proveedor = self.tabla_listar_proveedor
+        self.btn_listar_3.clicked.connect(lambda: self.modelo_proveedor.listar_proveedor(self.tabla_proveedor))
+        self.registrar_proveedor.clicked.connect(lambda: self.modelo_proveedor.crearProovedor(
+                                                 self.nombre_proveedor.text(),
+                                                 self.producto_proveedor.text(),
+                                                 self.cantidad_proveedor.text(),
+                                                 self.total_proveedor.text()))
+        self.registrar_proveedor.clicked.connect(self.limpiar_provedor)
+
+        self.btn_eliminar_3.clicked.connect(lambda: self.modelo_proveedor.eliminar_prov(self.tabla_proveedor))
 
 
         # Conectando los botones de la barra superior
@@ -186,9 +207,10 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
         #Ventas (Abdo)
         self.fecha.setText(str(self.fecha_actual.date()))
-        self.bot_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_int))
+        #self.bot_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_int))
         self.bot_agregar.clicked.connect(self.cotizar_venta_producto)
         self.generar_venta.clicked.connect(self.generar_tabla_venta)
+
 
 
     def cotizar_venta_producto(self):
@@ -245,6 +267,12 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         #login_window = Main_login()
         #login_window.show()
 
+    def limpiar_provedor(self):
+        self.nombre_proveedor.setText("")
+        self.producto_proveedor.setText("")
+        self.cantidad_proveedor.setText("")
+        self.total_proveedor.setText("")
+
     def ulitmo_id(self):
         self.id_ultimo = self.registrar_detalle.obtener_ultimo_id()
         print(self.id_ultimo)
@@ -252,8 +280,8 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
     # metodo para dessabilitar segun el cargo
     def desabilitar(self):
+        self.btn_venta_nuevo.setVisible(False)
         if self.tipo_usuario == "Empleado":
-
             self.btn_inventario.setVisible(False)
             self.btn_proveedor.setVisible(False)
 
@@ -285,6 +313,15 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.showMaximized()
         self.btn_restaurar.show()
         self.btn_maximizar.hide()
+
+    def actulizar_deudas(self):
+        id = self.lnx_id_cd.text()
+        pago = self.lnx_pago_cd.text()
+        pago = float(pago)
+        self.listar_venta_tabla.modificar_anticipo(id, pago)
+
+        self.lnx_id_cd.setText("")
+        self.lnx_pago_cd.setText("")
 
     # Metodos pra conectar un boton con su pagina correspondiente
     def pagina_cotizacion(self):

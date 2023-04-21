@@ -18,6 +18,14 @@ class ModeloVenta():
             for column_number, data in enumerate(row_data):
                 table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
+    def modificar_anticipo(self, codigo, modificar):
+        self.venta = RegistrarVenta()
+        product = self.venta.get_codigo(codigo)
+        producto_acutal = product[5]
+
+        nuevo_producto = producto_acutal + modificar
+        self.venta.modificar_venta(codigo, nuevo_producto)
+
     def crearventa(self, producto, cantidad, precio_unitario, sub_total, anticipo, total, detalle_id):
 
         self.venta = RegistrarVenta()

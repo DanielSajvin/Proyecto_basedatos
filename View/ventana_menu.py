@@ -289,13 +289,6 @@ class Main_window(QMainWindow):
         self.label_total.setText("")
 
 
-
-
-
-
-
-
-
     def restar_inventario(self):
         cod = self.lnx_op_codigo.text()
         cantidad = self.label_cantidad.text()

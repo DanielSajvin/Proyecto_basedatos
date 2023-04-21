@@ -163,8 +163,8 @@ font: 75 12pt&quot;Times New Roman&quot;;
                </property>
                <property name="iconSize">
                 <size>
-                 <width>80</width>
-                 <height>80</height>
+                 <width>70</width>
+                 <height>70</height>
                 </size>
                </property>
                <property name="checkable">
@@ -684,7 +684,7 @@ color: rgb(0,126,249);
 </string>
             </property>
             <property name="currentIndex">
-             <number>6</number>
+             <number>4</number>
             </property>
             <widget class="QWidget" name="page_inventario">
              <layout class="QGridLayout" name="gridLayout">
@@ -3187,83 +3187,13 @@ border-radius: 5px;
              </layout>
             </widget>
             <widget class="QWidget" name="page_cliente_deben">
-             <layout class="QVBoxLayout" name="verticalLayout_16" stretch="0,0">
+             <layout class="QVBoxLayout" name="verticalLayout_16" stretch="0">
               <property name="spacing">
                <number>11</number>
               </property>
               <property name="topMargin">
                <number>11</number>
               </property>
-              <item>
-               <widget class="QFrame" name="frame_21">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>125</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-border-top-left-radius:20p;
-color: rgb(0,126,249);
-font: 77 10pt &quot;Gadugi&quot;;
-
-border-radius: 5px;
-
-
-}
-
-QPushButton:hover{
-
-background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
-
-
-}
-QFrame{
-
-background-color: rgb(24, 30, 50);
-
-}
-QLabel{
-color: rgb(0,126,249);
-}
-QLineEdit{
-font: 77 10pt &quot;Gadugi&quot;;
-color: rgb(158, 161, 178);
-border-radius: 5px;
-}
-
-</string>
-                </property>
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <widget class="QLabel" name="label_14">
-                 <property name="geometry">
-                  <rect>
-                   <x>40</x>
-                   <y>20</y>
-                   <width>121</width>
-                   <height>31</height>
-                  </rect>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>12</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string>Id</string>
-                 </property>
-                </widget>
-               </widget>
-              </item>
               <item>
                <widget class="QFrame" name="frame_20">
                 <property name="frameShape">
@@ -3292,8 +3222,14 @@ border-radius: 5px;
                   <widget class="QFrame" name="frame_23">
                    <property name="minimumSize">
                     <size>
-                     <width>125</width>
+                     <width>10</width>
                      <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>150</width>
+                     <height>16777215</height>
                     </size>
                    </property>
                    <property name="styleSheet">
@@ -3344,18 +3280,67 @@ border-radius: 5px;
                       </property>
                       <property name="sizeHint" stdset="0">
                        <size>
-                        <width>20</width>
-                        <height>180</height>
+                        <width>15</width>
+                        <height>40</height>
                        </size>
                       </property>
                      </spacer>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="pushButton_2">
+                     <widget class="QLabel" name="label_14">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <property name="text">
+                       <string>Id</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="lnx_id_cd"/>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_29">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <property name="text">
+                       <string>Pago</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="lnx_pago_cd"/>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btn_actualizar_cd">
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
-                        <height>30</height>
+                        <height>45</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>Actualizar</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btn_listar_cd">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>45</height>
                        </size>
                       </property>
                       <property name="text">
@@ -3371,7 +3356,7 @@ border-radius: 5px;
                       <property name="sizeHint" stdset="0">
                        <size>
                         <width>20</width>
-                        <height>180</height>
+                        <height>40</height>
                        </size>
                       </property>
                      </spacer>
@@ -3381,6 +3366,12 @@ border-radius: 5px;
                  </item>
                  <item>
                   <widget class="QFrame" name="frame_24">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>0</height>
+                    </size>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true"/>
                    </property>
@@ -3408,6 +3399,387 @@ border-radius: 5px;
                     </property>
                     <item>
                      <widget class="QTableWidget" name="tabla_clientes_d">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QHeaderView
+{
+Fondo: transparente; 
+background-color: rgb(24, 30, 50);
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+}
+
+QHeaderView:hover
+{
+background-color: rgb(46, 51, 84);
+border-top-left-radius:20p;
+}
+QHeaderView:section
+{
+background-color: rgb(46, 51, 84);
+border-top-left-radius:20p;
+padding: 2px;
+font-size:11 pt;
+
+}
+QTableWidget{
+background-color: rgb(24, 30, 50);
+gridline-color: rgb(24, 30, 50);
+font-size: 11pt;
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+}
+QTableWidgetQTableCornerButton::section{
+background-color: rgb(46, 51, 84);
+border: 1px solid rgb(0,126,249);
+}
+QTableView QTableCornerButton::section {
+background-color: rgb(46, 51, 84);
+border: 1px solid rgb(0, 126, 249);
+}</string>
+                      </property>
+                      <attribute name="horizontalHeaderDefaultSectionSize">
+                       <number>145</number>
+                      </attribute>
+                      <column>
+                       <property name="text">
+                        <string>Id</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Nombre</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Email</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Celular</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Fecha</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Sub total</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Deuda</string>
+                       </property>
+                      </column>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="page_proveedor">
+             <layout class="QVBoxLayout" name="verticalLayout_24">
+              <item>
+               <widget class="QFrame" name="frame_31">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>75</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+
+border-radius: 5px;
+
+
+}
+
+QPushButton:hover{
+
+background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+
+
+}
+QFrame{
+
+background-color: rgb(24, 30, 50);
+
+}
+QLabel{
+color: rgb(0,126,249);
+font: 77 12pt &quot;Gadugi&quot;;
+}
+QLineEdit{
+font: 77 10pt &quot;Gadugi&quot;;
+color: rgb(158, 161, 178);
+border-radius: 5px;
+}
+</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_13">
+                 <item>
+                  <spacer name="horizontalSpacer_3">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>142</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_33">
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string>Nombre</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="nombre_proveedor"/>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_34">
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string>Producto</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="producto_proveedor"/>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_35">
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string>Cantidad</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="cantidad_proveedor"/>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_36">
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string>Total</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="total_proveedor"/>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_4">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>142</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="frame_21">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_12">
+                 <item>
+                  <widget class="QFrame" name="frame_32">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton{
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+
+border-radius: 5px;
+
+
+}
+
+QPushButton:hover{
+
+background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+
+
+}
+QFrame{
+
+background-color: rgb(24, 30, 50);
+
+}
+QLabel{
+color: rgb(0,126,249);
+}
+QLineEdit{
+font: 77 10pt &quot;Gadugi&quot;;
+color: rgb(158, 161, 178);
+border-radius: 5px;
+}
+</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_26">
+                    <item>
+                     <spacer name="verticalSpacer_4">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>146</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="registrar_proveedor">
+                      <property name="minimumSize">
+                       <size>
+                        <width>120</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>Registrar</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btn_listar_3">
+                      <property name="minimumSize">
+                       <size>
+                        <width>120</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>Listar</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btn_eliminar_3">
+                      <property name="minimumSize">
+                       <size>
+                        <width>120</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>Eliminar</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="verticalSpacer_5">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_33">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_25">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QTableWidget" name="tabla_listar_proveedor">
                       <property name="styleSheet">
                        <string notr="true">QHeaderView
 {
@@ -3453,7 +3825,7 @@ border: 1px solid rgb(0, 126, 249);
                       </attribute>
                       <column>
                        <property name="text">
-                        <string>id</string>
+                        <string>Id</string>
                        </property>
                       </column>
                       <column>
@@ -3463,7 +3835,17 @@ border: 1px solid rgb(0, 126, 249);
                       </column>
                       <column>
                        <property name="text">
-                        <string>Fecha</string>
+                        <string>Cantidad</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Producto</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>Total</string>
                        </property>
                       </column>
                      </widget>
@@ -3475,26 +3857,6 @@ border: 1px solid rgb(0, 126, 249);
                </widget>
               </item>
              </layout>
-            </widget>
-            <widget class="QWidget" name="page_proveedor">
-             <widget class="QLabel" name="label_6">
-              <property name="geometry">
-               <rect>
-                <x>250</x>
-                <y>120</y>
-                <width>161</width>
-                <height>71</height>
-               </rect>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>18</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Proveedor</string>
-              </property>
-             </widget>
             </widget>
             <widget class="QWidget" name="page_usuario">
              <layout class="QVBoxLayout" name="verticalLayout_19">

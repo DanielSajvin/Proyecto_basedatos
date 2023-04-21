@@ -35,3 +35,14 @@ class ModeloCliente():
                 self.cliente.eliminarcliente(cod)
         self.listar_cliente(table)
 
+    def obtener_deben(self, tabla):
+        self.cliente = RegistarCliente()
+        table = tabla
+        clientes = self.cliente.\
+            clientes_deben()
+        table.setRowCount(0)
+        for row_number, row_data in enumerate(clientes):
+            table.insertRow(row_number)
+            for column_number, data in enumerate(row_data):
+                table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+
