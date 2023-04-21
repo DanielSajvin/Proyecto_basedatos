@@ -112,7 +112,7 @@ class RegistrarInventario:
     def getProduct(self, cod):
         self.conn = conecciones()
         with self.conn.cursor() as cursor:
-            sql = "SELECT * FROM inventario WHERE Id_inventario = '"+cod+"'"
+            sql = "SELECT * FROM inventario WHERE Id_inventario = " + str(cod)
             cursor.execute(sql)
             result = cursor.fetchone()
             if result:

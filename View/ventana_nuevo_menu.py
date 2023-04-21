@@ -148,6 +148,8 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.btn_restaurar.clicked.connect(self.restaurar)
         self.btn_maximizar.clicked.connect(self.maximizar)
 
+
+
         # Elementos tabla transitoria
         self.lnx_op_codigo.text()
         self.label_nombre.text()
@@ -155,6 +157,28 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
         # cerrar sesion en usuario
         self.btn_cerrar_sesion.clicked.connect(self.back_to_login)
+
+        #Ventas (Abdo)
+        self.fecha.setText(str(self.fecha_actual.date()))
+        self.bot_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_int))
+        self.bot_agregar.clicked.connect(self.cotizar_venta_producto)
+
+
+    def cotizar_venta_producto(self):
+        for valor in range(0, 10):
+            if str(valor) == self.cod_bus.text():
+                product = self.reg.getProduct(valor)
+                self.nom_pro.setText(product[2])
+                self.p_unit.setText(str(product[4]))
+                self.p_unit_2.setText(str(product[5]))
+                self.Lab.setText(str(product[3]))
+                cant = self.spinBox.text()
+                monto_und = int(product[4]) * int(cant)
+                if (int(cant) > 0):
+                    self.monto_t.setText(str(monto_und) + ".00")
+                else:
+                    self.monto_t.setText(".00")
+
 
     def back_to_login(self):
         # Cerrar la ventana actual
