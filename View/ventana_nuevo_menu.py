@@ -144,14 +144,14 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.tabla_clientes_deben = self.tabla_clientes_d
 
         # print(f"estos son los clientes que deben: {self.clientes_deben}")
-        # self.btn_listar_cd.clicked.connect(lambda: self.modelo_cliente.obtener_deben(self.tabla_clientes_deben))
-        # self.btn_deudas.clicked.connect(lambda: self.modelo_cliente.obtener_deben(self.tabla_clientes_deben))
-        # self.btn_actualizar_cd.clicked.connect(self.actulizar_deudas)
-        # self.btn_listar_4.clicked.connect(lambda: self.modelo_cliente.listar_cliente(self.tabla_cliente_c))
-        # self.registrar_cliente.clicked.connect(lambda: self.modelo_cliente.crearcliente(self.nombre_cliente.text(),
-        #                                                                                 self.nit_cliente.text(),
-        #                                                                                 self.celular_cliente.text(),
-        #                                                                                 self.email_cliente.text()))
+        self.btn_listar_cd.clicked.connect(lambda: self.modelo_cliente.obtener_deben(self.tabla_clientes_deben))
+        self.btn_deudas.clicked.connect(lambda: self.modelo_cliente.obtener_deben(self.tabla_clientes_deben))
+        self.btn_actualizar_cd.clicked.connect(self.actulizar_deudas)
+        self.btn_listar_4.clicked.connect(lambda: self.modelo_cliente.listar_cliente(self.tabla_cliente_c))
+        self.registrar_cliente.clicked.connect(lambda: self.modelo_cliente.crearcliente(self.nombre_cliente.text(),
+                                                                                         self.nit_cliente.text(),
+                                                                                         self.celular_cliente.text(),
+                                                                                         self.email_cliente.text()))
 
         # clientes deudas
         self.btn_deudas.clicked.connect(self.page_deudas)
@@ -174,18 +174,18 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
                                                                                         1,
                                                                                         self.id_usuario,
                                                                                         self.cliente_id))
-        # Tabla y datos proveedor
-        # listar datos de proveedor
-        # self.tabla_proveedor = self.tabla_listar_proveedor
-        # self.btn_listar_3.clicked.connect(lambda: self.modelo_proveedor.listar_proveedor(self.tabla_proveedor))
-        # self.registrar_proveedor.clicked.connect(lambda: self.modelo_proveedor.crearProovedor(
-        #                                          self.nombre_proveedor.text(),
-        #                                          self.producto_proveedor.text(),
-        #                                          self.cantidad_proveedor.text(),
-        #                                          self.total_proveedor.text()))
-        # self.registrar_proveedor.clicked.connect(self.limpiar_provedor)
-        #
-        # self.btn_eliminar_3.clicked.connect(lambda: self.modelo_proveedor.eliminar_prov(self.tabla_proveedor))
+        #Tabla y datos proveedor
+        #listar datos de proveedor
+        self.tabla_proveedor = self.tabla_listar_proveedor
+        self.btn_listar_3.clicked.connect(lambda: self.modelo_proveedor.listar_proveedor(self.tabla_proveedor))
+        self.registrar_proveedor.clicked.connect(lambda: self.modelo_proveedor.crearProovedor(
+                                                  self.nombre_proveedor.text(),
+                                                  self.producto_proveedor.text(),
+                                                  self.cantidad_proveedor.text(),
+                                                  self.total_proveedor.text()))
+        self.registrar_proveedor.clicked.connect(self.limpiar_provedor)
+
+        self.btn_eliminar_3.clicked.connect(lambda: self.modelo_proveedor.eliminar_prov(self.tabla_proveedor))
 
 
         # Conectando los botones de la barra superior
@@ -285,7 +285,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
     # metodo para dessabilitar segun el cargo
     def desabilitar(self):
-        self.btn_venta_nuevo.setVisible(True)
+        self.btn_venta_nuevo.setVisible(False)
         if self.tipo_usuario == "Empleado":
             self.btn_inventario.setVisible(False)
             self.btn_proveedor.setVisible(False)
