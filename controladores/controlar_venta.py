@@ -86,7 +86,7 @@ class BaseDatosInfo:
     def monto_total(self,catd_elem):
         monto_total_venta = 0
         for valor in range(0, catd_elem):
-            monto_total_venta = int(self.base_ventas(valor, 4)) + monto_total_venta
+            monto_total_venta = int(self.base_ventas(valor, 6)) + monto_total_venta
         # print(monto_total_venta)
         # print(monto_total_venta)
         return monto_total_venta
