@@ -6,6 +6,7 @@ class RegistrarInventario:
     def __int__(self):
         self.conn = conecciones()
 
+
     def obtener_cargo(self):
         self.conn = conecciones()
         cursor = self.conn.cursor()
@@ -90,6 +91,7 @@ class RegistrarInventario:
             sql = """INSERT INTO usuario (id_usuario,cargo,nombre,apellido,usuario,password) VALUES (%s,%s,%s,%s,%s,%s)"""
 
             cursor.execute(sql, (id, cargo, n_1, n_2, us, pw))
+
             self.conn.commit()
 
     def obtener_producto(self):

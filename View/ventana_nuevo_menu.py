@@ -15,6 +15,8 @@ from controladores.cliente_register import RegistarCliente
 from controladores.detalle_register import RegistarDetalle
 from modelos.tabla_venta import ModeloVenta
 from PyQt5.uic import loadUiType
+from controladores.controlar_venta import BaseDatosInfo
+from controladores.venta_registe import RegistrarVenta
 # import webbrowser
 # import pdfrw
 
@@ -26,6 +28,7 @@ Ui_MainWindow, QMainWindow = loadUiType('View/nuevo_menu.ui')
 
 class Main_window_nuevo(QMainWindow, Ui_MainWindow):
     def __init__(self, user, main_login) -> None:
+        _translate = QtCore.QCoreApplication.translate
         self.modelo_principal = ModeloPrincipal()
         self.modelo_proveedor = ModeloProveedor()
         self.modelo_cliente = ModeloCliente()
@@ -34,7 +37,13 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.listar_venta_tabla = ModeloVenta()
         self.registrar_detalle = RegistarDetalle()
         self.registrar_cliente = RegistarCliente()
+
+        self.registrar_venta = RegistrarVenta()
+
         self.reg = RegistrarInventario()
+
+        self.info = BaseDatosInfo()
+
         self.cliente_id = self.registrar_cliente.obtener_ultimo_id_cliente()
         self.login = main_login
 
@@ -45,6 +54,23 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+
+
+        # Tabla
+        # item = self.tabla_int.item(0, 0)
+        # item.setText(_translate("MainWindow", str(self.info.base_datos(0, 0))))
+        # for fil in range(0, 10):
+        #     for colum in range(0, 6):
+        #         item = self.tabla_int.item(fil, colum)
+        #         item.setText(_translate("MainWindow", str(self.info.base_datos(fil, colum))))
+        #         if (colum == 6):
+        #             cantidad = int(self.info.base_datos(fil, colum - 1))
+        #             precio = int(self.info.base_datos(fil, colum - 2))
+        #             monto_total = cantidad * precio
+        #             item.setText(_translate("MainWindow", str(monto_total) + '.00'))
+
+
+
 
         # bloqueando botones segun el cargo del usuario que ingrese al menu
 
@@ -162,6 +188,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.fecha.setText(str(self.fecha_actual.date()))
         self.bot_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_int))
         self.bot_agregar.clicked.connect(self.cotizar_venta_producto)
+        self.generar_venta.clicked.connect(self.generar_tabla_venta)
 
 
     def cotizar_venta_producto(self):
@@ -179,6 +206,36 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
                 else:
                     self.monto_t.setText(".00")
 
+    def generar_tabla_venta(self):
+        _translate = QtCore.QCoreApplication.translate
+        codigo = self.cod_bus.text()
+        producto = self.nom_pro.text()
+        cantidad = self.spinBox.text()
+        precio_und = self.p_unit.text()
+        anticipo = str(0)
+        subtotal = int(cantidad) * float(precio_und)
+        # self.info.insertarVentaTransitoria(producto, cantidad, precio_und, anticipo, subtotal)
+        self.registrar_venta.escribir_base_datos_transitoria(codigo, producto, cantidad, precio_und, anticipo, subtotal)
+
+        cnd_elem = self.info.elemtos_ventas() #Cantidad de elementos
+        print(cnd_elem)
+        item = self.boleta.item(cnd_elem - 1, 0)
+        item.setText(_translate("MainWindow", producto))
+
+        item = self.boleta.item(cnd_elem - 1, 1)
+        item.setText(_translate("MainWindow", cantidad))
+
+        item = self.boleta.item(cnd_elem - 1, 2)
+        print(item)
+        item.setText(_translate("MainWindow", precio_und))
+
+        item = self.boleta.item(cnd_elem - 1, 3)
+        print(item)
+        item.setText(_translate("MainWindow", anticipo))
+
+        item = self.boleta.item(cnd_elem - 1, 4)
+        item.setText(_translate("MainWindow", str(subtotal) + '.00'))
+        self.total_general.setText(str(self.info.monto_total(cnd_elem)))
 
     def back_to_login(self):
         # Cerrar la ventana actual
