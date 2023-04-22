@@ -142,8 +142,10 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.tabla_cliente_c = self.tabla_cliente
         self.tabla_cliente = self.tabla_cliente
         self.tabla_clientes_deben = self.tabla_clientes_d
+        self.tabla_nombres_cliente = self.tabla_cliente_v
 
         # print(f"estos son los clientes que deben: {self.clientes_deben}")
+        self.bot_listar.clicked.connect(lambda: self.modelo_cliente.tabla_nombres(self.tabla_nombres_cliente))
         self.btn_listar_cd.clicked.connect(lambda: self.modelo_cliente.obtener_deben(self.tabla_clientes_deben))
         self.btn_deudas.clicked.connect(lambda: self.modelo_cliente.obtener_deben(self.tabla_clientes_deben))
         self.btn_actualizar_cd.clicked.connect(self.actulizar_deudas)

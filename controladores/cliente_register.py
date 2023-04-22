@@ -68,4 +68,15 @@ class RegistarCliente:
             if result:
                 return result
 
+    def clientes_nombre(self):
+        self.conn = conecciones()
+        with self.conn.cursor() as cursor:
+            sql = "SELECT c.nombre FROM proyecto.cliente c;"
+
+
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            if result:
+                return result
+
 
