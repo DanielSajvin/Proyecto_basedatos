@@ -1453,6 +1453,19 @@ border-radius: 5px;</string>
                      <string>P.Mayorista</string>
                     </property>
                    </widget>
+                   <widget class="QPushButton" name="btn_reCotizar">
+                    <property name="geometry">
+                     <rect>
+                      <x>1010</x>
+                      <y>10</y>
+                      <width>161</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string>Generar Cotización</string>
+                    </property>
+                   </widget>
                   </widget>
                  </item>
                  <item>
@@ -1503,7 +1516,6 @@ border-radius: 5px;</string>
                         <weight>9</weight>
                         <italic>false</italic>
                         <bold>false</bold>
-                        <strikeout>false</strikeout>
                        </font>
                       </property>
                       <property name="layoutDirection">
@@ -1582,14 +1594,14 @@ border: 1px solid rgb(0, 126, 249);
                       <attribute name="horizontalHeaderCascadingSectionResizes">
                        <bool>true</bool>
                       </attribute>
-                      <attribute name="horizontalHeaderMinimumSectionSize">
-                       <number>20</number>
-                      </attribute>
                       <attribute name="horizontalHeaderDefaultSectionSize">
                        <number>124</number>
                       </attribute>
                       <attribute name="horizontalHeaderHighlightSections">
                        <bool>true</bool>
+                      </attribute>
+                      <attribute name="horizontalHeaderMinimumSectionSize">
+                       <number>20</number>
                       </attribute>
                       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
                        <bool>false</bool>
@@ -1600,14 +1612,14 @@ border: 1px solid rgb(0, 126, 249);
                       <attribute name="verticalHeaderCascadingSectionResizes">
                        <bool>false</bool>
                       </attribute>
-                      <attribute name="verticalHeaderMinimumSectionSize">
-                       <number>100</number>
-                      </attribute>
                       <attribute name="verticalHeaderDefaultSectionSize">
                        <number>100</number>
                       </attribute>
                       <attribute name="verticalHeaderHighlightSections">
                        <bool>true</bool>
+                      </attribute>
+                      <attribute name="verticalHeaderMinimumSectionSize">
+                       <number>100</number>
                       </attribute>
                       <attribute name="verticalHeaderShowSortIndicator" stdset="0">
                        <bool>false</bool>
@@ -2225,11 +2237,11 @@ border: 1px solid rgb(0, 126, 249);
 }
 </string>
                          </property>
-                         <attribute name="horizontalHeaderMinimumSectionSize">
-                          <number>50</number>
-                         </attribute>
                          <attribute name="horizontalHeaderDefaultSectionSize">
                           <number>100</number>
+                         </attribute>
+                         <attribute name="horizontalHeaderMinimumSectionSize">
+                          <number>50</number>
                          </attribute>
                          <attribute name="verticalHeaderDefaultSectionSize">
                           <number>28</number>

@@ -1,7 +1,10 @@
 import sys
 import os
 import datetime
+import webbrowser
 from datetime import datetime
+
+import pdfrw
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -17,13 +20,12 @@ from modelos.tabla_venta import ModeloVenta
 from PyQt5.uic import loadUiType
 from controladores.controlar_venta import BaseDatosInfo
 from controladores.venta_registe import RegistrarVenta
-# import webbrowser
-# import pdfrw
+import random
+import string
 
 # QComboBox
 
 Ui_MainWindow, QMainWindow = loadUiType('View/nuevo_menu.ui')
-
 
 
 class Main_window_nuevo(QMainWindow, Ui_MainWindow):
@@ -46,7 +48,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.info = BaseDatosInfo()
 
         self.cliente_id = self.registrar_cliente.obtener_ultimo_id_cliente()
-        #self.registrar_cliente.clientes_deben()
+        # self.registrar_cliente.clientes_deben()
         self.login = main_login
 
         self.fecha_actual = datetime.now()
@@ -58,7 +60,6 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-
 
         # Tabla
         # item = self.tabla_int.item(0, 0)
@@ -73,9 +74,6 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         #             monto_total = cantidad * precio
         #             item.setText(_translate("MainWindow", str(monto_total) + '.00'))
 
-
-
-
         # bloqueando botones segun el cargo del usuario que ingrese al menu
 
         # el usuario que ingreso al menu
@@ -87,7 +85,6 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
         self.id_ultimo = self.registrar_detalle.obtener_ultimo_id()
 
-
         # Conectar Botones con las paginas correspondientes
         self.btn_inventario.clicked.connect(self.pagina_inventario)
         self.btn_venta.clicked.connect(self.pagina_venta)
@@ -96,7 +93,6 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.btn_usuario.clicked.connect(self.pagina_usuario)
         self.btn_venta_nuevo.clicked.connect(self.pagina_venta_nuevo)
         self.btn_cotizacion.clicked.connect(self.pagina_cotizacion)
-
 
         # Inventario Ventana
         self.tabla_inv = self.tabla_inventario
@@ -110,7 +106,6 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
                                                                                         self.lnx_precio_min.text(),
                                                                                         self.lnx_precio_may.text()))
 
-
         # Ventas
         # form ventas
         self.btn_buscar.clicked.connect(self.obetener_dados_codigo)
@@ -119,17 +114,15 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
         # tabla ventas
         # self.tabla_cliente_c = self.tabla_cliente
-        #self.btn_venta_v.clicked.connect(self.venta_tabla)
-        #self.btn_detalle_v.clicked.connect(self.venta_form)
+        # self.btn_venta_v.clicked.connect(self.venta_tabla)
+        # self.btn_detalle_v.clicked.connect(self.venta_form)
 
         # Cotizacion
-
 
         # Listar Venta
         self.tabla_venta_listar = self.table_form_venta
         self.btn_agregar_venta.clicked.connect(lambda: self.listar_venta_tabla.listar_venta(self.tabla_venta_listar))
         self.btn_listar_ventas.clicked.connect(lambda: self.listar_venta_tabla.listar_venta(self.tabla_venta_listar))
-
 
         # Agregar datos a venta
         self.btn_agregar_venta.clicked.connect(lambda: self.listar_venta_tabla.crearventa(self.label_nombre.text(),
@@ -151,9 +144,9 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.btn_actualizar_cd.clicked.connect(self.actulizar_deudas)
         self.btn_listar_4.clicked.connect(lambda: self.modelo_cliente.listar_cliente(self.tabla_cliente_c))
         self.registrar_cliente.clicked.connect(lambda: self.modelo_cliente.crearcliente(self.nombre_cliente.text(),
-                                                                                         self.nit_cliente.text(),
-                                                                                         self.celular_cliente.text(),
-                                                                                         self.email_cliente.text()))
+                                                                                        self.nit_cliente.text(),
+                                                                                        self.celular_cliente.text(),
+                                                                                        self.email_cliente.text()))
 
         # clientes deudas
         self.btn_deudas.clicked.connect(self.page_deudas)
@@ -164,31 +157,30 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.calendario_pedido.clicked.connect(self.obtener_fecha_seleccionada)
 
         self.btn_pedido.clicked.connect(lambda: self.modelo_detalle.creardetalle(
-                                                                                        self.fecha_seleccionada,
-                                                                                        "no",
-                                                                                        1,
-                                                                                        self.id_usuario,
-                                                                                        self.cliente_id))
+            self.fecha_seleccionada,
+            "no",
+            1,
+            self.id_usuario,
+            self.cliente_id))
 
         self.btn_agregar_venta.clicked.connect(lambda: self.modelo_detalle.creardetalle(
-                                                                                        self.fecha_actual.date(),
-                                                                                        "si",
-                                                                                        1,
-                                                                                        self.id_usuario,
-                                                                                        self.cliente_id))
-        #Tabla y datos proveedor
-        #listar datos de proveedor
+            self.fecha_actual.date(),
+            "si",
+            1,
+            self.id_usuario,
+            self.cliente_id))
+        # Tabla y datos proveedor
+        # listar datos de proveedor
         self.tabla_proveedor = self.tabla_listar_proveedor
         self.btn_listar_3.clicked.connect(lambda: self.modelo_proveedor.listar_proveedor(self.tabla_proveedor))
         self.registrar_proveedor.clicked.connect(lambda: self.modelo_proveedor.crearProovedor(
-                                                  self.nombre_proveedor.text(),
-                                                  self.producto_proveedor.text(),
-                                                  self.cantidad_proveedor.text(),
-                                                  self.total_proveedor.text()))
+            self.nombre_proveedor.text(),
+            self.producto_proveedor.text(),
+            self.cantidad_proveedor.text(),
+            self.total_proveedor.text()))
         self.registrar_proveedor.clicked.connect(self.limpiar_provedor)
 
         self.btn_eliminar_3.clicked.connect(lambda: self.modelo_proveedor.eliminar_prov(self.tabla_proveedor))
-
 
         # Conectando los botones de la barra superior
         self.btn_restaurar.hide()
@@ -197,17 +189,15 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.btn_restaurar.clicked.connect(self.restaurar)
         self.btn_maximizar.clicked.connect(self.maximizar)
 
-
-
         # Elementos tabla transitoria
         self.lnx_op_codigo.text()
         self.label_nombre.text()
-        self.cb_min.currentText()  #para el que despliega dos opciones
+        self.cb_min.currentText()  # para el que despliega dos opciones
 
         # cerrar sesion en usuario
         self.btn_cerrar_sesion.clicked.connect(self.back_to_login)
 
-        #Ventas (Abdo)
+        # Ventas (Abdo)
         self.fecha.setText(str(self.fecha_actual.date()))
         self.bot_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_int))
         self.bot_agregar.clicked.connect(self.cotizar_venta_producto)
@@ -216,8 +206,110 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.fechapedido = str(self.calendarWidget.clicked.connect(self.obtener_fecha_seleccionada))
         self.fecha_pedido.setText(str(self.fechapedido))
 
+        # -------------------- Generar cotizacion -------------------------------------------------------
+        self.btn_reCotizar.clicked.connect(self.realizarCotizacion)
 
+    def write_pdf(self, template, output, data_dict):
+        ANNOT_KEY = '/Annots'
+        ANNOT_FIELD_KEY = '/T'
+        ANNOT_VAL_KEY = '/V'
+        ANNOT_RECT_KEY = '/Rect'
+        SUBTYPE_KEY = '/Subtype'
+        WIDGET_SUBTYPE_KEY = '/Widget'
 
+        def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
+            template_pdf = pdfrw.PdfReader(input_pdf_path)
+
+            for page in template_pdf.pages:
+                annotations = page[ANNOT_KEY]
+
+                for annotation in annotations:
+                    if annotation[SUBTYPE_KEY] == WIDGET_SUBTYPE_KEY:
+                        if annotation[ANNOT_FIELD_KEY]:
+                            key = annotation[ANNOT_FIELD_KEY][1:-1]
+
+                            if key in data_dict.keys():
+                                if type(data_dict[key]) == bool:
+                                    if data_dict[key] == True:
+                                        annotation.update(pdfrw.PdfDict(AS=pdfrw.PdfName('Yes')))
+
+                                else:
+                                    annotation.update(pdfrw.PdfDict(V='{}'.format(data_dict[key])))
+                                    annotation.update(pdfrw.PdfDict(AP=''))
+
+            template_pdf.Root.AcroForm.update(pdfrw.PdfDict(NeedAppearances=pdfrw.PdfObject('true')))
+            pdfrw.PdfWriter().write(output_pdf_path, template_pdf)
+
+        fill_pdf(template, output, data_dict)
+        webbrowser.open_new(output)
+
+    def realizarCotizacion(self):
+        letras = string.ascii_uppercase
+        cadena = ''.join(random.choice(letras) for i in range(3))
+        numero = random.randint(0, 9)
+        try:
+            cot = cadena + str(numero)
+            codigo1 = self.cod_bus.text()
+            producto1 = self.nom_pro.text()
+            fecha_hoy = self.fecha.text()
+            # cantidad1 = self.spinBox.text()
+            cantidad1 = self.spinBox.value()
+            mayorista1 = self.p_unit_2.text()
+            minorista1 = self.p_unit.text()
+            total1 = self.monto_t.text()
+            #region = self.pedir2.text()
+            #print(region)
+            #finca = self.pedir3.text()
+            #estado = self.pedir4.text()
+            #tipo = self.pedir1.currentText()
+
+            if producto1 != '--Seleccionar--' and codigo1 != '--Seleccionar--':
+
+                # cantidad = int(self.cantidad_line.text())
+                cantidad = 3
+
+                if cantidad > 0:
+                    QMessageBox.about(self, 'Aviso', 'Se ha generado la cotización!')
+
+                    data_dict = {
+                        'Cotizacion': cot,
+                        'Fecha': fecha_hoy,
+                        'Cliente': '',
+                        'Cod1': codigo1,
+                        'Cod2': '',
+                        'Cod3': '',
+                        'Produ1': producto1,
+                        'Produ2': '',
+                        'Produ3': '',
+                        'Can1': cantidad1,
+                        'Can2': '',
+                        'Can3': '',
+                        'May1': mayorista1,
+                        'May2': '',
+                        'May3': '',
+                        'Min1': minorista1,
+                        'Min2': '',
+                        'Min3': '',
+                        'Total1': total1,
+                        'Total2': '',
+                        'Total3': ''
+
+                    }
+
+                    self.write_pdf('View/CotizaciónCliente.pdf', 'cotizacion_final.pdf', data_dict)
+
+                    #self.cantidad_line.clear()
+
+                else:
+                    raise Exception('Debe ser un valor mayor a 0')
+
+            else:
+                raise Exception('No se ha seleccionado uno de los parametros para la cotización.')
+
+        except Exception as e:
+            QMessageBox.critical(self, 'Error', str(e))
+
+    # -------------------- Generar cotizacion -------------------------------------------------------
 
     def cotizar_venta_producto(self):
         for valor in range(0, 10):
@@ -245,7 +337,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         # self.info.insertarVentaTransitoria(producto, cantidad, precio_und, anticipo, subtotal)
         self.registrar_venta.escribir_base_datos_transitoria(codigo, producto, cantidad, precio_und, anticipo, subtotal)
 
-        cnd_elem = self.info.elemtos_ventas() #Cantidad de elementos
+        cnd_elem = self.info.elemtos_ventas()  # Cantidad de elementos
         print(cnd_elem)
         item = self.boleta.item(cnd_elem - 1, 0)
         item.setText(_translate("MainWindow", producto))
@@ -271,8 +363,8 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.close()
         self.login.show()
         # Mostrar la ventana de login nuevamente
-        #login_window = Main_login()
-        #login_window.show()
+        # login_window = Main_login()
+        # login_window.show()
 
     def limpiar_provedor(self):
         self.nombre_proveedor.setText("")
@@ -310,6 +402,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
     def minimizar(self):
         self.showMinimized()
+
     # Metodos de la barra de arriba
     def restaurar(self):
         self.showNormal()
@@ -369,8 +462,6 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         # Almacenar la fecha seleccionada en una variable como date de datetime
         self.fecha_seleccionada = fecha_datetime
 
-
-
     def obetener_dados_codigo(self):
         # id_detalle - producto - fecha - entregado - sub_total - total - id_tipo - usuario_id - cliete_id
         precio_uni = ""
@@ -426,103 +517,6 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.lnx_anticipo.clear()
         self.label_sub_total.setText("")
         self.label_total.setText("")
-
-    def write_pdf(self, template, output, data_dict):
-        ANNOT_KEY = '/Annots'
-        ANNOT_FIELD_KEY = '/T'
-        ANNOT_VAL_KEY = '/V'
-        ANNOT_RECT_KEY = '/Rect'
-        SUBTYPE_KEY = '/Subtype'
-        WIDGET_SUBTYPE_KEY = '/Widget'
-
-        def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
-            template_pdf = pdfrw.PdfReader(input_pdf_path)
-
-            for page in template_pdf.pages:
-                annotations = page[ANNOT_KEY]
-
-                for annotation in annotations:
-                    if annotation[SUBTYPE_KEY] == WIDGET_SUBTYPE_KEY:
-                        if annotation[ANNOT_FIELD_KEY]:
-                            key = annotation[ANNOT_FIELD_KEY][1:-1]
-
-                            if key in data_dict.keys():
-                                if type(data_dict[key]) == bool:
-                                    if data_dict[key] == True:
-                                        annotation.update(pdfrw.PdfDict(AS=pdfrw.PdfName('Yes')))
-
-                                else:
-                                    annotation.update(pdfrw.PdfDict(V='{}'.format(data_dict[key])))
-                                    annotation.update(pdfrw.PdfDict(AP=''))
-
-            template_pdf.Root.AcroForm.update(pdfrw.PdfDict(NeedAppearances=pdfrw.PdfObject('true')))
-            pdfrw.PdfWriter().write(output_pdf_path, template_pdf)
-
-        fill_pdf(template, output, data_dict)
-        webbrowser.open_new(output)
-
-    def realizarCotizacion(self):
-        try:
-            region = self.region_box.currentText()
-            finca = self.finca_box.currentText()
-            estado = self.estado_box.currentText()
-            tipo = self.tipo_box.currentText()
-
-            if region != '--Seleccionar--' and finca != '--Seleccionar--' and estado != '--Seleccionar--' and tipo != '--Seleccionar--':
-
-                cantidad = int(self.cantidad_line.text())
-
-                if cantidad > 0:
-                    QMessageBox.about(self, 'Aviso', 'Se ha generado la cotización!')
-
-                    data_dict = {
-                        'Fecha': date.today(),
-                        'Numero': '0',
-                        'Cliente': '',
-                        'Nit': 'C/F',
-                        'Direccion': 'Ciudad',
-                        'Telefono': '',
-                        'Correo': '',
-                        'Producto': f"Café de {region}, finca {finca}, {estado}, {tipo}",
-                        'Producto1': '',
-                        'Producto3': '',
-                        'Producto4': '',
-                        'Producto5': '',
-                        'Producto2': '',
-                        'Precio1': '',
-                        'Precio2': '',
-                        'Precio3': '',
-                        'Precio4': '',
-                        'Precio5': '',
-                        'Unidades': cantidad,
-                        'Unidades1': '',
-                        'Unidades2': '',
-                        'Unidades3': '',
-                        'Unidades4': '',
-                        'Unidades5': '',
-                        'Precio': '',
-                        'Preciot': '',
-                        'Preciot1': '',
-                        'Preciot2': '',
-                        'Preciot3': '',
-                        'Preciot4': '',
-                        'Totalp': '',
-                        'Descuento': '',
-                        'Total': ''
-                    }
-
-                    self.write_pdf('cotizacion.pdf', 'cotizacion_final.pdf', data_dict)
-
-                    self.cantidad_line.clear()
-
-                else:
-                    raise Exception('Debe ser un valor mayor a 0')
-
-            else:
-                raise Exception('No se ha seleccionado uno de los parametros para la cotización.')
-
-        except Exception as e:
-            QMessageBox.critical(self, 'Error', str(e))
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

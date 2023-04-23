@@ -7,7 +7,7 @@ mi_matriz.append([7, 8, 9])
 
 for fila in mi_matriz:
     print(fila)
-"""
+
 import sys
 import webbrowser
 from datetime import date
@@ -116,7 +116,7 @@ class Test(QMainWindow, Ui_MainWindow):
                         'Total': ''
                     }
 
-                    self.write_pdf('cotizacion2.pdf', 'cotizacion_final.pdf', data_dict)
+                    self.write_pdf('cotizacion5.pdf', 'cotizacion_final.pdf', data_dict)
 
                     self.cantidad_line.clear()
 
@@ -135,3 +135,19 @@ if __name__ == '__main__':
     ventana = Test()
     ventana.show()
     sys.exit(app.exec_())
+"""
+from Crypto.Cipher import DES
+# Como usamos DES, los bloques son de 8 caracteres.
+# Rellenamos con espacios (que habra que eliminar al descifrar).
+usuario =  "John    "
+password = "Lennon  "
+# creamos el cifrador con DES
+cipher = DES.new('12345678')
+# ciframos usuario y password
+c_usuario = cipher.encrypt(usuario)
+c_password = cipher.encrypt(password)
+
+# enviamos credenciales (a la pantalla en este caso)
+print("El cliente envia:")
+print("Usuario: " + c_usuario)
+print("Password: " + c_password)
