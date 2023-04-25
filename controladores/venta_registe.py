@@ -22,10 +22,27 @@ class RegistrarVenta:
             if result:
                 return result
 
+    def get_venta_producto(self, producto):
+        self.conn = conecciones()
+        with self.conn.cursor() as cursor:
+            sql = "SELECT * FROM venta_transitoria WHERE producto = '"+producto+"'"
+            cursor.execute(sql)
+            result = cursor.fetchone()
+            if result:
+                return result
+
     def obtener_venta(self):
         self.conn = conecciones()
         with self.conn.cursor() as cursor:
             sql = """SELECT * FROM venta"""
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            return result
+
+    def obtener_venta_transitoria(self):
+        self.conn = conecciones()
+        with self.conn.cursor() as cursor:
+            sql = """SELECT * FROM venta_transitoria"""
             cursor.execute(sql)
             result = cursor.fetchall()
             return result
@@ -76,5 +93,12 @@ class RegistrarVenta:
     def limpiar_tabla(self):
         with self.conn.cursor() as cursor:
             sql = """TRUNCATE TABLE venta_transitoria"""
+            cursor.execute(sql)
+            self.conn.commit()
+
+    def eliminarventa(self, id):
+        self.conn = conecciones()
+        with self.conn.cursor() as cursor:
+            sql = "DELETE FROM `proyecto`.`venta_transitoria` WHERE id_venta = '"+id+"'"
             cursor.execute(sql)
             self.conn.commit()

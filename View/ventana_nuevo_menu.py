@@ -210,7 +210,6 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.bot_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_int))
         self.bot_agregar.clicked.connect(self.cotizar_venta_producto)
         self.generar_venta.clicked.connect(self.generar_tabla_venta)
-        self.bot_agregar_2.clicked.connect(self.eliminar_producto_tabla_transitoria)
         self.btn_limpiar.clicked.connect(self.eliminar_tabla_transitoria)
 
         self.fechapedido = str(self.calendarWidget.clicked.connect(self.obtener_fecha_seleccionada))
@@ -367,34 +366,30 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         # self.info.insertarVentaTransitoria(producto, cantidad, precio_und, anticipo, subtotal)
         self.registrar_venta.escribir_base_datos_transitoria(codigo, producto, cantidad, precio_und, anticipo, subtotal)
 
-        cnd_elem = self.info.elemtos_ventas()  # Cantidad de elementos
-        print(cnd_elem)
-        self.item = self.boleta.item(cnd_elem - 1, 0)
-        self.item.setText(_translate("MainWindow", producto))
-
-        self.item = self.boleta.item(cnd_elem - 1, 1)
-        self.item.setText(_translate("MainWindow", cantidad))
-
-        self.item = self.boleta.item(cnd_elem - 1, 2)
-
-        self.item.setText(_translate("MainWindow", precio_und))
-
-        self.item = self.boleta.item(cnd_elem - 1, 3)
-        self.item.setText(_translate("MainWindow", str(anticipo)))
-
-        self.item = self.boleta.item(cnd_elem - 1, 4)
-        self.item.setText(_translate("MainWindow", str(subtotal - int(anticipo))))
-
-        self.total_general.setText(str(self.info.monto_total(cnd_elem) - int(anticipo)))
+        # cnd_elem = self.info.elemtos_ventas()  # Cantidad de elementos
+        # print(cnd_elem)
+        # self.item = self.boleta.item(cnd_elem - 1, 0)
+        # self.item.setText(_translate("MainWindow", producto))
+        #
+        # self.item = self.boleta.item(cnd_elem - 1, 1)
+        # self.item.setText(_translate("MainWindow", cantidad))
+        #
+        # self.item = self.boleta.item(cnd_elem - 1, 2)
+        #
+        # self.item.setText(_translate("MainWindow", precio_und))
+        #
+        # self.item = self.boleta.item(cnd_elem - 1, 3)
+        # self.item.setText(_translate("MainWindow", str(anticipo)))
+        #
+        # self.item = self.boleta.item(cnd_elem - 1, 4)
+        # self.item.setText(_translate("MainWindow", str(subtotal - int(anticipo))))
+        #
+        # self.total_general.setText(str(self.info.monto_total(cnd_elem) - int(anticipo)))
 
 # ------------------------------------ELiminar datos de la tabla transitoria -------------------------------------
 
     def eliminar_tabla_transitoria(self):
         self.reg.delete_tabla()
-        print("Tabla borrada")
-# --------------------------------------Eliinar solo un roducto de la tabla transitoria --------------------------
-    def eliminar_producto_tabla_transitoria(self):
-        self.modelo_principal.eliminar_produc_tabla_transitoria(self.boleta)
 
     def back_to_login(self):
         # Cerrar la ventana actual

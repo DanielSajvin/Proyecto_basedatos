@@ -123,11 +123,9 @@ class RegistrarInventario:
     def delete_tabla(self):
         self.conn = conecciones()
         with self.conn.cursor() as cursor:
-            sql = "DELETE from venta_transitoria"
+            sql = "DELETE FROM `proyecto`.`venta_transitoria`"
             cursor.execute(sql)
-            result = cursor.fetchone()
-            if result:
-                return result
+            self.conn.commit()
 
     def getProduct(self, cod):
         self.conn = conecciones()

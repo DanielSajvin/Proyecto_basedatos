@@ -695,7 +695,7 @@ color: rgb(0,126,249);
 </string>
             </property>
             <property name="currentIndex">
-             <number>6</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="page_inventario">
              <layout class="QGridLayout" name="gridLayout">
@@ -2712,7 +2712,7 @@ QCalendarWidget QSpinBox{
                         </rect>
                        </property>
                        <property name="text">
-                        <string/>
+                        <string>0</string>
                        </property>
                       </widget>
                       <widget class="QLabel" name="label_24">
