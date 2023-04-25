@@ -695,7 +695,7 @@ color: rgb(0,126,249);
 </string>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>6</number>
             </property>
             <widget class="QWidget" name="page_inventario">
              <layout class="QGridLayout" name="gridLayout">
@@ -1594,14 +1594,14 @@ border: 1px solid rgb(0, 126, 249);
                       <attribute name="horizontalHeaderCascadingSectionResizes">
                        <bool>true</bool>
                       </attribute>
-                      <attribute name="horizontalHeaderMinimumSectionSize">
-                       <number>20</number>
-                      </attribute>
                       <attribute name="horizontalHeaderDefaultSectionSize">
                        <number>124</number>
                       </attribute>
                       <attribute name="horizontalHeaderHighlightSections">
                        <bool>true</bool>
+                      </attribute>
+                      <attribute name="horizontalHeaderMinimumSectionSize">
+                       <number>20</number>
                       </attribute>
                       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
                        <bool>false</bool>
@@ -1612,14 +1612,14 @@ border: 1px solid rgb(0, 126, 249);
                       <attribute name="verticalHeaderCascadingSectionResizes">
                        <bool>false</bool>
                       </attribute>
-                      <attribute name="verticalHeaderMinimumSectionSize">
-                       <number>100</number>
-                      </attribute>
                       <attribute name="verticalHeaderDefaultSectionSize">
                        <number>100</number>
                       </attribute>
                       <attribute name="verticalHeaderHighlightSections">
                        <bool>true</bool>
+                      </attribute>
+                      <attribute name="verticalHeaderMinimumSectionSize">
+                       <number>100</number>
                       </attribute>
                       <attribute name="verticalHeaderShowSortIndicator" stdset="0">
                        <bool>false</bool>
@@ -2237,11 +2237,11 @@ border: 1px solid rgb(0, 126, 249);
 }
 </string>
                          </property>
-                         <attribute name="horizontalHeaderMinimumSectionSize">
-                          <number>50</number>
-                         </attribute>
                          <attribute name="horizontalHeaderDefaultSectionSize">
                           <number>100</number>
+                         </attribute>
+                         <attribute name="horizontalHeaderMinimumSectionSize">
+                          <number>50</number>
                          </attribute>
                          <attribute name="verticalHeaderDefaultSectionSize">
                           <number>28</number>
@@ -4288,17 +4288,52 @@ border-radius: 5px;
              </layout>
             </widget>
             <widget class="QWidget" name="page_cotizacion">
-             <widget class="QPushButton" name="pushButton">
+             <widget class="QTableWidget" name="list_pedido">
               <property name="geometry">
                <rect>
-                <x>160</x>
-                <y>190</y>
-                <width>241</width>
-                <height>171</height>
+                <x>590</x>
+                <y>70</y>
+                <width>621</width>
+                <height>361</height>
+               </rect>
+              </property>
+              <column>
+               <property name="text">
+                <string>Cod. Cliente</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Nombre Cliente</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>No. Celular</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Fecha Entrega</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Entregado</string>
+               </property>
+              </column>
+             </widget>
+             <widget class="QPushButton" name="btn_mospedido">
+              <property name="geometry">
+               <rect>
+                <x>750</x>
+                <y>470</y>
+                <width>281</width>
+                <height>61</height>
                </rect>
               </property>
               <property name="text">
-               <string>Cotizacion</string>
+               <string>Mostrar Pedidos</string>
               </property>
              </widget>
             </widget>

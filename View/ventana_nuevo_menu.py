@@ -18,6 +18,7 @@ from controladores.Register import RegistrarInventario
 from controladores.cliente_register import RegistarCliente
 from controladores.detalle_register import RegistarDetalle
 from modelos.tabla_venta import ModeloVenta
+from modelos.tabla_pedido import ModeloPedido
 from PyQt5.uic import loadUiType
 from controladores.controlar_venta import BaseDatosInfo
 from controladores.venta_registe import RegistrarVenta
@@ -41,7 +42,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.registrar_detalle = RegistarDetalle()
         self.registrar_cliente = RegistarCliente()
         self.clietes_deben = self.registrar_cliente.clientes_deben()
-
+        self.pedido = ModeloPedido()
         self.registrar_venta = RegistrarVenta()
 
         self.reg = RegistrarInventario()
@@ -219,6 +220,10 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         # ----------------- Clientes en Ventas ---------------------
         self.btn_crear_cliente_v.clicked.connect(self.venta_cliente)
         self.btn_venta_c.clicked.connect(self.cliente_venta)
+
+        #-----------------Mostrar Pedidos-------------------
+        self.tabla_pedido = self.list_pedido
+        self.btn_mospedido.clicked.connect(lambda: self.pedido.listar_pedido(self.tabla_pedido))
 
     def venta_cliente(self):
         self.stackedWidget.setCurrentWidget(self.page_cliente)
