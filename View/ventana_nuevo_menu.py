@@ -214,6 +214,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.btn_limpiar.clicked.connect(self.eliminar_tabla_transitoria)
 
         self.fechapedido = str(self.calendarWidget.clicked.connect(self.obtener_fecha_seleccionada))
+        self.fecha_pedido.setText("")
         self.fecha_pedido.setText(str(self.fechapedido))
 
         # -------------------- Generar cotizacion -------------------------------------------------------
