@@ -205,12 +205,13 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
         # Ventas (Abdo)
         self.tabla_venta = self.boleta
-        self.btn_limpiar.clicked.connect(lambda: self.listar_venta_tabla.limpiar_tabla_venta(self.tabla_venta))
+        # self.btn_limpiar.clicked.connect(lambda: self.listar_venta_tabla.limpiar_tabla_venta(self.tabla_venta))
         self.fecha.setText(str(self.fecha_actual.date()))
         self.bot_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_int))
         self.bot_agregar.clicked.connect(self.cotizar_venta_producto)
         self.generar_venta.clicked.connect(self.generar_tabla_venta)
-        self.bot_agregar_2.clicked.connect(self.eliminar_tabla_transitoria)
+        self.bot_agregar_2.clicked.connect(self.eliminar_producto_tabla_transitoria)
+        self.btn_limpiar.clicked.connect(self.eliminar_tabla_transitoria)
 
         self.fechapedido = str(self.calendarWidget.clicked.connect(self.obtener_fecha_seleccionada))
         self.fecha_pedido.setText(str(self.fechapedido))
@@ -390,6 +391,10 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
     def eliminar_tabla_transitoria(self):
         self.reg.delete_tabla()
+        print("Tabla borrada")
+# --------------------------------------Eliinar solo un roducto de la tabla transitoria --------------------------
+    def eliminar_producto_tabla_transitoria(self):
+        self.modelo_principal.eliminar_produc_tabla_transitoria(self.boleta)
 
     def back_to_login(self):
         # Cerrar la ventana actual

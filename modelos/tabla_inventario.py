@@ -28,6 +28,17 @@ class ModeloPrincipal():
             for column_number, data in enumerate(row_data):
                 table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
+    def listar_productosTansitorios(self, tabla):
+        self.producto = RegistrarInventario()
+        table = tabla
+        productos = self.producto.\
+            obtener_productoTransitorio()
+        table.setRowCount(0)
+        for row_number, row_data in enumerate(productos):
+            table.insertRow(row_number)
+            for column_number, data in enumerate(row_data):
+                table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
+
     def mostrar_producto(self, tabla):
         self.producto = RegistrarInventario()
         table = tabla
@@ -75,10 +86,20 @@ class ModeloPrincipal():
         table = table
         if table.currentItem() != None:
             cod = table.currentItem().text()
-            product = self.producto.getProduct(cod)
+            product = self.producto.getProductTablaTransitoria(cod)
             if product:
-                self.producto.eliminarproducto(cod)
+                self.producto.eliminarproductoTransitorio(cod)
         self.listar_productos(table)
+
+    def eliminar_produc_tabla_transitoria(self, table):
+        self.producto = RegistrarInventario()
+        table = table
+        if table.currentItem() != None:
+            cod = table.currentItem().text()
+            product = self.producto.getProductTablaTransitoria(cod)
+            if product:
+                self.producto.eliminarproductoTransitorio(cod)
+        self.listar_productosTansitorios(table)
 
     def crearProducto(self, codigo, producto, existencia, precio_min, precio_may):
         self.producto = RegistrarInventario()
