@@ -135,7 +135,7 @@ if __name__ == '__main__':
     ventana = Test()
     ventana.show()
     sys.exit(app.exec_())
-"""
+
 from Crypto.Cipher import DES
 # Como usamos DES, los bloques son de 8 caracteres.
 # Rellenamos con espacios (que habra que eliminar al descifrar).
@@ -151,3 +151,21 @@ c_password = cipher.encrypt(password)
 print("El cliente envia:")
 print("Usuario: " + c_usuario)
 print("Password: " + c_password)
+"""
+
+import bcrypt
+
+pass_text = input('Ingresar contraseña: ')
+pass_text = pass_text.encode()
+print(pass_text)
+sal = bcrypt.gensalt()
+# print(sal)
+pass_segura = bcrypt.hashpw(pass_text, sal)
+print(pass_segura)
+
+if bcrypt.checkpw(pass_text, pass_segura):
+    print("CONTRASEÑA CORRECTA")
+else:
+    print("INCORRECTO")
+# b'$2b$12$2o8ju77UOT1z3K6s2.zDeO'
+# b'$2b$12$c/E8t.Vp4S0QThlC5lPm7O'

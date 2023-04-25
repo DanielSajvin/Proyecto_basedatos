@@ -7,6 +7,7 @@ from PyQt5 import uic, QtCore, QtWidgets
 #from ventana_nuevo_menu import Main_window_nuevo
 from server.conexion_sqlserver import conecciones
 from View.ventana_nuevo_menu import Main_window_nuevo
+import bcrypt
 
 
 class Main_login(QMainWindow):
@@ -38,10 +39,19 @@ class Main_login(QMainWindow):
         self.user = self.lnx_user.text()
         pw = self.lnx_password.text()
 
+        pw = pw.encode()
+        print(pw)
+        sal = bcrypt.gensalt()
+        # print(sal)
+        pass_segura = bcrypt.hashpw(pw, sal)
+        print(pass_segura)
+
+
+
         cursor = self.conn.cursor()
         cursor.execute("select * from usuario where usuario='"+self.user+"' and password ='"+pw+"'")
         result = cursor.fetchone()
-        if result:
+        if bcrypt.checkpw(pw, pass_segura):
             ventana_principal = Main_window_nuevo(self.user, Main_login())
             ventana_principal.show()
             self.hide()
@@ -67,10 +77,18 @@ class Main_login(QMainWindow):
         pw = self.lnx_password_2.text()
         pw_confirm = self.lnx_confirm_password.text()
 
-
         if pw == pw_confirm:
-            print("mandando datos")
-            self.reg.Insertar(cargo, nombre, apellido, user, pw)
+            # print("mandando datos")
+            # pass_text = input('Ingresar contraseña: ')
+            pw = pw.encode()
+            print(pw)
+            sal = bcrypt.gensalt()
+            # print(sal)
+            pass_segura = bcrypt.hashpw(pw, sal)
+            print(pass_segura.decode())
+            print(pass_segura)
+            self.reg.Insertar(cargo, nombre, apellido, user, pass_segura.decode())
 
         else:
             print("las contraseñas no coninciden")
+
