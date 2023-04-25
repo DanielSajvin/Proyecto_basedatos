@@ -31,3 +31,10 @@ class ModeloVenta():
         self.venta = RegistrarVenta()
         if producto and cantidad and precio_unitario and sub_total and anticipo and total and detalle_id:
             self.venta.insertarVenta(producto, cantidad, precio_unitario, sub_total, anticipo, total, detalle_id)
+
+    def limpiar_tabla_venta(self, table):
+        self.producto = RegistrarVenta()
+        table = table
+        if table.currentItem() != None:
+            self.producto.limpiar_tabla()
+        self.listar_venta(table)

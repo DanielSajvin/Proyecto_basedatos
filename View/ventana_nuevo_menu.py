@@ -204,6 +204,8 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.btn_cerrar_sesion.clicked.connect(self.back_to_login)
 
         # Ventas (Abdo)
+        self.tabla_venta = self.boleta
+        self.btn_limpiar.clicked.connect(lambda: self.listar_venta_tabla.limpiar_tabla_venta(self.tabla_venta))
         self.fecha.setText(str(self.fecha_actual.date()))
         self.bot_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_int))
         self.bot_agregar.clicked.connect(self.cotizar_venta_producto)

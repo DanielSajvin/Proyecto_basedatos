@@ -1594,14 +1594,14 @@ border: 1px solid rgb(0, 126, 249);
                       <attribute name="horizontalHeaderCascadingSectionResizes">
                        <bool>true</bool>
                       </attribute>
+                      <attribute name="horizontalHeaderMinimumSectionSize">
+                       <number>20</number>
+                      </attribute>
                       <attribute name="horizontalHeaderDefaultSectionSize">
                        <number>124</number>
                       </attribute>
                       <attribute name="horizontalHeaderHighlightSections">
                        <bool>true</bool>
-                      </attribute>
-                      <attribute name="horizontalHeaderMinimumSectionSize">
-                       <number>20</number>
                       </attribute>
                       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
                        <bool>false</bool>
@@ -1612,14 +1612,14 @@ border: 1px solid rgb(0, 126, 249);
                       <attribute name="verticalHeaderCascadingSectionResizes">
                        <bool>false</bool>
                       </attribute>
+                      <attribute name="verticalHeaderMinimumSectionSize">
+                       <number>100</number>
+                      </attribute>
                       <attribute name="verticalHeaderDefaultSectionSize">
                        <number>100</number>
                       </attribute>
                       <attribute name="verticalHeaderHighlightSections">
                        <bool>true</bool>
-                      </attribute>
-                      <attribute name="verticalHeaderMinimumSectionSize">
-                       <number>100</number>
                       </attribute>
                       <attribute name="verticalHeaderShowSortIndicator" stdset="0">
                        <bool>false</bool>
@@ -2237,11 +2237,11 @@ border: 1px solid rgb(0, 126, 249);
 }
 </string>
                          </property>
-                         <attribute name="horizontalHeaderDefaultSectionSize">
-                          <number>100</number>
-                         </attribute>
                          <attribute name="horizontalHeaderMinimumSectionSize">
                           <number>50</number>
+                         </attribute>
+                         <attribute name="horizontalHeaderDefaultSectionSize">
+                          <number>100</number>
                          </attribute>
                          <attribute name="verticalHeaderDefaultSectionSize">
                           <number>28</number>
@@ -4288,54 +4288,133 @@ border-radius: 5px;
              </layout>
             </widget>
             <widget class="QWidget" name="page_cotizacion">
-             <widget class="QTableWidget" name="list_pedido">
-              <property name="geometry">
-               <rect>
-                <x>590</x>
-                <y>70</y>
-                <width>621</width>
-                <height>361</height>
-               </rect>
-              </property>
-              <column>
-               <property name="text">
-                <string>Cod. Cliente</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Nombre Cliente</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>No. Celular</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Fecha Entrega</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Entregado</string>
-               </property>
-              </column>
-             </widget>
-             <widget class="QPushButton" name="btn_mospedido">
-              <property name="geometry">
-               <rect>
-                <x>750</x>
-                <y>470</y>
-                <width>281</width>
-                <height>61</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>Mostrar Pedidos</string>
-              </property>
-             </widget>
+             <layout class="QVBoxLayout" name="verticalLayout_24">
+              <item>
+               <widget class="QFrame" name="frame_35">
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+
+border-radius: 5px;
+
+
+}
+
+QPushButton:hover{
+
+background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+
+
+}
+QFrame{
+
+background-color: rgb(24, 30, 50);
+
+}
+QLabel{
+color: rgb(0,126,249);
+}
+QLineEdit{
+font: 77 10pt &quot;Gadugi&quot;;
+color: rgb(158, 161, 178);
+border-radius: 5px;
+}</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_28">
+                 <item>
+                  <widget class="QTableWidget" name="list_pedido">
+                   <property name="styleSheet">
+                    <string notr="true">QHeaderView
+{
+Fondo: transparente; 
+background-color: rgb(24, 30, 50);
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+}
+
+QHeaderView:hover
+{
+background-color: rgb(46, 51, 84);
+border-top-left-radius:20p;
+}
+QHeaderView:section
+{
+background-color: rgb(46, 51, 84);
+border-top-left-radius:20p;
+padding: 2px;
+font-size:11 pt;
+
+}
+QTableWidget{
+background-color: rgb(24, 30, 50);
+gridline-color: rgb(24, 30, 50);
+font-size: 11pt;
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+}
+QTableWidgetQTableCornerButton::section{
+background-color: rgb(46, 51, 84);
+border: 1px solid rgb(0,126,249);
+}
+QTableView QTableCornerButton::section {
+background-color: rgb(46, 51, 84);
+border: 1px solid rgb(0, 126, 249);
+}</string>
+                   </property>
+                   <column>
+                    <property name="text">
+                     <string>Cod. Cliente</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Nombre Cliente</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>No. Celular</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Fecha Entrega</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Entregado</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_mospedido">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>55</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Mostrar Pedidos</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
             </widget>
             <widget class="QWidget" name="page_venta_nuevo">
              <layout class="QVBoxLayout" name="verticalLayout_8">

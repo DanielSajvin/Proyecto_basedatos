@@ -73,3 +73,8 @@ class RegistrarVenta:
             cursor.execute(sql, (anticipo, codigo))
             self.conn.commit()
 
+    def limpiar_tabla(self):
+        with self.conn.cursor() as cursor:
+            sql = """TRUNCATE TABLE venta_transitoria"""
+            cursor.execute(sql)
+            self.conn.commit()
