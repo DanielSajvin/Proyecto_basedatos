@@ -5,6 +5,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5 import uic, QtCore, QtWidgets
 #from ventana_nuevo_menu import Main_window_nuevo
+from controladores.Register import RegistrarInventario
 from server.conexion_sqlserver import conecciones
 from View.ventana_nuevo_menu import Main_window_nuevo
 import bcrypt
@@ -12,6 +13,7 @@ import bcrypt
 
 class Main_login(QMainWindow):
     def __init__(self) -> None:
+        self.reg = RegistrarInventario()
         super(Main_login, self).__init__()
         uic.loadUi("View/loginUi.ui", self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
@@ -39,19 +41,19 @@ class Main_login(QMainWindow):
         self.user = self.lnx_user.text()
         pw = self.lnx_password.text()
 
-        pw = pw.encode()
-        print(pw)
-        sal = bcrypt.gensalt()
+        #pw = pw.encode()
+        # print(pw)
+        #sal = bcrypt.gensalt()
         # print(sal)
-        pass_segura = bcrypt.hashpw(pw, sal)
-        print(pass_segura)
+        # pass_segura = bcrypt.hashpw(pw, sal)
+        # print(pass_segura)
 
 
 
         cursor = self.conn.cursor()
         cursor.execute("select * from usuario where usuario='"+self.user+"' and password ='"+pw+"'")
         result = cursor.fetchone()
-        if bcrypt.checkpw(pw, pass_segura):
+        if result:
             ventana_principal = Main_window_nuevo(self.user, Main_login())
             ventana_principal.show()
             self.hide()
@@ -70,6 +72,7 @@ class Main_login(QMainWindow):
 
     def registrar(self):
         print("intentando registrar")
+
         nombre = self.lnx_1nombre.text()
         apellido = self.lnx_2nombre.text()
         user = self.lnx_usuario.text()

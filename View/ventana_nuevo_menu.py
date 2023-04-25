@@ -209,6 +209,17 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         # -------------------- Generar cotizacion -------------------------------------------------------
         self.btn_reCotizar.clicked.connect(self.realizarCotizacion)
 
+
+        # ----------------- Clientes en Ventas ---------------------
+        self.btn_crear_cliente_v.clicked.connect(self.venta_cliente)
+        self.btn_venta_c.clicked.connect(self.cliente_venta)
+
+    def venta_cliente(self):
+        self.stackedWidget.setCurrentWidget(self.page_cliente)
+
+    def cliente_venta(self):
+        self.stackedWidget.setCurrentWidget(self.page_venta)
+
     def write_pdf(self, template, output, data_dict):
         ANNOT_KEY = '/Annots'
         ANNOT_FIELD_KEY = '/T'

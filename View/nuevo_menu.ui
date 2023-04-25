@@ -695,7 +695,7 @@ color: rgb(0,126,249);
 </string>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="page_inventario">
              <layout class="QGridLayout" name="gridLayout">
@@ -1594,14 +1594,14 @@ border: 1px solid rgb(0, 126, 249);
                       <attribute name="horizontalHeaderCascadingSectionResizes">
                        <bool>true</bool>
                       </attribute>
+                      <attribute name="horizontalHeaderMinimumSectionSize">
+                       <number>20</number>
+                      </attribute>
                       <attribute name="horizontalHeaderDefaultSectionSize">
                        <number>124</number>
                       </attribute>
                       <attribute name="horizontalHeaderHighlightSections">
                        <bool>true</bool>
-                      </attribute>
-                      <attribute name="horizontalHeaderMinimumSectionSize">
-                       <number>20</number>
                       </attribute>
                       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
                        <bool>false</bool>
@@ -1612,14 +1612,14 @@ border: 1px solid rgb(0, 126, 249);
                       <attribute name="verticalHeaderCascadingSectionResizes">
                        <bool>false</bool>
                       </attribute>
+                      <attribute name="verticalHeaderMinimumSectionSize">
+                       <number>100</number>
+                      </attribute>
                       <attribute name="verticalHeaderDefaultSectionSize">
                        <number>100</number>
                       </attribute>
                       <attribute name="verticalHeaderHighlightSections">
                        <bool>true</bool>
-                      </attribute>
-                      <attribute name="verticalHeaderMinimumSectionSize">
-                       <number>100</number>
                       </attribute>
                       <attribute name="verticalHeaderShowSortIndicator" stdset="0">
                        <bool>false</bool>
@@ -2237,11 +2237,11 @@ border: 1px solid rgb(0, 126, 249);
 }
 </string>
                          </property>
-                         <attribute name="horizontalHeaderDefaultSectionSize">
-                          <number>100</number>
-                         </attribute>
                          <attribute name="horizontalHeaderMinimumSectionSize">
                           <number>50</number>
+                         </attribute>
+                         <attribute name="horizontalHeaderDefaultSectionSize">
+                          <number>100</number>
                          </attribute>
                          <attribute name="verticalHeaderDefaultSectionSize">
                           <number>28</number>
@@ -3370,6 +3370,19 @@ border-radius: 5px;
                    </property>
                    <property name="text">
                     <string>Deudas</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_venta_c">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Venta</string>
                    </property>
                   </widget>
                  </item>
