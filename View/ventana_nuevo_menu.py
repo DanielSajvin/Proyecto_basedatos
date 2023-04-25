@@ -205,6 +205,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
         # Ventas (Abdo)
         self.tabla_venta = self.boleta
+        self.bot_agregar_2.clicked.connect(lambda: self.listar_venta_tabla.eliminar_produc(self.tabla_venta))
         # self.btn_limpiar.clicked.connect(lambda: self.listar_venta_tabla.limpiar_tabla_venta(self.tabla_venta))
         self.fecha.setText(str(self.fecha_actual.date()))
         self.bot_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_int))
@@ -365,6 +366,9 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         subtotal = int(cantidad) * float(precio_und)
         # self.info.insertarVentaTransitoria(producto, cantidad, precio_und, anticipo, subtotal)
         self.registrar_venta.escribir_base_datos_transitoria(codigo, producto, cantidad, precio_und, anticipo, subtotal)
+
+        self.tabla_transitoria_venta = self.boleta
+        self.listar_venta_tabla.listar_venta_transitorio(self.tabla_transitoria_venta)
 
         # cnd_elem = self.info.elemtos_ventas()  # Cantidad de elementos
         # print(cnd_elem)

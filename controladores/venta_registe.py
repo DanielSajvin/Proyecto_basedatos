@@ -22,6 +22,16 @@ class RegistrarVenta:
             if result:
                 return result
 
+    def get_codigo_transitoria(self, cod):
+        self.conn = conecciones()
+        with self.conn.cursor() as cursor:
+            sql = "SELECT * FROM venta_transitoria WHERE id_venta = '"+cod+"'"
+            cursor.execute(sql)
+            result = cursor.fetchone()
+            if result:
+                return result
+
+
     def get_venta_producto(self, producto):
         self.conn = conecciones()
         with self.conn.cursor() as cursor:

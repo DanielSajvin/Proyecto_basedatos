@@ -57,7 +57,8 @@ class ModeloVenta():
         if table.currentItem() != None:
             cod = table.currentItem().text()
             print(f"este es el codigo a eliminar en venta: {cod}")
-            product = self.venta.get_codigo(cod)
+            product = self.venta.get_codigo_transitoria(cod)
             if product:
                 self.venta.eliminarventa(cod)
         self.listar_venta_transitorio(table)
+
