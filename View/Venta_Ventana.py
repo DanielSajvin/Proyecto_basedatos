@@ -1,6 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from datetime import date
-
 import controladores.Register
 from controladores.Register import *
 from modelos.tabla_inventario import *
@@ -11,7 +10,7 @@ from modelos.tabla_inventario import *
 class Ui_VENTANA(object):
     def setupUi(self, VENTANA):
         self.modelo_principal = ModeloPrincipal()
-        self.registar = RegistrarInventario()
+        self.registrar = RegistrarInventario()
         VENTANA.setObjectName("VENTANA")
         VENTANA.setEnabled(True)
         VENTANA.resize(859, 728)
@@ -80,8 +79,6 @@ class Ui_VENTANA(object):
         self.Lab.setReadOnly(True)
         self.Lab.setObjectName("Lab")
         self.p_unit = QtWidgets.QLineEdit(self.centralwidget)
-        self.p_unit.setGeometry(QtCore.QRect(550, 70, 91, 21))
-        self.p_unit.setReadOnly(True)
         self.p_unit.setObjectName("p_unit")
         self.monto_t = QtWidgets.QLineEdit(self.centralwidget)
         self.monto_t.setGeometry(QtCore.QRect(650, 70, 113, 21))
@@ -537,6 +534,7 @@ class Ui_VENTANA(object):
         self.bot_agregar_2.setGeometry(QtCore.QRect(660, 680, 71, 31))
         self.bot_agregar_2.setObjectName("bot_agregar_2")
         VENTANA.setCentralWidget(self.centralwidget)
+
         self.bot_agregar_2.clicked.connect(self.accion)
 
         self.retranslateUi(VENTANA)
@@ -544,16 +542,21 @@ class Ui_VENTANA(object):
 
     def accion(self):
         for valor in range(0, 10):
-            if self.registar.get_codigo(valor) == self.cod_bus.text():
-                product = self.registrar_usuario.ge(valor)
+            if  str(valor) == self.cod_bus.text():
+                print(valor)
+                product = self.registrar.getProduct(valor)
+                print(product[4])
                 self.nom_pro.setText(product[2])
-                self.p_unit.setText(base_datos(product[4]))
+                self.p_unit.setText(str(product[4]))
+                self.Lab.setText(str(product[3]))
                 cant = self.spinBox.text()
                 monto_und = int(product[4]) * int(cant)
                 if (int(cant) > 0):
                     self.monto_t.setText(str(monto_und) + ".00")
                 else:
                     self.monto_t.setText(".00")
+            else:
+                print(f"{valor} No se encontro")
 
     def generar_venta(self):
         _translate = QtCore.QCoreApplication.translate
@@ -582,9 +585,9 @@ class Ui_VENTANA(object):
         self.label.setText(_translate("VENTANA", "EXISTENCIAS"))
         self.label_2.setText(_translate("VENTANA", "Codigo"))
         self.label_3.setText(_translate("VENTANA", "Nombre Producto"))
-        self.label_4.setText(_translate("VENTANA", "Presentación"))
+        self.label_4.setText(_translate("VENTANA", "Existencias"))
         self.label_5.setText(_translate("VENTANA", "Cantidad"))
-        self.label_6.setText(_translate("VENTANA", "P.Unitario"))
+        self.label_6.setText(_translate("VENTANA", "P.Minorista"))
         self.label_7.setText(_translate("VENTANA", "Monto Total"))
         self.tabla_int.setSortingEnabled(False)
         item = self.tabla_int.verticalHeaderItem(0)
@@ -850,7 +853,7 @@ class Ui_VENTANA(object):
         self.label_21.setText(_translate("VENTANA", "Total"))
         self.label_10.setText(_translate("VENTANA", "Codigo"))
         self.cod_bus_2.setPlaceholderText(_translate("VENTANA", "ffff"))
-        self.bot_agregar_2.setText(_translate("VENTANA", "Eliminar"))
+        self.bot_agregar_2.setText(_translate("VENTANA", "Agregar"))
 
 
 if __name__ == "__main__":

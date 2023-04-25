@@ -111,6 +111,24 @@ class RegistrarInventario:
             if result:
                 return result
 
+    def get_code_by_product(self, product):
+        self.conn = conecciones()
+        with self.conn.cursor() as cursor:
+            sql = "SELECT Id_inventario FROM inventario WHERE producto = '"+product+"'"
+            cursor.execute(sql)
+            result = cursor.fetchone()
+            if result:
+                return result
+
+    def delete_tabla(self):
+        self.conn = conecciones()
+        with self.conn.cursor() as cursor:
+            sql = "DELETE from venta_transitoria"
+            cursor.execute(sql)
+            result = cursor.fetchone()
+            if result:
+                return result
+
     def getProduct(self, cod):
         self.conn = conecciones()
         with self.conn.cursor() as cursor:

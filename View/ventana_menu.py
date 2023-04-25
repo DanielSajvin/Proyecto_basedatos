@@ -163,7 +163,7 @@ class Main_window(QMainWindow):
 
 
         self.producto = self.label_nombre.text()
-        self.fecha = self.fecha_actual.date()
+        self.Fecha = self.fecha_actual.date()
         self.entregado = "Si"
         self.sub_total = self.label_sub_total.text()
         self.total = self.label_total.text()
@@ -171,6 +171,8 @@ class Main_window(QMainWindow):
         self.usuario_id = 1
         self.cliente_id = self.cliente_id
 
+        # Ventas (Abdo)
+        self.fecha.setText(self.Fecha)
 
 
 

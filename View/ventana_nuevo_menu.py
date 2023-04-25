@@ -3,6 +3,7 @@ import os
 import datetime
 import webbrowser
 from datetime import datetime
+from typing import TypeVar
 
 import pdfrw
 from PyQt5.QtWidgets import *
@@ -27,7 +28,7 @@ import string
 
 Ui_MainWindow, QMainWindow = loadUiType('View/nuevo_menu.ui')
 
-
+T = TypeVar('T')
 class Main_window_nuevo(QMainWindow, Ui_MainWindow):
     def __init__(self, user, main_login) -> None:
         _translate = QtCore.QCoreApplication.translate
@@ -52,6 +53,10 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.login = main_login
 
         self.fecha_actual = datetime.now()
+
+
+        #Tabla
+        self.item: T = None
 
         super().__init__()
 
@@ -202,6 +207,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.bot_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_int))
         self.bot_agregar.clicked.connect(self.cotizar_venta_producto)
         self.generar_venta.clicked.connect(self.generar_tabla_venta)
+        self.bot_agregar_2.clicked.connect(self.eliminar_tabla_transitoria)
 
         self.fechapedido = str(self.calendarWidget.clicked.connect(self.obtener_fecha_seleccionada))
         self.fecha_pedido.setText(str(self.fechapedido))
@@ -260,7 +266,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         numero = random.randint(0, 9)
         try:
             cot = cadena + str(numero)
-            codigo1 = self.cod_bus.text()
+
             producto1 = self.nom_pro.text()
             fecha_hoy = self.fecha.text()
             # cantidad1 = self.spinBox.text()
@@ -268,6 +274,11 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
             mayorista1 = self.p_unit_2.text()
             minorista1 = self.p_unit.text()
             total1 = self.monto_t.text()
+            cnd_elem = self.info.elemtos_ventas()
+            codigo1 = self.reg.get_code_by_product(self.boleta.item(cnd_elem - 3, 0).text())
+            codigo2 = self.reg.get_code_by_product(self.boleta.item(cnd_elem - 2, 0).text())
+            codigo3 = self.reg.get_code_by_product(self.boleta.item(cnd_elem - 1, 0).text())
+
             #region = self.pedir2.text()
             #print(region)
             #finca = self.pedir3.text()
@@ -286,24 +297,24 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
                         'Cotizacion': cot,
                         'Fecha': fecha_hoy,
                         'Cliente': '',
-                        'Cod1': codigo1,
-                        'Cod2': '',
-                        'Cod3': '',
-                        'Produ1': producto1,
-                        'Produ2': '',
-                        'Produ3': '',
-                        'Can1': cantidad1,
-                        'Can2': '',
-                        'Can3': '',
-                        'May1': mayorista1,
-                        'May2': '',
-                        'May3': '',
-                        'Min1': minorista1,
+                        'Cod1': codigo1[0],
+                        'Cod2': codigo2[0],
+                        'Cod3': codigo3[0],
+                        'Produ1': self.boleta.item(cnd_elem - 3, 0).text(),
+                        'Produ2': self.boleta.item(cnd_elem - 2, 0).text(),
+                        'Produ3': self.boleta.item(cnd_elem - 1, 0).text(),
+                        'Can1': self.boleta.item(cnd_elem - 3, 1).text(),
+                        'Can2': self.boleta.item(cnd_elem - 2, 1).text(),
+                        'Can3': self.boleta.item(cnd_elem - 1, 1).text(),
+                        'May1': self.boleta.item(cnd_elem - 3, 2).text(),
+                        'May2': self.boleta.item(cnd_elem - 2, 2).text(),
+                        'May3': self.boleta.item(cnd_elem - 1, 2).text(),
+                        'Min1': '',
                         'Min2': '',
                         'Min3': '',
-                        'Total1': total1,
-                        'Total2': '',
-                        'Total3': ''
+                        'Total1': self.boleta.item(cnd_elem - 3, 4).text(),
+                        'Total2': self.boleta.item(cnd_elem - 2, 4).text(),
+                        'Total3': self.boleta.item(cnd_elem - 1, 4).text()
 
                     }
 
@@ -350,24 +361,28 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
         cnd_elem = self.info.elemtos_ventas()  # Cantidad de elementos
         print(cnd_elem)
-        item = self.boleta.item(cnd_elem - 1, 0)
-        item.setText(_translate("MainWindow", producto))
+        self.item = self.boleta.item(cnd_elem - 1, 0)
+        self.item.setText(_translate("MainWindow", producto))
 
-        item = self.boleta.item(cnd_elem - 1, 1)
-        item.setText(_translate("MainWindow", cantidad))
+        self.item = self.boleta.item(cnd_elem - 1, 1)
+        self.item.setText(_translate("MainWindow", cantidad))
 
-        item = self.boleta.item(cnd_elem - 1, 2)
-        print(item)
-        item.setText(_translate("MainWindow", precio_und))
+        self.item = self.boleta.item(cnd_elem - 1, 2)
 
-        item = self.boleta.item(cnd_elem - 1, 3)
-        print(item)
-        item.setText(_translate("MainWindow", str(anticipo)))
+        self.item.setText(_translate("MainWindow", precio_und))
 
-        item = self.boleta.item(cnd_elem - 1, 4)
-        item.setText(_translate("MainWindow", str(subtotal - int(anticipo))))
+        self.item = self.boleta.item(cnd_elem - 1, 3)
+        self.item.setText(_translate("MainWindow", str(anticipo)))
+
+        self.item = self.boleta.item(cnd_elem - 1, 4)
+        self.item.setText(_translate("MainWindow", str(subtotal - int(anticipo))))
 
         self.total_general.setText(str(self.info.monto_total(cnd_elem) - int(anticipo)))
+
+# ------------------------------------ELiminar datos de la tabla transitoria -------------------------------------
+
+    def eliminar_tabla_transitoria(self):
+        self.reg.delete_tabla()
 
     def back_to_login(self):
         # Cerrar la ventana actual
