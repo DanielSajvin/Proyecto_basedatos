@@ -695,7 +695,7 @@ color: rgb(0,126,249);
 </string>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="page_inventario">
              <layout class="QGridLayout" name="gridLayout">
@@ -2594,7 +2594,7 @@ border-radius: 5px;
                        <property name="geometry">
                         <rect>
                          <x>0</x>
-                         <y>20</y>
+                         <y>10</y>
                          <width>401</width>
                          <height>251</height>
                         </rect>
@@ -2902,9 +2902,9 @@ font: 75 12pt&quot;Times New Roman&quot;;</string>
                       <widget class="QLabel" name="label_28">
                        <property name="geometry">
                         <rect>
-                         <x>410</x>
-                         <y>250</y>
-                         <width>71</width>
+                         <x>340</x>
+                         <y>270</y>
+                         <width>61</width>
                          <height>21</height>
                         </rect>
                        </property>
@@ -2941,10 +2941,10 @@ font: 75 12pt&quot;Times New Roman&quot;;</string>
                       <widget class="QPushButton" name="bot_agregar_2">
                        <property name="geometry">
                         <rect>
-                         <x>510</x>
-                         <y>260</y>
+                         <x>490</x>
+                         <y>270</y>
                          <width>71</width>
-                         <height>31</height>
+                         <height>21</height>
                         </rect>
                        </property>
                        <property name="text">
@@ -2968,6 +2968,32 @@ font: 75 12pt&quot;Times New Roman&quot;;</string>
                        </property>
                        <property name="readOnly">
                         <bool>true</bool>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="btn_listar_tabla_v">
+                       <property name="geometry">
+                        <rect>
+                         <x>570</x>
+                         <y>270</y>
+                         <width>71</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>Listar</string>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="btn_limpiar">
+                       <property name="geometry">
+                        <rect>
+                         <x>250</x>
+                         <y>270</y>
+                         <width>71</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>Limpiar</string>
                        </property>
                       </widget>
                      </widget>
