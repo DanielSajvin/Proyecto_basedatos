@@ -40,8 +40,8 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.registrar_usuario = RegistrarInventario()
         self.listar_venta_tabla = ModeloVenta()
         self.registrar_detalle = RegistarDetalle()
-        self.registrar_cliente = RegistarCliente()
-        self.clietes_deben = self.registrar_cliente.clientes_deben()
+        self.registrar_cliente_c = RegistarCliente()
+        self.clietes_deben = self.registrar_cliente_c.clientes_deben()
         self.pedido = ModeloPedido()
         self.registrar_venta = RegistrarVenta()
 
@@ -49,11 +49,12 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
         self.info = BaseDatosInfo()
 
-        self.cliente_id = self.registrar_cliente.obtener_ultimo_id_cliente()
+        self.cliente_id = self.registrar_cliente_c.obtener_ultimo_id_cliente()
         # self.registrar_cliente.clientes_deben()
         self.login = main_login
 
         self.fecha_actual = datetime.now()
+
 
 
         #Tabla
@@ -62,10 +63,13 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         super().__init__()
 
         self.user = user
+
         # Conectar interfaz grafica
         self.setupUi(self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+
+        #self.fecha_pedido.setText("")
 
         # Tabla
         # item = self.tabla_int.item(0, 0)
@@ -162,19 +166,20 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
         self.calendario_pedido.clicked.connect(self.obtener_fecha_seleccionada)
 
+
         self.btn_pedido.clicked.connect(lambda: self.modelo_detalle.creardetalle(
             self.fecha_seleccionada,
             "no",
             1,
             self.id_usuario,
-            self.cliente_id))
+            self.obtener_ciente))
 
         self.btn_agregar_venta.clicked.connect(lambda: self.modelo_detalle.creardetalle(
             self.fecha_actual.date(),
             "si",
             1,
             self.id_usuario,
-            self.cliente_id))
+            self.obtener_ciente))
         # Tabla y datos proveedor
         # listar datos de proveedor
         self.tabla_proveedor = self.tabla_listar_proveedor
@@ -204,17 +209,31 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.btn_cerrar_sesion.clicked.connect(self.back_to_login)
 
         # Ventas (Abdo)
+        self.tabla_transitoria_venta = self.boleta
         self.tabla_venta = self.boleta
         self.bot_agregar_2.clicked.connect(lambda: self.listar_venta_tabla.eliminar_produc(self.tabla_venta))
         # self.btn_limpiar.clicked.connect(lambda: self.listar_venta_tabla.limpiar_tabla_venta(self.tabla_venta))
         self.fecha.setText(str(self.fecha_actual.date()))
         self.bot_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_int))
-        self.bot_agregar.clicked.connect(self.cotizar_venta_producto)
+        self.btn_listar_tabla_v.clicked.connect(lambda: self.listar_venta_tabla.listar_venta_transitorio(self.tabla_transitoria_venta))
+        # self.bot_agregar.clicked.connect(self.cotizar_venta_producto)
+        self.bot_agregar.clicked.connect(self.obetener_dados_codigo)
+        self.btn_calcular.clicked.connect(self.guardar_datos_venta)
         self.generar_venta.clicked.connect(self.generar_tabla_venta)
         self.btn_limpiar.clicked.connect(self.eliminar_tabla_transitoria)
 
+        # Ventas (Angel)
+        self.terminar.clicked.connect(self.guardad_venta_f)
+
+        self.terminar.clicked.connect(self.guardar_datos_venta_f)
+
         self.fechapedido = str(self.calendarWidget.clicked.connect(self.obtener_fecha_seleccionada))
-        self.fecha_pedido.setText("")
+
+
+        # -------------------------------------------------------
+        # -------------------------------------------------------
+        # -------------------------------------------------------
+        # ----------------------- Cambiar para que no salga la ubicacion de memoria --------------------------------
         self.fecha_pedido.setText(str(self.fechapedido))
 
         # -------------------- Generar cotizacion -------------------------------------------------------
@@ -228,6 +247,60 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         #-----------------Mostrar Pedidos-------------------
         self.tabla_pedido = self.list_pedido
         self.btn_mospedido.clicked.connect(lambda: self.pedido.listar_pedido(self.tabla_pedido))
+
+    def guardad_venta_f(self):
+        id = self.obtener_ciente()
+        id_cliente = id[0]
+        print(f"este es el id del cliente: {id}")
+        pedido = self.fecha_pedido.text()
+
+        if str(self.fecha_actual.date()) == pedido:
+
+            self.modelo_detalle.creardetalle(
+                self.fecha_actual.date(),
+                "si",
+                1,
+                self.id_usuario,
+                id_cliente)
+
+        else:
+            self.modelo_detalle.creardetalle(
+                self.fecha_seleccionada,
+                "no",
+                1,
+                self.id_usuario,
+                id_cliente)
+
+    def guardar_datos_venta_f(self):
+        cursor = self.registrar_venta.obtener_venta_transitoria()
+        id_ventas = []
+        codigos = []
+        productos = []
+        cantidades = []
+        precios = []
+        sub_totales = []
+        anticipos = []
+        totales = []
+
+        # Recorrer los resultados de la consulta y agregar los valores a las listas
+        for (id_venta, codigo, producto, cantidad, precio, sub_total, anticipo, total) in cursor:
+            id_ventas.append(id_venta)
+            codigos.append(codigo)
+            productos.append(producto)
+            cantidades.append(cantidad)
+            precios.append(precio)
+            sub_totales.append(sub_total)
+            anticipos.append(anticipo)
+            totales.append(total)
+
+        ventas = zip(id_ventas, codigos, productos, cantidades, precios, sub_totales, anticipos, totales)
+        id_detalle = self.registrar_detalle.obtener_ultimo_id()
+        for venta in ventas:
+            self.listar_venta_tabla.transicion_vt_a_v(id_detalle, *venta)
+
+        # Cerrar el cursor y la conexión a la base de datos
+        #self.listar_venta_tabla.crearventa()
+        #pass
 
     def venta_cliente(self):
         self.stackedWidget.setCurrentWidget(self.page_cliente)
@@ -365,8 +438,12 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         precio_und = self.p_unit.text()
         anticipo = self.vendedor.text()
         subtotal = int(cantidad) * float(precio_und)
+        ant = self.vendedor.text()
+        ant = int(ant)
+        total = subtotal - ant
         # self.info.insertarVentaTransitoria(producto, cantidad, precio_und, anticipo, subtotal)
-        self.registrar_venta.escribir_base_datos_transitoria(codigo, producto, cantidad, precio_und, anticipo, subtotal)
+        self.registrar_venta.escribir_base_datos_transitoria(codigo, producto, cantidad,
+                                                             precio_und, anticipo, subtotal, total)
 
         self.tabla_transitoria_venta = self.boleta
         self.listar_venta_tabla.listar_venta_transitorio(self.tabla_transitoria_venta)
@@ -417,7 +494,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
     # metodo para dessabilitar segun el cargo
     def desabilitar(self):
-        self.btn_venta_nuevo.setVisible(False)
+        self.btn_venta_nuevo.setVisible(True)
         if self.tipo_usuario == "Empleado":
             self.btn_inventario.setVisible(False)
             self.btn_proveedor.setVisible(False)
@@ -461,6 +538,11 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.lnx_id_cd.setText("")
         self.lnx_pago_cd.setText("")
 
+    def obtener_ciente(self):
+        self.cliente_id_c = self.cliente.text()
+        print(f"este es el nombre del cliente: {self.cliente_id_c}")
+        self.id_cliente = self.registrar_cliente_c.get_c_nombre(self.cliente_id_c)
+        return self.id_cliente
     # Metodos pra conectar un boton con su pagina correspondiente
     def pagina_cotizacion(self):
         self.stackedWidget.setCurrentWidget(self.page_cotizacion)
@@ -503,28 +585,29 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
     def obetener_dados_codigo(self):
         # id_detalle - producto - fecha - entregado - sub_total - total - id_tipo - usuario_id - cliete_id
         precio_uni = ""
-        cod = self.lnx_op_codigo.text()
+        cod = self.cod_bus.text()
 
         product = self.registrar_usuario.obtener_por_codigo(cod)
         print(product)
-        if self.cb_min.currentText() == 'Minorista':
+        if self.turno.currentText() == 'Minorista':
             precio_uni = product[4]
-        elif self.cb_min.currentText() == 'Mayorista':
+        elif self.turno.currentText() == 'Mayorista':
             precio_uni = product[5]
 
         costo = str(precio_uni)
         nombre = product[2]
-        self.label_nombre.setText(str(nombre))
-        self.label_costo.setText(str(costo))
+        existencias = product[3]
+        self.nom_pro.setText(str(nombre))
+        self.p_unit.setText(str(costo))
+        self.Lab.setText(str(existencias))
         return precio_uni
 
     def guardar_datos_venta(self):
         # id_detalle - producto - fecha - entregado - sub_total - total - id_tipo - usuario_id - cliete_id
-        print("Visualisando datos")
-        cantidad = self.label_cantidad.text()
-        anticipo = self.lnx_anticipo.text()
+        cantidad = self.spinBox.value()
+        anticipo = self.vendedor.text()
         anticipo = float(anticipo)
-        print(f"anticipo:{anticipo}")
+        # print(f"anticipo:{anticipo}")
 
         precio_uni = self.obetener_dados_codigo()
         precio = precio_uni
@@ -533,8 +616,8 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
         total = sub_total - anticipo
 
-        self.label_sub_total.setText(str(sub_total))
-        self.label_total.setText(str(total))
+        self.lnx_sub_total.setText(str(sub_total))
+        self.monto_t.setText(str(total))
 
     def mandar_datos_tabla_venta(self):
         # id_detalle - producto - fecha - entregado - sub_total - total - id_tipo - usuario_id - cliete_id

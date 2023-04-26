@@ -24,6 +24,7 @@ class ModeloVenta():
 
         venta = self.venta.\
             obtener_venta_transitoria()
+
         table.setRowCount(0)
         for row_number, row_data in enumerate(venta):
             table.insertRow(row_number)
@@ -56,9 +57,14 @@ class ModeloVenta():
         table = table
         if table.currentItem() != None:
             cod = table.currentItem().text()
-            print(f"este es el codigo a eliminar en venta: {cod}")
+
             product = self.venta.get_codigo_transitoria(cod)
             if product:
                 self.venta.eliminarventa(cod)
         self.listar_venta_transitorio(table)
 
+    def transicion_vt_a_v(self, id_detalle, id_ventas_tansitoria, codigos, productos, cantidades, precios, sub_totales,
+                          anticipos, totales):
+        self.venta = RegistrarVenta()
+
+        self.venta.insertarVenta(productos, cantidades, precios, sub_totales, anticipos, totales, id_detalle)

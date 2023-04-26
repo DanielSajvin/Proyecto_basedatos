@@ -82,14 +82,14 @@ class RegistrarVenta:
             count = count + 1
         return count
 
-    def escribir_base_datos_transitoria(self, codigo, producto, cantidad, precio, anticipo, total):
+    def escribir_base_datos_transitoria(self, codigo, producto, cantidad, precio, sub_total, anticipo, total):
         self.conn = conecciones()
         id = self.obtener_id_transitoria()
         with self.conn.cursor() as cursor:
-            sql = """INSERT INTO `proyecto`.`venta_transitoria` (`id_venta`, `codigo`, `producto`, `cantidad`, `precio`, `anticipo`, `total`)
-            VALUES (%s, %s, %s, %s, %s, %s, %s)"""  # Corregir comillas simples a comillas invertidas
+            sql = """INSERT INTO `proyecto`.`venta_transitoria` (`id_venta`, `codigo`, `producto`, `cantidad`, `precio`,`sub_total`, `anticipo`, `total`)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"""  # Corregir comillas simples a comillas invertidas
             try:
-                cursor.execute(sql, (id, codigo, producto, cantidad, precio, anticipo, total))
+                cursor.execute(sql, (id, codigo, producto, cantidad, precio, sub_total ,anticipo, total))
                 self.conn.commit()
             except Exception as e:
                 print(f"Error al insertar venta: {e}")
@@ -112,3 +112,4 @@ class RegistrarVenta:
             sql = "DELETE FROM `proyecto`.`venta_transitoria` WHERE id_venta = '"+id+"'"
             cursor.execute(sql)
             self.conn.commit()
+

@@ -17,6 +17,7 @@ class ModeloCliente():
             for column_number, data in enumerate(row_data):
                 table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
+
     def crearcliente(self, nombre, nit, celular, email):
         self.cliente = RegistarCliente()
         if nombre and nit and celular and email:

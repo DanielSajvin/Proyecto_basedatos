@@ -79,4 +79,13 @@ class RegistarCliente:
             if result:
                 return result
 
+    def get_c_nombre(self, nombre):
+        self.conn = conecciones()
+        with self.conn.cursor() as cursor:
+            sql = "SELECT c.id_cliente FROM cliente c WHERE nombre = '"+nombre+"'"
+            cursor.execute(sql)
+            result = cursor.fetchone()
+            if result:
+                return result
+
 

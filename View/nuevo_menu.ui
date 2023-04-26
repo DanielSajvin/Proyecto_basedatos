@@ -1275,7 +1275,7 @@ border-radius: 5px;
                      </font>
                     </property>
                     <property name="text">
-                     <string>Presentación</string>
+                     <string>Existencias</string>
                     </property>
                    </widget>
                    <widget class="QSpinBox" name="spinBox">
@@ -1346,15 +1346,15 @@ border-radius: 5px;</string>
                      </font>
                     </property>
                     <property name="text">
-                     <string>P.MInorista</string>
+                     <string>P.Unitario</string>
                     </property>
                    </widget>
                    <widget class="QLineEdit" name="monto_t">
                     <property name="geometry">
                      <rect>
-                      <x>850</x>
+                      <x>840</x>
                       <y>30</y>
-                      <width>113</width>
+                      <width>81</width>
                       <height>21</height>
                      </rect>
                     </property>
@@ -1368,9 +1368,9 @@ border-radius: 5px;</string>
                    <widget class="QLabel" name="label_21">
                     <property name="geometry">
                      <rect>
-                      <x>850</x>
+                      <x>840</x>
                       <y>0</y>
-                      <width>111</width>
+                      <width>71</width>
                       <height>21</height>
                      </rect>
                     </property>
@@ -1382,7 +1382,7 @@ border-radius: 5px;</string>
                      </font>
                     </property>
                     <property name="text">
-                     <string>Monto Total</string>
+                     <string>Total</string>
                     </property>
                    </widget>
                    <widget class="QPushButton" name="bot_agregar">
@@ -1417,20 +1417,40 @@ border-radius: 5px;</string>
                      <string>Listar</string>
                     </property>
                    </widget>
-                   <widget class="QLineEdit" name="p_unit_2">
+                   <widget class="QPushButton" name="btn_reCotizar">
+                    <property name="geometry">
+                     <rect>
+                      <x>1050</x>
+                      <y>10</y>
+                      <width>161</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string>Generar Cotización</string>
+                    </property>
+                   </widget>
+                   <widget class="QPushButton" name="btn_calcular">
+                    <property name="geometry">
+                     <rect>
+                      <x>950</x>
+                      <y>10</y>
+                      <width>91</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string>Calcular</string>
+                    </property>
+                   </widget>
+                   <widget class="QLineEdit" name="lnx_sub_total">
                     <property name="geometry">
                      <rect>
                       <x>730</x>
                       <y>30</y>
                       <width>91</width>
-                      <height>21</height>
+                      <height>22</height>
                      </rect>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="readOnly">
-                     <bool>true</bool>
                     </property>
                    </widget>
                    <widget class="QLabel" name="label_29">
@@ -1438,7 +1458,7 @@ border-radius: 5px;</string>
                      <rect>
                       <x>730</x>
                       <y>0</y>
-                      <width>81</width>
+                      <width>91</width>
                       <height>21</height>
                      </rect>
                     </property>
@@ -1450,20 +1470,7 @@ border-radius: 5px;</string>
                      </font>
                     </property>
                     <property name="text">
-                     <string>P.Mayorista</string>
-                    </property>
-                   </widget>
-                   <widget class="QPushButton" name="btn_reCotizar">
-                    <property name="geometry">
-                     <rect>
-                      <x>1010</x>
-                      <y>10</y>
-                      <width>161</width>
-                      <height>41</height>
-                     </rect>
-                    </property>
-                    <property name="text">
-                     <string>Generar Cotización</string>
+                     <string>Sub Tota</string>
                     </property>
                    </widget>
                   </widget>
@@ -2293,6 +2300,16 @@ border: 1px solid rgb(0, 126, 249);
                          </row>
                          <column>
                           <property name="text">
+                           <string>Id</string>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>Codigo</string>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
                            <string>Producto</string>
                           </property>
                          </column>
@@ -2303,17 +2320,22 @@ border: 1px solid rgb(0, 126, 249);
                          </column>
                          <column>
                           <property name="text">
-                           <string>P.Unit</string>
+                           <string>Precio</string>
                           </property>
                          </column>
                          <column>
                           <property name="text">
-                           <string>Deposito</string>
+                           <string>Aticipo</string>
                           </property>
                          </column>
                          <column>
                           <property name="text">
-                           <string>Pendiente</string>
+                           <string>Sub Total</string>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>Total</string>
                           </property>
                          </column>
                          <item row="0" column="0">
@@ -2768,7 +2790,7 @@ QCalendarWidget QSpinBox{
                         </font>
                        </property>
                        <property name="text">
-                        <string>Turno</string>
+                        <string>Precio</string>
                        </property>
                       </widget>
                       <widget class="QComboBox" name="turno">
@@ -2789,12 +2811,12 @@ font: 75 12pt&quot;Times New Roman&quot;;</string>
                        </property>
                        <item>
                         <property name="text">
-                         <string>Mañana</string>
+                         <string>Minorista</string>
                         </property>
                        </item>
                        <item>
                         <property name="text">
-                         <string>Tarde</string>
+                         <string>Mayorista</string>
                         </property>
                        </item>
                       </widget>

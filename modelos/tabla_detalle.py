@@ -9,5 +9,4 @@ class ModeloDetalle():
     def creardetalle(self, fecha, entregado, tipo_id, usuario_id, cliente_id):
         self.detalle = RegistarDetalle()
         if fecha and entregado and tipo_id and usuario_id and cliente_id:
-            print("mandando datos")
             self.detalle.insertarDetalle(fecha, entregado, tipo_id, usuario_id, cliente_id)
