@@ -18,11 +18,11 @@ class ModeloCliente():
                 table.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
 
-    def crearcliente(self, nombre, nit, celular, email):
+    def crearcliente(self, nombre, nit, celular, email, num):
         self.cliente = RegistarCliente()
         if nombre and nit and celular and email:
-            print("mandando datos")
-            self.cliente.insertarCliente(nombre, nit, celular, email)
+
+            self.cliente.insertarCliente(nombre, nit, celular, email, num)
 
     def eliminar_produc(self, table):
         self.cliente = RegistarCliente()

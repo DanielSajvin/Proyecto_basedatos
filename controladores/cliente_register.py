@@ -30,13 +30,13 @@ class RegistarCliente:
             result = cursor.fetchall()
             return result
 
-    def insertarCliente(self, nombre, nit, celular, email):
+    def insertarCliente(self, nombre, nit, celular, email, activo):
         self.conn = conecciones()
         id = self.obtener_id()
 
         with self.conn.cursor() as cursor:
-            sql = """INSERT INTO cliente (id_cliente,nombre,nit,celular,email) VALUES (%s,%s,%s,%s,%s)"""
-            cursor.execute(sql, (id, nombre, nit, celular, email))
+            sql = """INSERT INTO cliente (id_cliente,nombre,nit,celular,email, activo) VALUES (%s,%s,%s,%s,%s,%s)"""
+            cursor.execute(sql, (id, nombre, nit, celular, email, activo))
             self.conn.commit()
 
     def getcliente(self, cod):

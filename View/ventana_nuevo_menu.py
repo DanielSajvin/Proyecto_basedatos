@@ -156,7 +156,8 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.registrar_cliente.clicked.connect(lambda: self.modelo_cliente.crearcliente(self.nombre_cliente.text(),
                                                                                         self.nit_cliente.text(),
                                                                                         self.celular_cliente.text(),
-                                                                                        self.email_cliente.text()))
+                                                                                        self.email_cliente.text()),
+                                                                                        1)
 
         # clientes deudas
         self.btn_deudas.clicked.connect(self.page_deudas)
@@ -511,10 +512,11 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
     # metodo para dessabilitar segun el cargo
     def desabilitar(self):
-        self.btn_venta_nuevo.setVisible(True)
+        self.btn_venta_nuevo.setVisible(False)
         if self.tipo_usuario == "Empleado":
             self.btn_inventario.setVisible(False)
             self.btn_proveedor.setVisible(False)
+            self.btn_cliente.setVisible(False)
 
     def usuario_mostrar(self):
         self.lnx_cargo_u.setEnabled(False)

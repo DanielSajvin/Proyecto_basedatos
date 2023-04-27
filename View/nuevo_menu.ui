@@ -433,7 +433,7 @@ color: rgb(0,126,249);
                 <enum>Qt::RightToLeft</enum>
                </property>
                <property name="text">
-                <string>Cotizacion       </string>
+                <string>Pedido       </string>
                </property>
                <property name="icon">
                 <iconset>
@@ -695,7 +695,7 @@ color: rgb(0,126,249);
 </string>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="page_inventario">
              <layout class="QGridLayout" name="gridLayout">
@@ -3228,6 +3228,53 @@ border-radius: 5px;
                  </property>
                  <property name="styleSheet">
                   <string notr="true"/>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_38">
+                 <property name="geometry">
+                  <rect>
+                   <x>780</x>
+                   <y>10</y>
+                   <width>191</width>
+                   <height>31</height>
+                  </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>Deshabilitar Cliente</string>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="celular_cliente_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>990</x>
+                   <y>10</y>
+                   <width>121</width>
+                   <height>31</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="pushButton">
+                 <property name="geometry">
+                  <rect>
+                   <x>880</x>
+                   <y>70</y>
+                   <width>151</width>
+                   <height>31</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>Deshabilitar</string>
                  </property>
                 </widget>
                </widget>
