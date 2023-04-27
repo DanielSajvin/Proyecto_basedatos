@@ -65,7 +65,6 @@ class Main_login(QMainWindow):
             self.widget_3.hide()
             self.btn_cambio.setText(">")
 
-
     def registrar(self):
         print("intentando registrar")
 

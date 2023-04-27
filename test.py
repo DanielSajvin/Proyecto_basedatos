@@ -155,21 +155,18 @@ print("Password: " + c_password)
 
 import bcrypt
 
-pass_text = '1234'
+pass_text = 'holamundo'
 pass_text = pass_text.encode()
-
-# print(pass_text)
+print(pass_text)
 sal = bcrypt.gensalt()
-# print(sal)
 pass_segura = bcrypt.hashpw(pass_text, sal)
 print(pass_segura)
+print(type(pass_segura))
 
-# print(pass_segura)
 intento = input('Ingrese una contraseña: ')
 intento = intento.encode()
 if bcrypt.checkpw(intento, pass_segura):
     print("CONTRASEÑA CORRECTA")
 else:
     print("INCORRECTO")
-# b'$2b$12$2o8ju77UOT1z3K6s2.zDeO'
-# b'$2b$12$c/E8t.Vp4S0QThlC5lPm7O'
+
