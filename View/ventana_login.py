@@ -41,17 +41,19 @@ class Main_login(QMainWindow):
         # intento = input('Ingrese una contraseña: ')
         intento = intento.encode()
 
+
+
         cursor = self.conn.cursor()
         cursor.execute("select password from usuario where usuario='"+self.user+"'")
         result = cursor.fetchone()
+        contrasenia = result[0]
 
-        if bcrypt.checkpw(intento, result):
+        if bcrypt.checkpw(pw.encode('utf-8'), contrasenia.encode('utf-8')):
             ventana_principal = Main_window_nuevo(self.user, Main_login())
             ventana_principal.show()
             self.hide()
-            # print("CONTRASEÑA CORRECTA")
         else:
-            print("INCORRECTO")
+            print("Contraseña incorrecta. Intente de nuevo.")
 
     def changeForm(self):
         if self.btn_cambio.isChecked():
@@ -62,6 +64,7 @@ class Main_login(QMainWindow):
             self.widget_2.show()
             self.widget_3.hide()
             self.btn_cambio.setText(">")
+
 
     def registrar(self):
         print("intentando registrar")
@@ -74,14 +77,13 @@ class Main_login(QMainWindow):
         pw_confirm = self.lnx_confirm_password.text()
 
         if pw == pw_confirm:
-            pass_text = str(pw)
-            pass_text = pass_text.encode()
+            salt = bcrypt.gensalt()
 
-            sal = bcrypt.gensalt()
+            # Encripta la contraseña del usuario
+            hashed_password = bcrypt.hashpw(pw.encode('utf-8'), salt)
 
-            pass_segura = bcrypt.hashpw(pass_text, sal)
-
-            self.reg.Insertar(cargo, nombre, apellido, user, pass_segura)
+            # Insertar la contraseña segura como una cadena de texto en la base de datos
+            self.reg.Insertar(cargo, nombre, apellido, user, hashed_password)
 
         else:
-            print("las contraseñas no coninciden")
+            print("las contraseñas no coinciden")
