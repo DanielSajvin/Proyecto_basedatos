@@ -3251,7 +3251,7 @@ border-radius: 5px;
                   <string>Deshabilitar Cliente</string>
                  </property>
                 </widget>
-                <widget class="QLineEdit" name="celular_cliente_2">
+                <widget class="QLineEdit" name="id_deshabilitar">
                  <property name="geometry">
                   <rect>
                    <x>990</x>
@@ -3264,7 +3264,7 @@ border-radius: 5px;
                   <string notr="true"/>
                  </property>
                 </widget>
-                <widget class="QPushButton" name="pushButton">
+                <widget class="QPushButton" name="btn_deshabilitar">
                  <property name="geometry">
                   <rect>
                    <x>880</x>

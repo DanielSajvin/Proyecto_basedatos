@@ -156,8 +156,10 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.registrar_cliente.clicked.connect(lambda: self.modelo_cliente.crearcliente(self.nombre_cliente.text(),
                                                                                         self.nit_cliente.text(),
                                                                                         self.celular_cliente.text(),
-                                                                                        self.email_cliente.text()),
-                                                                                        1)
+                                                                                        self.email_cliente.text(),
+                                                                                        1))
+        self.registrar_cliente.clicked.connect(self.limpiar_labels_cliente)
+        self.btn_deshabilitar.clicked.connect(self.deshabilitar_cliente)
 
         # clientes deudas
         self.btn_deudas.clicked.connect(self.page_deudas)
@@ -248,6 +250,12 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         #-----------------Mostrar Pedidos-------------------
         self.tabla_pedido = self.list_pedido
         self.btn_mospedido.clicked.connect(lambda: self.pedido.listar_pedido(self.tabla_pedido))
+
+    def deshabilitar_cliente(self):
+        id = self.id_deshabilitar.text()
+        id = int(id)
+
+        self.registrar_cliente_c.deshabilitar_clientes(id)
 
     def guardad_venta_f(self):
         cursor = self.registrar_venta.obtener_venta_transitoria()
@@ -644,6 +652,12 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         nit = self.lnc_nit_v.text()
         celular = self.lnc_nit_v.text()
         email = self.lnx_email_v.text()
+
+    def limpiar_labels_cliente(self):
+        self.nombre_cliente.clear()
+        self.nit_cliente.clear()
+        self.celular_cliente.clear()
+        self.email_cliente.clear()
 
     def borrar_line_edit_venta(self):
         self.lnx_nombre_v.clear()

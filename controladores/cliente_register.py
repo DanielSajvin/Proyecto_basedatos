@@ -24,8 +24,9 @@ class RegistarCliente:
 
     def obtener_cliente(self):
         self.conn = conecciones()
+        num = 1
         with self.conn.cursor() as cursor:
-            sql = """SELECT * FROM cliente"""
+            sql = """SELECT * FROM cliente where activo = 1"""
             cursor.execute(sql)
             result = cursor.fetchall()
             return result
@@ -87,5 +88,13 @@ class RegistarCliente:
             result = cursor.fetchone()
             if result:
                 return result
+
+    def deshabilitar_clientes(self, id):
+        self.conn = conecciones()
+        numero = 0
+        with self.conn.cursor() as cursor:
+            sql = """UPDATE cliente SET activo = %s WHERE id_cliente = %s """
+            cursor.execute(sql, (numero, id))
+            self.conn.commit()
 
 
