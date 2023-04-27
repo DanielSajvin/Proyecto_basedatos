@@ -251,6 +251,10 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.tabla_pedido = self.list_pedido
         self.btn_mospedido.clicked.connect(lambda: self.pedido.listar_pedido(self.tabla_pedido))
 
+        # Limpiando datos
+        self.btn_crear_form.clicked.connect(self.limpiar_label_inventario)
+        self.registrar_proveedor.clicked.connect(self.limpiar_label_proveedor)
+
     def deshabilitar_cliente(self):
         id = self.id_deshabilitar.text()
         id = int(id)
@@ -658,6 +662,19 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.nit_cliente.clear()
         self.celular_cliente.clear()
         self.email_cliente.clear()
+
+    def limpiar_label_inventario(self):
+        self.lnx_codigo_product.clear()
+        self.lnx_producto.clear()
+        self.lnx_existencias.clear()
+        self.lnx_precio_min.clear()
+        self.lnx_precio_may.clear()
+
+    def limpiar_label_proveedor(self):
+        self.nombre_proveedor.clear()
+        self.producto_proveedor.clear()
+        self.cantidad_proveedor.clear()
+        self.total_proveedor.clear()
 
     def borrar_line_edit_venta(self):
         self.lnx_nombre_v.clear()
