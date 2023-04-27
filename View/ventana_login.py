@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5 import uic, QtCore, QtWidgets
-#from ventana_nuevo_menu import Main_window_nuevo
+# from ventana_nuevo_menu import Main_window_nuevo
 from controladores.Register import RegistrarInventario
 from server.conexion_sqlserver import conecciones
 from View.ventana_nuevo_menu import Main_window_nuevo
@@ -21,44 +21,37 @@ class Main_login(QMainWindow):
         self.conn = conecciones()
         self.user = ""
 
-
-        #Creando conexion con ventana principal
-
+        # Creando conexion con ventana principal
 
         self.label.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=0, yOffset=0))
         self.label_3.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=0, yOffset=0))
         self.btn_login.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=3, yOffset=3))
-        self.btn_register.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=3, yOffset=3)) # button_6
+        self.btn_register.setGraphicsEffect(
+            QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=3, yOffset=3))  # button_6
         self.btn_login.clicked.connect(self.abrir)
 
         self.widget_3.hide()
-        self.btn_cambio.clicked.connect(self.changeForm) #button_7
+        self.btn_cambio.clicked.connect(self.changeForm)  # button_7
         self.btn_register.clicked.connect(self.registrar)
-
-
 
     def abrir(self):
         self.user = self.lnx_user.text()
         pw = self.lnx_password.text()
-
-        #pw = pw.encode()
-        # print(pw)
-        #sal = bcrypt.gensalt()
-        # print(sal)
-        # pass_segura = bcrypt.hashpw(pw, sal)
-        # print(pass_segura)
-
-
+        intento = pw
+        # intento = input('Ingrese una contraseña: ')
+        intento = intento.encode()
 
         cursor = self.conn.cursor()
-        cursor.execute("select * from usuario where usuario='"+self.user+"' and password ='"+pw+"'")
+        cursor.execute("select password from usuario where usuario='"+self.user+"'")
         result = cursor.fetchone()
-        if result:
+
+        if bcrypt.checkpw(intento, result):
             ventana_principal = Main_window_nuevo(self.user, Main_login())
             ventana_principal.show()
             self.hide()
+            # print("CONTRASEÑA CORRECTA")
         else:
-            print("Contraseña incorrecta")
+            print("INCORRECTO")
 
     def changeForm(self):
         if self.btn_cambio.isChecked():
@@ -81,17 +74,14 @@ class Main_login(QMainWindow):
         pw_confirm = self.lnx_confirm_password.text()
 
         if pw == pw_confirm:
-            # print("mandando datos")
-            # pass_text = input('Ingresar contraseña: ')
-            pw = pw.encode()
-            print(pw)
+            pass_text = str(pw)
+            pass_text = pass_text.encode()
+
             sal = bcrypt.gensalt()
-            # print(sal)
-            pass_segura = bcrypt.hashpw(pw, sal)
-            print(pass_segura.decode())
-            print(pass_segura)
-            self.reg.Insertar(cargo, nombre, apellido, user, pass_segura.decode())
+
+            pass_segura = bcrypt.hashpw(pass_text, sal)
+
+            self.reg.Insertar(cargo, nombre, apellido, user, pass_segura)
 
         else:
             print("las contraseñas no coninciden")
-

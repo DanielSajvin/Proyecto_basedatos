@@ -155,15 +155,19 @@ print("Password: " + c_password)
 
 import bcrypt
 
-pass_text = input('Ingresar contraseña: ')
+pass_text = '1234'
 pass_text = pass_text.encode()
-print(pass_text)
+
+# print(pass_text)
 sal = bcrypt.gensalt()
 # print(sal)
 pass_segura = bcrypt.hashpw(pass_text, sal)
 print(pass_segura)
 
-if bcrypt.checkpw(pass_text, pass_segura):
+# print(pass_segura)
+intento = input('Ingrese una contraseña: ')
+intento = intento.encode()
+if bcrypt.checkpw(intento, pass_segura):
     print("CONTRASEÑA CORRECTA")
 else:
     print("INCORRECTO")
