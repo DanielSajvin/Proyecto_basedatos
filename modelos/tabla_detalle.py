@@ -6,7 +6,7 @@ class ModeloDetalle():
     def __int__(self):
         self.detalle = RegistarDetalle()
 
-    def creardetalle(self, fecha, entregado, tipo_id, usuario_id, cliente_id):
+    def creardetalle(self, fecha, entregado, tipo_id, usuario_id, cliente_id, inventario_id):
         self.detalle = RegistarDetalle()
-        if fecha and entregado and tipo_id and usuario_id and cliente_id:
-            self.detalle.insertarDetalle(fecha, entregado, tipo_id, usuario_id, cliente_id)
+        if fecha and entregado and tipo_id and usuario_id and cliente_id and inventario_id:
+            self.detalle.insertarDetalle(fecha, entregado, tipo_id, usuario_id, cliente_id, inventario_id)

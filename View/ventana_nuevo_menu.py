@@ -249,9 +249,19 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.btn_mospedido.clicked.connect(lambda: self.pedido.listar_pedido(self.tabla_pedido))
 
     def guardad_venta_f(self):
+        cursor = self.registrar_venta.obtener_venta_transitoria()
         id = self.obtener_ciente()
         id_cliente = id[0]
-        print(f"este es el id del cliente: {id}")
+        codigos = []
+
+        # Recorrer los resultados de la consulta y agregar los valores a las listas
+        for (id_venta, codigo, producto, cantidad, precio, sub_total, anticipo, total) in cursor:
+            codigos.append(codigo)
+
+        ventas = zip(codigos)
+        for venta in ventas:
+            id_invent = self.obtener_id_codigo_producto(*venta)
+
         pedido = self.fecha_pedido.text()
 
         if str(self.fecha_actual.date()) == pedido:
@@ -261,7 +271,8 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
                 "si",
                 1,
                 self.id_usuario,
-                id_cliente)
+                id_cliente,
+                id_invent)
 
         else:
             self.modelo_detalle.creardetalle(
@@ -269,7 +280,13 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
                 "no",
                 1,
                 self.id_usuario,
-                id_cliente)
+                id_cliente,
+                id_invent)
+
+    def obtener_id_codigo_producto(self, cod):
+        product = self.registrar_usuario.get_codigo(cod)
+        id = product[0]
+        return id
 
     def guardar_datos_venta_f(self):
         cursor = self.registrar_venta.obtener_venta_transitoria()
