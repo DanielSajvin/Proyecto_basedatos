@@ -37,7 +37,7 @@ class Main_login(QMainWindow):
     def abrir(self):
         self.user = self.lnx_user.text()
         pw = self.lnx_password.text()
-        intento = pw
+        intento = str(pw)
         # intento = input('Ingrese una contraseña: ')
         intento = intento.encode()
 
@@ -76,6 +76,8 @@ class Main_login(QMainWindow):
         pw_confirm = self.lnx_confirm_password.text()
 
         if pw == pw_confirm:
+            pw = str(pw)
+
             salt = bcrypt.gensalt()
 
             # Encripta la contraseña del usuario
