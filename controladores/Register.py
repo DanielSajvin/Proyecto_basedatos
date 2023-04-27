@@ -74,6 +74,15 @@ class RegistrarInventario:
         count = count + 1
         return count
 
+    def obtener_id_inventario(self):
+        self.conn = conecciones()
+        cursor = self.conn.cursor()
+        cursor.execute("SELECT MAX(Id_inventario) FROM inventario")
+
+        count = cursor.fetchone()[0]
+        count = count + 1
+        return count
+
     def obtener_id(self):
         self.conn = conecciones()
         cursor = self.conn.cursor()
@@ -164,7 +173,7 @@ class RegistrarInventario:
 
     def insertarProducto(self, codigo, producto, existencia, precio_min, precio_may):
         self.conn = conecciones()
-        id = self.obtener_id()
+        id = self.obtener_id_inventario()
 
         with self.conn.cursor() as cursor:
             sql = """INSERT INTO inventario (Id_inventario,codigo_producto,producto,existencia,precio_minorista,precio_mayorista) VALUES (%s,%s,%s,%s,%s,%s)"""
