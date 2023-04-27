@@ -21,6 +21,7 @@ class Main_login(QMainWindow):
         self.conn = conecciones()
         self.user = ""
 
+
         # Creando conexion con ventana principal
 
         self.label.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=0, yOffset=0))
@@ -33,27 +34,32 @@ class Main_login(QMainWindow):
         self.widget_3.hide()
         self.btn_cambio.clicked.connect(self.changeForm)  # button_7
         self.btn_register.clicked.connect(self.registrar)
+        self.btn_cerrar.clicked.connect(self.cerrar)
 
     def abrir(self):
-        self.user = self.lnx_user.text()
-        pw = self.lnx_password.text()
-        intento = str(pw)
-        # intento = input('Ingrese una contraseña: ')
-        intento = intento.encode()
+        try:
+            self.user = self.lnx_user.text()
+            pw = self.lnx_password.text()
+            intento = str(pw)
+            # intento = input('Ingrese una contraseña: ')
+            intento = intento.encode()
 
 
 
-        cursor = self.conn.cursor()
-        cursor.execute("select password from usuario where usuario='"+self.user+"'")
-        result = cursor.fetchone()
-        contrasenia = result[0]
+            cursor = self.conn.cursor()
+            cursor.execute("select password from usuario where usuario='"+self.user+"'")
+            result = cursor.fetchone()
+            contrasenia = result[0]
 
-        if bcrypt.checkpw(pw.encode('utf-8'), contrasenia.encode('utf-8')):
-            ventana_principal = Main_window_nuevo(self.user, Main_login())
-            ventana_principal.show()
-            self.hide()
-        else:
-            print("Contraseña incorrecta. Intente de nuevo.")
+            if bcrypt.checkpw(pw.encode('utf-8'), contrasenia.encode('utf-8')):
+                ventana_principal = Main_window_nuevo(self.user, Main_login())
+                ventana_principal.show()
+                self.hide()
+            else:
+                print("Contraseña incorrecta. Intente de nuevo.")
+
+        except Exception as e:
+            QMessageBox.critical(self, 'Error', str(e))
 
     def changeForm(self):
         if self.btn_cambio.isChecked():
@@ -88,3 +94,6 @@ class Main_login(QMainWindow):
 
         else:
             print("las contraseñas no coinciden")
+
+    def cerrar(self):
+        self.close()

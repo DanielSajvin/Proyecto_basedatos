@@ -421,7 +421,7 @@ color:rgba(0, 0, 0, 240);
 padding-bottom:7px;</string>
      </property>
      <property name="echoMode">
-      <enum>QLineEdit::Password</enum>
+      <enum>QLineEdit::Normal</enum>
      </property>
      <property name="placeholderText">
       <string>  User Name</string>
@@ -450,6 +450,9 @@ border:none;
 border-bottom:2px solid rgba(46, 82, 101, 200);
 color:rgba(0, 0, 0, 240);
 padding-bottom:7px;</string>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
      </property>
      <property name="placeholderText">
       <string>Password</string>
