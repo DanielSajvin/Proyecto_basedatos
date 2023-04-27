@@ -86,9 +86,10 @@ class ModeloPrincipal():
         table = table
         if table.currentItem() != None:
             cod = table.currentItem().text()
-            product = self.producto.getProductTablaTransitoria(cod)
+            product = self.producto.getProduct(cod)
+            print(f"este es el producto a eliminar: {product}")
             if product:
-                self.producto.eliminarproductoTransitorio(cod)
+                self.producto.eliminarproducto(cod)
         self.listar_productos(table)
 
     def eliminar_produc_tabla_transitoria(self, table):
