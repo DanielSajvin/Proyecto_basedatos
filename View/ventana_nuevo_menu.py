@@ -73,29 +73,20 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
         #self.fecha_pedido.setText("")
 
-        # Tabla
-        # item = self.tabla_int.item(0, 0)
-        # item.setText(_translate("MainWindow", str(self.info.base_datos(0, 0))))
-        # for fil in range(0, 10):
-        #     for colum in range(0, 6):
-        #         item = self.tabla_int.item(fil, colum)
-        #         item.setText(_translate("MainWindow", str(self.info.base_datos(fil, colum))))
-        #         if (colum == 6):
-        #             cantidad = int(self.info.base_datos(fil, colum - 1))
-        #             precio = int(self.info.base_datos(fil, colum - 2))
-        #             monto_total = cantidad * precio
-        #             item.setText(_translate("MainWindow", str(monto_total) + '.00'))
-
-        # bloqueando botones segun el cargo del usuario que ingrese al menu
-
         # el usuario que ingreso al menu
         self.usuario = self.reg.getUsusario_user(user)
         self.tipo_usuario = self.usuario[1]
         self.id_usuario = self.usuario[0]
         self.desabilitar()
         self.usuario_mostrar()
+        nombre = f"{self.usuario[2]} {self.usuario[3]}"
+        self.lab_user_name.setText(nombre)
+        cargo = self.usuario[1]
+        self.lab_cargo.setText(cargo)
 
         self.id_ultimo = self.registrar_detalle.obtener_ultimo_id()
+
+        self.btn_venta.clicked.connect(self.eliminar_tabla_transitoria)
 
         # Conectar Botones con las paginas correspondientes
         self.btn_inventario.clicked.connect(self.pagina_inventario)
@@ -122,14 +113,6 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         # form ventas
         self.btn_buscar.clicked.connect(self.obetener_dados_codigo)
         self.btn_visualizar_venta.clicked.connect(self.guardar_datos_venta)
-        # self.btn_guardar_venta.clicked.connect(self.mandar_datos_tabla_venta)
-
-        # tabla ventas
-        # self.tabla_cliente_c = self.tabla_cliente
-        # self.btn_venta_v.clicked.connect(self.venta_tabla)
-        # self.btn_detalle_v.clicked.connect(self.venta_form)
-
-        # Cotizacion
 
         # Listar Venta
         self.tabla_venta_listar = self.table_form_venta
@@ -137,13 +120,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.btn_listar_ventas.clicked.connect(lambda: self.listar_venta_tabla.listar_venta(self.tabla_venta_listar))
 
         # Agregar datos a venta
-        self.btn_agregar_venta.clicked.connect(lambda: self.listar_venta_tabla.crearventa(self.label_nombre.text(),
-                                                                                          self.label_cantidad.text(),
-                                                                                          self.label_costo.text(),
-                                                                                          self.label_sub_total.text(),
-                                                                                          self.lnx_anticipo.text(),
-                                                                                          self.label_total.text(),
-                                                                                          self.registrar_detalle.obtener_ultimo_id()))
+
         self.tabla_cliente_c = self.tabla_cliente
         self.tabla_cliente = self.tabla_cliente
         self.tabla_clientes_deben = self.tabla_clientes_d
@@ -219,11 +196,13 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.bot_agregar_2.clicked.connect(lambda: self.listar_venta_tabla.eliminar_produc(self.tabla_venta))
         # self.btn_limpiar.clicked.connect(lambda: self.listar_venta_tabla.limpiar_tabla_venta(self.tabla_venta))
         self.fecha.setText(str(self.fecha_actual.date()))
+        self.fecha_pedido.setText(str(self.fecha_actual.date()))
         self.bot_listar.clicked.connect(lambda: self.modelo_principal.listar_productos(self.tabla_int))
         self.btn_listar_tabla_v.clicked.connect(lambda: self.listar_venta_tabla.listar_venta_transitorio(self.tabla_transitoria_venta))
         # self.bot_agregar.clicked.connect(self.cotizar_venta_producto)
         self.bot_agregar.clicked.connect(self.obetener_dados_codigo)
-        self.btn_calcular.clicked.connect(self.guardar_datos_venta)
+        # self.btn_calcular.clicked.connect(self.guardar_datos_venta)
+        self.bot_agregar.clicked.connect(self.guardar_datos_venta)
         self.generar_venta.clicked.connect(self.generar_tabla_venta)
         self.btn_limpiar.clicked.connect(self.eliminar_tabla_transitoria)
 
@@ -239,8 +218,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         # -------------------------------------------------------
         # -------------------------------------------------------
         # ----------------------- Cambiar para que no salga la ubicacion de memoria --------------------------------
-        self.fecha_pedido.setText(str(self.fechapedido))
-
+        # self.fecha_pedido.setText(str(self.fechapedido))
         # -------------------- Generar cotizacion -------------------------------------------------------
         self.btn_reCotizar.clicked.connect(self.realizarCotizacion)
 
@@ -257,6 +235,18 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.btn_crear_form.clicked.connect(self.limpiar_label_inventario)
         self.registrar_proveedor.clicked.connect(self.limpiar_label_proveedor)
 
+        self.generar_venta.clicked.connect(self.limpiar_label_venta)
+        # self.terminar.clicked.connect(self.limpiar_label_detalles)
+
+        #self.terminar.clicked.connect(lambda: self.listar_venta_tabla.crearventa(self.label_nombre.text(),
+        #                                                                                  self.label_cantidad.text(),
+        #                                                                                  self.label_costo.text(),
+        #                                                                                  self.label_sub_total.text(),
+        #                                                                                  self.lnx_anticipo.text(),
+        #                                                                                  self.label_total.text(),
+        #                                                                                  self.registrar_detalle.obtener_ultimo_id()))
+        # self.terminar.clicked.connect(self.enviar_datos_venta)
+
     def deshabilitar_cliente(self):
         id = self.id_deshabilitar.text()
         id = int(id)
@@ -266,6 +256,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
     def guardad_venta_f(self):
         cursor = self.registrar_venta.obtener_venta_transitoria()
         id = self.obtener_ciente()
+
         id_cliente = id[0]
         codigos = []
 
@@ -330,6 +321,8 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         for venta in ventas:
             self.listar_venta_tabla.transicion_vt_a_v(id_detalle, *venta)
 
+
+
         # Cerrar el cursor y la conexión a la base de datos
         #self.listar_venta_tabla.crearventa()
         #pass
@@ -341,6 +334,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.stackedWidget.setCurrentWidget(self.page_venta)
 
     def write_pdf(self, template, output, data_dict):
+
         ANNOT_KEY = '/Annots'
         ANNOT_FIELD_KEY = '/T'
         ANNOT_VAL_KEY = '/V'
@@ -422,51 +416,54 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         #finca = self.pedir3.text()
         #estado = self.pedir4.text()
         #tipo = self.pedir1.currentText()
+        if product == []:
+            pass
+        else:
 
-        if producto1 != '--Seleccionar--' and codigo_var[0] != '--Seleccionar--':
-            # print(f"esto hay en condigo: {codigo1}")
+            if producto1 != '--Seleccionar--' and codigo_var[0] != '--Seleccionar--':
+                # print(f"esto hay en condigo: {codigo1}")
 
-            # cantidad = int(self.cantidad_line.text())
-            cantidad = 3
+                # cantidad = int(self.cantidad_line.text())
+                cantidad = 3
 
 
-            if cantidad > 0:
-                QMessageBox.about(self, 'Aviso', 'Se ha generado la cotización!')
+                if cantidad > 0:
+                    QMessageBox.about(self, 'Aviso', 'Se ha generado la cotización!')
 
-                data_dict = {
-                    'Cotizacion': cot,
-                    'Fecha': fecha_hoy,
-                    'Cliente': '',
-                    'Cod1': codigo_var[0],
-                    'Cod2': codigo_var[1],
-                    'Cod3': codigo_var[2],
-                    'Produ1': producto_var[0],
-                    'Produ2': producto_var[1],
-                    'Produ3': producto_var[2],
-                    'Can1': cantidad_var[0],
-                    'Can2': cantidad_var[1],
-                    'Can3': cantidad_var[2],
-                    'May1': precio_var[0],
-                    'May2': precio_var[1],
-                    'May3': precio_var[2],
-                    'Min1': '',
-                    'Min2': '',
-                    'Min3': '',
-                    'Total1': total_var[0],
-                    'Total2': total_var[1],
-                    'Total3': total_var[2]
+                    data_dict = {
+                        'Cotizacion': cot,
+                        'Fecha': fecha_hoy,
+                        'Cliente': '',
+                        'Cod1': codigo_var[0],
+                        'Cod2': codigo_var[1],
+                        'Cod3': codigo_var[2],
+                        'Produ1': producto_var[0],
+                        'Produ2': producto_var[1],
+                        'Produ3': producto_var[2],
+                        'Can1': cantidad_var[0],
+                        'Can2': cantidad_var[1],
+                        'Can3': cantidad_var[2],
+                        'May1': precio_var[0],
+                        'May2': precio_var[1],
+                        'May3': precio_var[2],
+                        'Min1': '',
+                        'Min2': '',
+                        'Min3': '',
+                        'Total1': total_var[0],
+                        'Total2': total_var[1],
+                        'Total3': total_var[2]
 
-                }
+                    }
 
-                self.write_pdf('View/CotizaciónCliente.pdf', 'cotizacion_final.pdf', data_dict)
+                    self.write_pdf('View/CotizaciónCliente.pdf', 'cotizacion_final.pdf', data_dict)
 
-                #self.cantidad_line.clear()
+                    #self.cantidad_line.clear()
+
+                else:
+                    raise Exception('Debe ser un valor mayor a 0')
 
             else:
-                raise Exception('Debe ser un valor mayor a 0')
-
-        else:
-            raise Exception('No se ha seleccionado uno de los parametros para la cotización.')
+                raise Exception('No se ha seleccionado uno de los parametros para la cotización.')
 
         #except Exception as e:
             #QMessageBox.critical(self, 'Error', str(e))
@@ -491,21 +488,24 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
     def generar_tabla_venta(self):
         _translate = QtCore.QCoreApplication.translate
         codigo = self.cod_bus.text()
-        producto = self.nom_pro.text()
-        cantidad = self.spinBox.text()
-        precio_und = self.p_unit.text()
-        anticipo = self.vendedor.text()
-        subtotal = int(cantidad) * float(precio_und)
-        ant = self.vendedor.text()
-        ant = int(ant)
-        total = subtotal - ant
-        # self.info.insertarVentaTransitoria(producto, cantidad, precio_und, anticipo, subtotal)
-        self.registrar_provedor.insertar_transitoria(codigo, producto, cantidad, precio_und, anticipo, subtotal, total)
+        if codigo == "":
+            pass
+        else:
+            producto = self.nom_pro.text()
+            cantidad = self.spinBox.text()
+            precio_und = self.p_unit.text()
+            anticipo = self.vendedor.text()
+            subtotal = int(cantidad) * float(precio_und)
+            ant = self.vendedor.text()
+            ant = int(ant)
+            total = subtotal - ant
+            # self.info.insertarVentaTransitoria(producto, cantidad, precio_und, anticipo, subtotal)
+            self.registrar_provedor.insertar_transitoria(codigo, producto, cantidad, precio_und, subtotal, anticipo, total)
 
 
 
-        self.tabla_transitoria_venta = self.boleta
-        self.listar_venta_tabla.listar_venta_transitorio(self.tabla_transitoria_venta)
+            self.tabla_transitoria_venta = self.boleta
+            self.listar_venta_tabla.listar_venta_transitorio(self.tabla_transitoria_venta)
 
 # ------------------------------------ELiminar datos de la tabla transitoria -------------------------------------
 
@@ -580,7 +580,6 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
     def obtener_ciente(self):
         self.cliente_id_c = self.cliente.text()
-        print(f"este es el nombre del cliente: {self.cliente_id_c}")
         self.id_cliente = self.registrar_cliente_c.get_c_nombre(self.cliente_id_c)
         return self.id_cliente
     # Metodos pra conectar un boton con su pagina correspondiente
@@ -626,38 +625,45 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         # id_detalle - producto - fecha - entregado - sub_total - total - id_tipo - usuario_id - cliete_id
         precio_uni = ""
         cod = self.cod_bus.text()
+        if cod == "":
+            pass
 
-        product = self.registrar_usuario.obtener_por_codigo(cod)
-        print(product)
-        if self.turno.currentText() == 'Minorista':
-            precio_uni = product[4]
-        elif self.turno.currentText() == 'Mayorista':
-            precio_uni = product[5]
+        else:
+            product = self.registrar_usuario.obtener_por_codigo(cod)
+            print(product)
+            if self.turno.currentText() == 'Minorista':
+                precio_uni = product[4]
+            elif self.turno.currentText() == 'Mayorista':
+                precio_uni = product[5]
 
-        costo = str(precio_uni)
-        nombre = product[2]
-        existencias = product[3]
-        self.nom_pro.setText(str(nombre))
-        self.p_unit.setText(str(costo))
-        self.Lab.setText(str(existencias))
-        return precio_uni
+            costo = str(precio_uni)
+            nombre = product[2]
+            existencias = product[3]
+            self.nom_pro.setText(str(nombre))
+            self.p_unit.setText(str(costo))
+            self.Lab.setText(str(existencias))
+            return precio_uni
 
     def guardar_datos_venta(self):
         # id_detalle - producto - fecha - entregado - sub_total - total - id_tipo - usuario_id - cliete_id
         cantidad = self.spinBox.value()
-        anticipo = self.vendedor.text()
-        anticipo = float(anticipo)
-        # print(f"anticipo:{anticipo}")
+        if cantidad == 0:
+            pass
 
-        precio_uni = self.obetener_dados_codigo()
-        precio = precio_uni
-        new_cantidad = float(cantidad)
-        sub_total = new_cantidad * precio
+        else:
+            anticipo = self.vendedor.text()
+            anticipo = float(anticipo)
+            # print(f"anticipo:{anticipo}")
 
-        total = sub_total - anticipo
+            precio_uni = self.obetener_dados_codigo()
+            precio = precio_uni
+            new_cantidad = float(cantidad)
+            sub_total = new_cantidad * precio
 
-        self.lnx_sub_total.setText(str(sub_total))
-        self.monto_t.setText(str(total))
+            total = sub_total - anticipo
+
+            self.lnx_sub_total.setText(str(sub_total))
+            self.monto_t.setText(str(total))
 
     def mandar_datos_tabla_venta(self):
         # id_detalle - producto - fecha - entregado - sub_total - total - id_tipo - usuario_id - cliete_id
@@ -684,6 +690,18 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.producto_proveedor.clear()
         self.cantidad_proveedor.clear()
         self.total_proveedor.clear()
+
+    def limpiar_label_venta(self):
+        self.cod_bus.clear()
+        self.nom_pro.clear()
+        self.Lab.clear()
+        self.spinBox.setValue(0)
+        self.p_unit.clear()
+        self.lnx_sub_total.clear()
+        self.monto_t.clear()
+
+    def limpiar_label_detalles(self):
+        self.cliente.clear()
 
     def borrar_line_edit_venta(self):
         self.lnx_nombre_v.clear()

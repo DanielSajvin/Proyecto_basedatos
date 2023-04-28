@@ -42,7 +42,6 @@ class ModeloCliente():
         clientes = self.cliente.\
             clientes_deben()
         table.setRowCount(0)
-        print(f"esto hay en cliente: {clientes}")
         if clientes == None:
             print("no existen deudores")
         else:
@@ -57,7 +56,6 @@ class ModeloCliente():
         clientes = self.cliente.\
             clientes_nombre()
         table.setRowCount(0)
-        print(f"esto hay en cliente: {clientes}")
         if clientes == None:
             print("no existen deudores")
         else:

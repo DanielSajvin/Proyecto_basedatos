@@ -25,9 +25,9 @@ Ui_MainWindow, QMainWindow = loadUiType('View/prueba.ui')
 # uic.loadUi("View/prueba.ui")
 
 class Test(QMainWindow, Ui_MainWindow):
-    def __init__(self) -> None:
+    def _init_(self) -> None:
 
-        super().__init__()
+        super()._init_()
         self.setupUi(self)
         self.btn_cotizar.clicked.connect(self.realizarCotizacion)
 

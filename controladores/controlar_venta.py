@@ -70,7 +70,6 @@ class BaseDatosInfo:
                 self.conn.commit()
             except Exception as e:
                 print(f"Error al insertar venta: {e}")
-        return f"Se ha insertado en la tabla"
 
 
     def lista_ventas(self, vendedor, cliente, tipo_pago, fecha_venta, monto_total):

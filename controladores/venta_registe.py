@@ -10,7 +10,11 @@ class RegistrarVenta:
         cursor.execute("SELECT MAX(id_venta) FROM venta")
 
         count = cursor.fetchone()[0]
-        count = count + 1
+        if count == None:
+            count = 1
+
+        else:
+            count = count + 1
 
         return count
 
@@ -70,10 +74,10 @@ class RegistrarVenta:
         with self.conn.cursor() as cursor:
             sql = """INSERT INTO `proyecto`.`venta` (`id_venta`, `producto`, `cantidad`, `precio_unitario`, `sub_total`, `anticipo`, `total`, `detalle_id_detalle`)
              VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
-
             try:
                 cursor.execute(sql, (id, producto, cantidad, precio_unitario, sub_total, anticipo, total, detalle_id))
                 self.conn.commit()
+
 
             except Exception as e:
                 print(f"Error al insertar venta: {e}")
@@ -95,7 +99,6 @@ class RegistrarVenta:
     def escribir_base_datos_transitoria(self, codigo, producto, cantidad, precio, sub_total, anticipo, total):
         self.conn = conecciones()
         id = self.obtener_id_transitoria()
-        print(f"este es el id que se asigna en la tabla transitoria {id}")
         with self.conn.cursor() as cursor:
             sql = """INSERT INTO `proyecto`.`venta_transitoria` (`id_venta`, `codigo`, `producto`, `cantidad`, `precio`,`sub_total`, `anticipo`, `total`)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"""  # Corregir comillas simples a comillas invertidas
@@ -141,4 +144,14 @@ class RegistrarVenta:
             sql = "DELETE FROM `proyecto`.`venta_transitoria` WHERE id_venta = '"+id+"'"
             cursor.execute(sql)
             self.conn.commit()
+
+    def eliminar_transitoria(self):
+        self.conn = conecciones()
+        with self.conn.cursor() as cursor:
+            sql = "SELECT * FROM venta_transitoria ORDER BY id_venta DESC  LIMIT 1"
+            cursor.execute(sql)
+            result = cursor.fetchall()
+
+            return result
+
 

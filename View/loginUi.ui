@@ -493,22 +493,6 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477,
       <string>L o g  I n</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_5">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>280</y>
-       <width>181</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color:rgba(0, 0, 0, 210);</string>
-     </property>
-     <property name="text">
-      <string>Forgot your User Name or password?</string>
-     </property>
-    </widget>
    </widget>
    <widget class="QPushButton" name="btn_cambio">
     <property name="geometry">
@@ -541,11 +525,29 @@ border-bottom-right-radius:15px;</string>
    <widget class="QPushButton" name="btn_cerrar">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>30</y>
+      <x>490</x>
+      <y>20</y>
       <width>31</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-top-left-radius:20p;
+color: rgb(0,126,249);
+font: 77 10pt &quot;Gadugi&quot;;
+
+border-radius: 5px;
+
+
+}
+
+QPushButton:hover{
+
+background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+
+
+}</string>
     </property>
     <property name="text">
      <string/>

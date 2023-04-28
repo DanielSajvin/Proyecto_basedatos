@@ -31,9 +31,12 @@ class Main_login(QMainWindow):
             QtWidgets.QGraphicsDropShadowEffect(blurRadius=25, xOffset=3, yOffset=3))  # button_6
         self.btn_login.clicked.connect(self.abrir)
 
+
+
         self.widget_3.hide()
         self.btn_cambio.clicked.connect(self.changeForm)  # button_7
         self.btn_register.clicked.connect(self.registrar)
+        self.btn_register.clicked.connect(self.limpiar_labels_register)
         self.btn_cerrar.clicked.connect(self.cerrar)
 
     def abrir(self):
@@ -94,6 +97,13 @@ class Main_login(QMainWindow):
 
         else:
             print("las contraseñas no coinciden")
+
+    def limpiar_labels_register(self):
+        self.lnx_1nombre.clear()
+        self.lnx_2nombre.clear()
+        self.lnx_confirm_password.clear()
+        self.lnx_password_2.clear()
+        self.lnx_usuario.clear()
 
     def cerrar(self):
         self.close()

@@ -10,7 +10,11 @@ class RegistarCliente:
         cursor.execute("SELECT MAX(id_cliente) FROM cliente")
 
         count = cursor.fetchone()[0]
-        count = count + 1
+        if count == None:
+            count = 1
+
+        else:
+            count = count + 1
         return count
 
     def obtener_ultimo_id_cliente(self):

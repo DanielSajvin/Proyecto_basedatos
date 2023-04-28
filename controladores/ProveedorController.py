@@ -13,7 +13,6 @@ class RegistrarProveedor:
             return result
 
     def insertarProveedor(self, nombre, producto, cantidad, total):
-        print("datos recibidos")
         self.conn = conecciones()
         id = self.obtener_id()
 

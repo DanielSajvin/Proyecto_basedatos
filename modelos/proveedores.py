@@ -20,7 +20,6 @@ class ModeloProveedor():
     def crearProovedor(self, nombre, producto, cantidad, total):
         self.proveedor = RegistrarProveedor()
         if nombre and producto and cantidad and total:
-            print("mandando datos")
             self.proveedor.insertarProveedor(nombre, producto, cantidad, total)
     def eliminar_prov(self, table):
         self.proveedor = RegistrarProveedor()
