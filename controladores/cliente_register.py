@@ -75,8 +75,9 @@ class RegistarCliente:
 
     def clientes_nombre(self):
         self.conn = conecciones()
+        self.num = 1
         with self.conn.cursor() as cursor:
-            sql = "SELECT c.nombre FROM proyecto.cliente c;"
+            sql = f"SELECT c.nombre FROM proyecto.cliente c where c.activo = {self.num}"
 
 
             cursor.execute(sql)

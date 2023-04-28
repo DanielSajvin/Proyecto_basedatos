@@ -29,9 +29,7 @@ class ModeloCliente():
         table = table
         if table.currentItem() != None:
             cod = table.currentItem().text()
-            print(cod)
             product = self.cliente.getcliente(cod)
-            print(product)
             if product:
                 self.cliente.eliminarcliente(cod)
         self.listar_cliente(table)
