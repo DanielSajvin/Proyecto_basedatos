@@ -88,6 +88,8 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
 
         self.btn_venta.clicked.connect(self.eliminar_tabla_transitoria)
 
+        self.contador = 0
+
         # Conectar Botones con las paginas correspondientes
         self.btn_inventario.clicked.connect(self.pagina_inventario)
         self.btn_venta.clicked.connect(self.pagina_venta)
@@ -209,7 +211,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         # Ventas (Angel)
         self.terminar.clicked.connect(self.guardad_venta_f)
 
-        self.terminar.clicked.connect(self.guardar_datos_venta_f)
+        # self.terminar.clicked.connect(self.guardar_datos_venta_f)
 
         self.fechapedido = str(self.calendarWidget.clicked.connect(self.obtener_fecha_seleccionada))
 
@@ -247,6 +249,8 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         #                                                                                  self.registrar_detalle.obtener_ultimo_id()))
         # self.terminar.clicked.connect(self.enviar_datos_venta)
 
+        self.terminar.clicked.connect(lambda: self.listar_venta_tabla.listar_venta_transitorio(self.tabla_transitoria_venta))
+
     def deshabilitar_cliente(self):
         id = self.id_deshabilitar.text()
         id = int(id)
@@ -280,6 +284,39 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
                 id_cliente,
                 id_invent)
 
+
+
+            id_ventas = []
+            codigos = []
+            productos = []
+            cantidades = []
+            precios = []
+            sub_totales = []
+            anticipos = []
+            totales = []
+
+            # Recorrer los resultados de la consulta y agregar los valores a las listas
+            if self.contador == 0:
+                self.contador = 1
+
+                for (id_venta, codigo, producto, cantidad, precio, sub_total, anticipo, total) in cursor:
+                    id_ventas.append(id_venta)
+                    codigos.append(codigo)
+                    productos.append(producto)
+                    cantidades.append(cantidad)
+                    precios.append(precio)
+                    sub_totales.append(sub_total)
+                    anticipos.append(anticipo)
+                    totales.append(total)
+
+                ventas = zip(id_ventas, codigos, productos, cantidades, precios, sub_totales, anticipos, totales)
+                id_detalle = self.registrar_detalle.obtener_ultimo_id()
+                for venta in ventas:
+                    self.listar_venta_tabla.transicion_vt_a_v(id_detalle, *venta)
+
+            else:
+                pass
+
         else:
             self.modelo_detalle.creardetalle(
                 self.fecha_seleccionada,
@@ -288,6 +325,36 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
                 self.id_usuario,
                 id_cliente,
                 id_invent)
+
+            id_ventas = []
+            codigos = []
+            productos = []
+            cantidades = []
+            precios = []
+            sub_totales = []
+            anticipos = []
+            totales = []
+
+            # Recorrer los resultados de la consulta y agregar los valores a las listas
+            if self.contador == 0:
+                self.contador = 1
+                for (id_venta, codigo, producto, cantidad, precio, sub_total, anticipo, total) in cursor:
+                    id_ventas.append(id_venta)
+                    codigos.append(codigo)
+                    productos.append(producto)
+                    cantidades.append(cantidad)
+                    precios.append(precio)
+                    sub_totales.append(sub_total)
+                    anticipos.append(anticipo)
+                    totales.append(total)
+
+                ventas = zip(id_ventas, codigos, productos, cantidades, precios, sub_totales, anticipos, totales)
+                id_detalle = self.registrar_detalle.obtener_ultimo_id()
+                for venta in ventas:
+                    self.listar_venta_tabla.transicion_vt_a_v(id_detalle, *venta)
+
+            else:
+                pass
 
     def obtener_id_codigo_producto(self, cod):
         product = self.registrar_usuario.get_codigo(cod)
