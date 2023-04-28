@@ -335,6 +335,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
             anticipos = []
             totales = []
 
+
             # Recorrer los resultados de la consulta y agregar los valores a las listas
             if self.contador == 0:
                 self.contador = 1
@@ -605,6 +606,8 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
             self.btn_inventario.setVisible(False)
             self.btn_proveedor.setVisible(False)
             self.btn_cliente.setVisible(False)
+
+
 
     def usuario_mostrar(self):
         self.lnx_cargo_u.setEnabled(False)
