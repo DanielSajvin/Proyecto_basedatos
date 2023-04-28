@@ -46,3 +46,26 @@ class RegistrarProveedor:
             sql = "DELETE FROM `proyecto`.`proveedor` WHERE id_provedor = '"+id+"'"
             cursor.execute(sql)
             self.conn.commit()
+
+    def obtener_id_transitoria(self):
+        self.conn = conecciones()
+        cursor = self.conn.cursor()
+        cursor.execute("SELECT MAX(id_venta) FROM venta_transitoria")
+
+        count = cursor.fetchone()[0]
+        if count is None:
+            count = 1
+        else:
+            count = count + 1
+
+        return count
+
+    def insertar_transitoria(self, codigo, producto, cantidad, precio, sub_total, anticipo, total):
+        self.conn = conecciones()
+        id = self.obtener_id_transitoria()
+
+        with self.conn.cursor() as cursor:
+            sql = """INSERT INTO venta_transitoria (id_venta,codigo,producto,cantidad,precio,sub_total,anticipo,total)
+             VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
+            cursor.execute(sql, (id, codigo, producto, cantidad, precio, sub_total, anticipo, total))
+            self.conn.commit()

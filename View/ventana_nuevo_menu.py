@@ -22,6 +22,7 @@ from modelos.tabla_pedido import ModeloPedido
 from PyQt5.uic import loadUiType
 from controladores.controlar_venta import BaseDatosInfo
 from controladores.venta_registe import RegistrarVenta
+from controladores.ProveedorController import RegistrarProveedor
 import random
 import string
 
@@ -44,6 +45,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         self.clietes_deben = self.registrar_cliente_c.clientes_deben()
         self.pedido = ModeloPedido()
         self.registrar_venta = RegistrarVenta()
+        self.registrar_provedor = RegistrarProveedor()
 
         self.reg = RegistrarInventario()
 
@@ -498,7 +500,7 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         ant = int(ant)
         total = subtotal - ant
         # self.info.insertarVentaTransitoria(producto, cantidad, precio_und, anticipo, subtotal)
-        self.registrar_usuario.insertar_transitoria(codigo, producto, cantidad, precio_und, anticipo, subtotal, total)
+        self.registrar_provedor.insertar_transitoria(codigo, producto, cantidad, precio_und, anticipo, subtotal, total)
 
 
 
