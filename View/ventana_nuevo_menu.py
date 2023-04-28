@@ -376,72 +376,98 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         letras = string.ascii_uppercase
         cadena = ''.join(random.choice(letras) for i in range(3))
         numero = random.randint(0, 9)
-        try:
-            cot = cadena + str(numero)
+        #try:
+        cot = cadena + str(numero)
 
-            producto1 = self.nom_pro.text()
-            fecha_hoy = self.fecha.text()
-            # cantidad1 = self.spinBox.text()
-            cantidad1 = self.spinBox.value()
-            mayorista1 = self.p_unit_2.text()
-            minorista1 = self.p_unit.text()
-            total1 = self.monto_t.text()
-            cnd_elem = self.info.elemtos_ventas()
-            codigo1 = self.reg.get_code_by_product(self.boleta.item(cnd_elem - 3, 0).text())
-            codigo2 = self.reg.get_code_by_product(self.boleta.item(cnd_elem - 2, 0).text())
-            codigo3 = self.reg.get_code_by_product(self.boleta.item(cnd_elem - 1, 0).text())
+        producto1 = self.nom_pro.text()
+        fecha_hoy = self.fecha.text()
+        # cantidad1 = self.spinBox.text()
+        cantidad1 = self.spinBox.value()
+        # mayorista1 = self.p_unit_2.text()
+        minorista1 = self.p_unit.text()
+        total1 = self.monto_t.text()
+        cnd_elem = self.info.elemtos_ventas()
 
-            #region = self.pedir2.text()
-            #print(region)
-            #finca = self.pedir3.text()
-            #estado = self.pedir4.text()
-            #tipo = self.pedir1.currentText()
+        product = self.registrar_venta.obtener_venta_transitoria()
 
-            if producto1 != '--Seleccionar--' and codigo1 != '--Seleccionar--':
+        id_venta_var = []
+        codigo_var = []
+        producto_var = []
+        cantidad_var = []
+        precio_var = []
+        sub_total_var = []
+        anticipo_var = []
+        total_var = []
 
-                # cantidad = int(self.cantidad_line.text())
-                cantidad = 3
+        for id_venta, codigo, producto, cantidad, precio, sub_total, anticipo, total in product:
+            # Guardar cada dato en una variable separada
+            id_venta_var.append(id_venta)
+            codigo_var.append(codigo)
+            producto_var.append(producto)
+            cantidad_var.append(cantidad)
+            precio_var.append(precio)
+            sub_total_var.append(sub_total)
+            anticipo_var.append(anticipo)
+            total_var.append(total)
 
-                if cantidad > 0:
-                    QMessageBox.about(self, 'Aviso', 'Se ha generado la cotización!')
 
-                    data_dict = {
-                        'Cotizacion': cot,
-                        'Fecha': fecha_hoy,
-                        'Cliente': '',
-                        'Cod1': codigo1[0],
-                        'Cod2': codigo2[0],
-                        'Cod3': codigo3[0],
-                        'Produ1': self.boleta.item(cnd_elem - 3, 0).text(),
-                        'Produ2': self.boleta.item(cnd_elem - 2, 0).text(),
-                        'Produ3': self.boleta.item(cnd_elem - 1, 0).text(),
-                        'Can1': self.boleta.item(cnd_elem - 3, 1).text(),
-                        'Can2': self.boleta.item(cnd_elem - 2, 1).text(),
-                        'Can3': self.boleta.item(cnd_elem - 1, 1).text(),
-                        'May1': self.boleta.item(cnd_elem - 3, 2).text(),
-                        'May2': self.boleta.item(cnd_elem - 2, 2).text(),
-                        'May3': self.boleta.item(cnd_elem - 1, 2).text(),
-                        'Min1': '',
-                        'Min2': '',
-                        'Min3': '',
-                        'Total1': self.boleta.item(cnd_elem - 3, 4).text(),
-                        'Total2': self.boleta.item(cnd_elem - 2, 4).text(),
-                        'Total3': self.boleta.item(cnd_elem - 1, 4).text()
+        #codigo1 = self.reg.get_code_by_product(self.boleta.item(cnd_elem - 3, 0).text())
+        #codigo2 = self.reg.get_code_by_product(self.boleta.item(cnd_elem - 2, 0).text())
+        #codigo3 = self.reg.get_code_by_product(self.boleta.item(cnd_elem - 1, 0).text())
 
-                    }
+        #region = self.pedir2.text()
+        #print(region)
+        #finca = self.pedir3.text()
+        #estado = self.pedir4.text()
+        #tipo = self.pedir1.currentText()
 
-                    self.write_pdf('View/CotizaciónCliente.pdf', 'cotizacion_final.pdf', data_dict)
+        if producto1 != '--Seleccionar--' and codigo_var[0] != '--Seleccionar--':
+            # print(f"esto hay en condigo: {codigo1}")
 
-                    #self.cantidad_line.clear()
+            # cantidad = int(self.cantidad_line.text())
+            cantidad = 3
 
-                else:
-                    raise Exception('Debe ser un valor mayor a 0')
+
+            if cantidad > 0:
+                QMessageBox.about(self, 'Aviso', 'Se ha generado la cotización!')
+
+                data_dict = {
+                    'Cotizacion': cot,
+                    'Fecha': fecha_hoy,
+                    'Cliente': '',
+                    'Cod1': codigo_var[0],
+                    'Cod2': codigo_var[1],
+                    'Cod3': codigo_var[2],
+                    'Produ1': producto_var[0],
+                    'Produ2': producto_var[1],
+                    'Produ3': producto_var[2],
+                    'Can1': cantidad_var[0],
+                    'Can2': cantidad_var[1],
+                    'Can3': cantidad_var[2],
+                    'May1': precio_var[0],
+                    'May2': precio_var[1],
+                    'May3': precio_var[2],
+                    'Min1': '',
+                    'Min2': '',
+                    'Min3': '',
+                    'Total1': total_var[0],
+                    'Total2': total_var[1],
+                    'Total3': total_var[2]
+
+                }
+
+                self.write_pdf('View/CotizaciónCliente.pdf', 'cotizacion_final.pdf', data_dict)
+
+                #self.cantidad_line.clear()
 
             else:
-                raise Exception('No se ha seleccionado uno de los parametros para la cotización.')
+                raise Exception('Debe ser un valor mayor a 0')
 
-        except Exception as e:
-            QMessageBox.critical(self, 'Error', str(e))
+        else:
+            raise Exception('No se ha seleccionado uno de los parametros para la cotización.')
+
+        #except Exception as e:
+            #QMessageBox.critical(self, 'Error', str(e))
 
     # -------------------- Generar cotizacion -------------------------------------------------------
 
@@ -472,31 +498,12 @@ class Main_window_nuevo(QMainWindow, Ui_MainWindow):
         ant = int(ant)
         total = subtotal - ant
         # self.info.insertarVentaTransitoria(producto, cantidad, precio_und, anticipo, subtotal)
-        self.registrar_venta.escribir_base_datos_transitoria(codigo, producto, cantidad,
-                                                             precio_und, anticipo, subtotal, total)
+        self.registrar_usuario.insertar_transitoria(codigo, producto, cantidad, precio_und, anticipo, subtotal, total)
+
+
 
         self.tabla_transitoria_venta = self.boleta
         self.listar_venta_tabla.listar_venta_transitorio(self.tabla_transitoria_venta)
-
-        # cnd_elem = self.info.elemtos_ventas()  # Cantidad de elementos
-        # print(cnd_elem)
-        # self.item = self.boleta.item(cnd_elem - 1, 0)
-        # self.item.setText(_translate("MainWindow", producto))
-        #
-        # self.item = self.boleta.item(cnd_elem - 1, 1)
-        # self.item.setText(_translate("MainWindow", cantidad))
-        #
-        # self.item = self.boleta.item(cnd_elem - 1, 2)
-        #
-        # self.item.setText(_translate("MainWindow", precio_und))
-        #
-        # self.item = self.boleta.item(cnd_elem - 1, 3)
-        # self.item.setText(_translate("MainWindow", str(anticipo)))
-        #
-        # self.item = self.boleta.item(cnd_elem - 1, 4)
-        # self.item.setText(_translate("MainWindow", str(subtotal - int(anticipo))))
-        #
-        # self.total_general.setText(str(self.info.monto_total(cnd_elem) - int(anticipo)))
 
 # ------------------------------------ELiminar datos de la tabla transitoria -------------------------------------
 

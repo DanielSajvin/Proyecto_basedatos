@@ -174,11 +174,25 @@ class RegistrarInventario:
     def insertarProducto(self, codigo, producto, existencia, precio_min, precio_may):
         self.conn = conecciones()
         id = self.obtener_id_inventario()
+        print(f"este es la coneccion de inventario: {self.conn.cursor()}")
 
         with self.conn.cursor() as cursor:
             sql = """INSERT INTO inventario (Id_inventario,codigo_producto,producto,existencia,precio_minorista,precio_mayorista) VALUES (%s,%s,%s,%s,%s,%s)"""
             cursor.execute(sql, (id, codigo, producto, existencia, precio_min, precio_may))
             self.conn.commit()
+
+    def insertar_transitoria(self, codigo, producto, cantidad, precio, sub_total, anticipo, total):
+        self.conn = conecciones()
+        id = self.obtener_id_inventario()
+        print(f"este es la coneccion de inventario: {self.conn.cursor()}")
+        id_v = 4
+
+        with self.conn.cursor() as cursor:
+            sql = """INSERT INTO venta_transitoria (id_venta,codigo,producto,cantidad,precio,sub_total,anticipo,total)
+             VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
+            cursor.execute(sql, (id_v, codigo, producto, cantidad, precio, sub_total, anticipo, total))
+            self.conn.commit()
+
 
     def modificar_inventario(self, codigo, numero):
         with self.conn.cursor() as cursor:
