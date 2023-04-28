@@ -83,6 +83,21 @@ class RegistrarInventario:
         count = count + 1
         return count
 
+    def obtener_id_transitoria(self):
+        self.conn = conecciones()
+        cursor = self.conn.cursor()
+        cursor.execute("SELECT MAX(id_venta) FROM venta_transitoria")
+
+        count = cursor.fetchone()[0]
+        if count is None:
+            count = 1
+        else:
+            count = count + 1
+
+        self.conn.close()
+        return count
+
+
     def obtener_id(self):
         self.conn = conecciones()
         cursor = self.conn.cursor()
@@ -183,14 +198,12 @@ class RegistrarInventario:
 
     def insertar_transitoria(self, codigo, producto, cantidad, precio, sub_total, anticipo, total):
         self.conn = conecciones()
-        id = self.obtener_id_inventario()
-        print(f"este es la coneccion de inventario: {self.conn.cursor()}")
-        id_v = 4
+        id = self.obtener_id_transitoria()
 
         with self.conn.cursor() as cursor:
             sql = """INSERT INTO venta_transitoria (id_venta,codigo,producto,cantidad,precio,sub_total,anticipo,total)
              VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
-            cursor.execute(sql, (id_v, codigo, producto, cantidad, precio, sub_total, anticipo, total))
+            cursor.execute(sql, (id, codigo, producto, cantidad, precio, sub_total, anticipo, total))
             self.conn.commit()
 
 
